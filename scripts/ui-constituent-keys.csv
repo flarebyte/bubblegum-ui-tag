@@ -1,0 +1,5 @@
+constituent-label,Label of the constituent,String,medium!,Some label;ラベル;ضع الكلمة المناسبة
+constituent-description,Description of the constituent,String,medium!,Some label;ラベル;ضع الكلمة المناسبة
+constituent-tag,Tag used to describe the constituent,List String,,it;learning;elm
+constituent-warning-tag,Tag representing a warning aspect of the constituent,List String,,grammar;synonyms
+constituent-danger-tag,Tag representing a dangerous aspect of the constituent,List String,,sensitive;save

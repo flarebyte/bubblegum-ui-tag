@@ -1,0 +1,18 @@
+{
+    "version": "1.0.0",
+    "summary": "Tag widget for the Bubblegum UI toolkit.",
+    "repository": "https://github.com/flarebyte/bubblegum-ui-tag.git",
+    "license": "BSD3",
+    "source-directories": [
+        "src"
+    ],
+    "exposed-modules": [
+        "Bubblegum.Tag.Widget"
+    ],
+    "dependencies": {
+        "elm-lang/core": "5.1.1 <= v < 6.0.0",
+        "elm-lang/html": "2.0.0 <= v < 3.0.0",
+        "flarebyte/bubblegum-entity": "1.0.0 <= v < 2.0.0"
+    },
+    "elm-version": "0.18.0 <= v < 0.19.0"
+}
