@@ -29,17 +29,29 @@ attr key values =
     }
 
 
-suggestion : Int -> List String -> List String -> List String -> List Attribute.Model
-suggestion uid infoTags warningTags dangerTags =
+suggestion : Int -> List String -> List Attribute.Model
+suggestion uid infoTags =
     let
         id =
             "id:suggestion:" ++ toString uid
 
         label =
-            String.left uid ipsum
+            String.slice uid (2 * uid) ipsum
 
         description =
-            String.right (2 * uid) ipsum |> String.reverse
+            ipsum |> String.reverse |> String.slice uid (3 * uid)
+
+        warningTags =
+            if uid % 3 == 0 then
+                [ String.slice uid (uid + 5) ipsum ]
+            else
+                []
+
+        dangerTags =
+            if uid % 5 == 0 then
+                [ String.slice uid (uid + 7) ipsum |> String.reverse ]
+            else
+                []
     in
     [ attri id ui_constituentLabel [ label ]
     , attri id ui_constituentDescription [ description ]
@@ -57,31 +69,31 @@ defaultSuggestions =
 getExampleAttributes : List Attribute.Model
 getExampleAttributes =
     [ attr ui_suggestion defaultSuggestions ]
-        ++ suggestion 1 [ "info a", "info a 2" ] [ "warn1" ] [ "danger1", "danger2" ]
-        ++ suggestion 2 [ "info b" ] [ "warn1" ] [ "danger1", "danger2" ]
-        ++ suggestion 3 [ "info c", "info2" ] [ "warn1" ] [ "danger1", "danger2" ]
-        ++ suggestion 4 [ "info d" ] [ "warn1" ] [ "danger1", "danger2" ]
-        ++ suggestion 5 [ "info e" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 6 [ "info f" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 7 [ "info g" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 8 [ "info h" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 9 [ "info i" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 10 [ "info j" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 11 [ "info k" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 12 [ "info l" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 13 [ "info m" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 14 [ "info n" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 15 [ "info o" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 16 [ "info p" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 17 [ "info q" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 18 [ "info r" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 19 [ "info s" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 20 [ "info t" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 21 [ "info u" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 22 [ "info v" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 23 [ "info w" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 24 [ "info x" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 25 [ "info y" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 26 [ "info z" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 27 [ "info ab" ] [ "warn1" ] [ "danger1" ]
-        ++ suggestion 28 [ "info ac" ] [ "warn1" ] [ "danger1" ]
+        ++ suggestion 1 [ "info a", "info a 2" ]
+        ++ suggestion 2 [ "info b" ]
+        ++ suggestion 3 [ "info c", "info2" ]
+        ++ suggestion 4 [ "info d" ]
+        ++ suggestion 5 [ "info e" ]
+        ++ suggestion 6 [ "info f" ]
+        ++ suggestion 7 [ "info g" ]
+        ++ suggestion 8 [ "info h" ]
+        ++ suggestion 9 [ "info i" ]
+        ++ suggestion 10 [ "info j" ]
+        ++ suggestion 11 [ "info k" ]
+        ++ suggestion 12 [ "info l" ]
+        ++ suggestion 13 [ "info m" ]
+        ++ suggestion 14 [ "info n" ]
+        ++ suggestion 15 [ "info o" ]
+        ++ suggestion 16 [ "info p" ]
+        ++ suggestion 17 [ "info q" ]
+        ++ suggestion 18 [ "info r" ]
+        ++ suggestion 19 [ "info s" ]
+        ++ suggestion 20 [ "info t" ]
+        ++ suggestion 21 [ "info u" ]
+        ++ suggestion 22 [ "info v" ]
+        ++ suggestion 23 [ "info w" ]
+        ++ suggestion 24 [ "info x" ]
+        ++ suggestion 25 [ "info y" ]
+        ++ suggestion 26 [ "info z" ]
+        ++ suggestion 27 [ "info ab" ]
+        ++ suggestion 28 [ "info ac" ]

@@ -9392,7 +9392,11 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentRightToLeft =
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentLanguage = 'ui:content-language';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentId = 'ui:content-id';
 
-var _flarebyte$bubblegum_ui_tag$Ipsum$ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
+var _flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
+var _flarebyte$bubblegum_ui_tag$Ipsum$ipsum = A2(
+	_elm_lang$core$Basics_ops['++'],
+	_flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart,
+	A2(_elm_lang$core$Basics_ops['++'], _flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart, _flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart));
 
 var _flarebyte$bubblegum_ui_tag$TagSuggestions$defaultSuggestions = A2(
 	_elm_lang$core$List$map,
@@ -9424,11 +9428,29 @@ var _flarebyte$bubblegum_ui_tag$TagSuggestions$attri = F3(
 			values: values
 		};
 	});
-var _flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion = F4(
-	function (uid, infoTags, warningTags, dangerTags) {
-		var description = _elm_lang$core$String$reverse(
-			A2(_elm_lang$core$String$right, 2 * uid, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum));
-		var label = A2(_elm_lang$core$String$left, uid, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum);
+var _flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion = F2(
+	function (uid, infoTags) {
+		var dangerTags = _elm_lang$core$Native_Utils.eq(
+			A2(_elm_lang$core$Basics_ops['%'], uid, 5),
+			0) ? {
+			ctor: '::',
+			_0: _elm_lang$core$String$reverse(
+				A3(_elm_lang$core$String$slice, uid, uid + 7, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum)),
+			_1: {ctor: '[]'}
+		} : {ctor: '[]'};
+		var warningTags = _elm_lang$core$Native_Utils.eq(
+			A2(_elm_lang$core$Basics_ops['%'], uid, 3),
+			0) ? {
+			ctor: '::',
+			_0: A3(_elm_lang$core$String$slice, uid, uid + 5, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum),
+			_1: {ctor: '[]'}
+		} : {ctor: '[]'};
+		var description = A3(
+			_elm_lang$core$String$slice,
+			uid,
+			3 * uid,
+			_elm_lang$core$String$reverse(_flarebyte$bubblegum_ui_tag$Ipsum$ipsum));
+		var label = A3(_elm_lang$core$String$slice, uid, 2 * uid, _flarebyte$bubblegum_ui_tag$Ipsum$ipsum);
 		var id = A2(
 			_elm_lang$core$Basics_ops['++'],
 			'id:suggestion:',
@@ -9480,7 +9502,7 @@ var _flarebyte$bubblegum_ui_tag$TagSuggestions$getExampleAttributes = A2(
 	},
 	A2(
 		_elm_lang$core$Basics_ops['++'],
-		A4(
+		A2(
 			_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 			1,
 			{
@@ -9491,48 +9513,20 @@ var _flarebyte$bubblegum_ui_tag$TagSuggestions$getExampleAttributes = A2(
 					_0: 'info a 2',
 					_1: {ctor: '[]'}
 				}
-			},
-			{
-				ctor: '::',
-				_0: 'warn1',
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: 'danger1',
-				_1: {
-					ctor: '::',
-					_0: 'danger2',
-					_1: {ctor: '[]'}
-				}
 			}),
 		A2(
 			_elm_lang$core$Basics_ops['++'],
-			A4(
+			A2(
 				_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 				2,
 				{
 					ctor: '::',
 					_0: 'info b',
 					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: 'warn1',
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: 'danger1',
-					_1: {
-						ctor: '::',
-						_0: 'danger2',
-						_1: {ctor: '[]'}
-					}
 				}),
 			A2(
 				_elm_lang$core$Basics_ops['++'],
-				A4(
+				A2(
 					_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 					3,
 					{
@@ -9543,521 +9537,253 @@ var _flarebyte$bubblegum_ui_tag$TagSuggestions$getExampleAttributes = A2(
 							_0: 'info2',
 							_1: {ctor: '[]'}
 						}
-					},
-					{
-						ctor: '::',
-						_0: 'warn1',
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: 'danger1',
-						_1: {
-							ctor: '::',
-							_0: 'danger2',
-							_1: {ctor: '[]'}
-						}
 					}),
 				A2(
 					_elm_lang$core$Basics_ops['++'],
-					A4(
+					A2(
 						_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 						4,
 						{
 							ctor: '::',
 							_0: 'info d',
 							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: 'warn1',
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: 'danger1',
-							_1: {
-								ctor: '::',
-								_0: 'danger2',
-								_1: {ctor: '[]'}
-							}
 						}),
 					A2(
 						_elm_lang$core$Basics_ops['++'],
-						A4(
+						A2(
 							_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 							5,
 							{
 								ctor: '::',
 								_0: 'info e',
 								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: 'warn1',
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: 'danger1',
-								_1: {ctor: '[]'}
 							}),
 						A2(
 							_elm_lang$core$Basics_ops['++'],
-							A4(
+							A2(
 								_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 								6,
 								{
 									ctor: '::',
 									_0: 'info f',
 									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: 'warn1',
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: 'danger1',
-									_1: {ctor: '[]'}
 								}),
 							A2(
 								_elm_lang$core$Basics_ops['++'],
-								A4(
+								A2(
 									_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 									7,
 									{
 										ctor: '::',
 										_0: 'info g',
 										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: 'warn1',
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: 'danger1',
-										_1: {ctor: '[]'}
 									}),
 								A2(
 									_elm_lang$core$Basics_ops['++'],
-									A4(
+									A2(
 										_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 										8,
 										{
 											ctor: '::',
 											_0: 'info h',
 											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: 'warn1',
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: 'danger1',
-											_1: {ctor: '[]'}
 										}),
 									A2(
 										_elm_lang$core$Basics_ops['++'],
-										A4(
+										A2(
 											_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 											9,
 											{
 												ctor: '::',
 												_0: 'info i',
 												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: 'warn1',
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: 'danger1',
-												_1: {ctor: '[]'}
 											}),
 										A2(
 											_elm_lang$core$Basics_ops['++'],
-											A4(
+											A2(
 												_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 												10,
 												{
 													ctor: '::',
 													_0: 'info j',
 													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: 'warn1',
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: 'danger1',
-													_1: {ctor: '[]'}
 												}),
 											A2(
 												_elm_lang$core$Basics_ops['++'],
-												A4(
+												A2(
 													_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 													11,
 													{
 														ctor: '::',
 														_0: 'info k',
 														_1: {ctor: '[]'}
-													},
-													{
-														ctor: '::',
-														_0: 'warn1',
-														_1: {ctor: '[]'}
-													},
-													{
-														ctor: '::',
-														_0: 'danger1',
-														_1: {ctor: '[]'}
 													}),
 												A2(
 													_elm_lang$core$Basics_ops['++'],
-													A4(
+													A2(
 														_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 														12,
 														{
 															ctor: '::',
 															_0: 'info l',
 															_1: {ctor: '[]'}
-														},
-														{
-															ctor: '::',
-															_0: 'warn1',
-															_1: {ctor: '[]'}
-														},
-														{
-															ctor: '::',
-															_0: 'danger1',
-															_1: {ctor: '[]'}
 														}),
 													A2(
 														_elm_lang$core$Basics_ops['++'],
-														A4(
+														A2(
 															_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 															13,
 															{
 																ctor: '::',
 																_0: 'info m',
 																_1: {ctor: '[]'}
-															},
-															{
-																ctor: '::',
-																_0: 'warn1',
-																_1: {ctor: '[]'}
-															},
-															{
-																ctor: '::',
-																_0: 'danger1',
-																_1: {ctor: '[]'}
 															}),
 														A2(
 															_elm_lang$core$Basics_ops['++'],
-															A4(
+															A2(
 																_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																14,
 																{
 																	ctor: '::',
 																	_0: 'info n',
 																	_1: {ctor: '[]'}
-																},
-																{
-																	ctor: '::',
-																	_0: 'warn1',
-																	_1: {ctor: '[]'}
-																},
-																{
-																	ctor: '::',
-																	_0: 'danger1',
-																	_1: {ctor: '[]'}
 																}),
 															A2(
 																_elm_lang$core$Basics_ops['++'],
-																A4(
+																A2(
 																	_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																	15,
 																	{
 																		ctor: '::',
 																		_0: 'info o',
 																		_1: {ctor: '[]'}
-																	},
-																	{
-																		ctor: '::',
-																		_0: 'warn1',
-																		_1: {ctor: '[]'}
-																	},
-																	{
-																		ctor: '::',
-																		_0: 'danger1',
-																		_1: {ctor: '[]'}
 																	}),
 																A2(
 																	_elm_lang$core$Basics_ops['++'],
-																	A4(
+																	A2(
 																		_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																		16,
 																		{
 																			ctor: '::',
 																			_0: 'info p',
 																			_1: {ctor: '[]'}
-																		},
-																		{
-																			ctor: '::',
-																			_0: 'warn1',
-																			_1: {ctor: '[]'}
-																		},
-																		{
-																			ctor: '::',
-																			_0: 'danger1',
-																			_1: {ctor: '[]'}
 																		}),
 																	A2(
 																		_elm_lang$core$Basics_ops['++'],
-																		A4(
+																		A2(
 																			_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																			17,
 																			{
 																				ctor: '::',
 																				_0: 'info q',
 																				_1: {ctor: '[]'}
-																			},
-																			{
-																				ctor: '::',
-																				_0: 'warn1',
-																				_1: {ctor: '[]'}
-																			},
-																			{
-																				ctor: '::',
-																				_0: 'danger1',
-																				_1: {ctor: '[]'}
 																			}),
 																		A2(
 																			_elm_lang$core$Basics_ops['++'],
-																			A4(
+																			A2(
 																				_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																				18,
 																				{
 																					ctor: '::',
 																					_0: 'info r',
 																					_1: {ctor: '[]'}
-																				},
-																				{
-																					ctor: '::',
-																					_0: 'warn1',
-																					_1: {ctor: '[]'}
-																				},
-																				{
-																					ctor: '::',
-																					_0: 'danger1',
-																					_1: {ctor: '[]'}
 																				}),
 																			A2(
 																				_elm_lang$core$Basics_ops['++'],
-																				A4(
+																				A2(
 																					_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																					19,
 																					{
 																						ctor: '::',
 																						_0: 'info s',
 																						_1: {ctor: '[]'}
-																					},
-																					{
-																						ctor: '::',
-																						_0: 'warn1',
-																						_1: {ctor: '[]'}
-																					},
-																					{
-																						ctor: '::',
-																						_0: 'danger1',
-																						_1: {ctor: '[]'}
 																					}),
 																				A2(
 																					_elm_lang$core$Basics_ops['++'],
-																					A4(
+																					A2(
 																						_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																						20,
 																						{
 																							ctor: '::',
 																							_0: 'info t',
 																							_1: {ctor: '[]'}
-																						},
-																						{
-																							ctor: '::',
-																							_0: 'warn1',
-																							_1: {ctor: '[]'}
-																						},
-																						{
-																							ctor: '::',
-																							_0: 'danger1',
-																							_1: {ctor: '[]'}
 																						}),
 																					A2(
 																						_elm_lang$core$Basics_ops['++'],
-																						A4(
+																						A2(
 																							_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																							21,
 																							{
 																								ctor: '::',
 																								_0: 'info u',
 																								_1: {ctor: '[]'}
-																							},
-																							{
-																								ctor: '::',
-																								_0: 'warn1',
-																								_1: {ctor: '[]'}
-																							},
-																							{
-																								ctor: '::',
-																								_0: 'danger1',
-																								_1: {ctor: '[]'}
 																							}),
 																						A2(
 																							_elm_lang$core$Basics_ops['++'],
-																							A4(
+																							A2(
 																								_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																								22,
 																								{
 																									ctor: '::',
 																									_0: 'info v',
 																									_1: {ctor: '[]'}
-																								},
-																								{
-																									ctor: '::',
-																									_0: 'warn1',
-																									_1: {ctor: '[]'}
-																								},
-																								{
-																									ctor: '::',
-																									_0: 'danger1',
-																									_1: {ctor: '[]'}
 																								}),
 																							A2(
 																								_elm_lang$core$Basics_ops['++'],
-																								A4(
+																								A2(
 																									_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																									23,
 																									{
 																										ctor: '::',
 																										_0: 'info w',
 																										_1: {ctor: '[]'}
-																									},
-																									{
-																										ctor: '::',
-																										_0: 'warn1',
-																										_1: {ctor: '[]'}
-																									},
-																									{
-																										ctor: '::',
-																										_0: 'danger1',
-																										_1: {ctor: '[]'}
 																									}),
 																								A2(
 																									_elm_lang$core$Basics_ops['++'],
-																									A4(
+																									A2(
 																										_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																										24,
 																										{
 																											ctor: '::',
 																											_0: 'info x',
 																											_1: {ctor: '[]'}
-																										},
-																										{
-																											ctor: '::',
-																											_0: 'warn1',
-																											_1: {ctor: '[]'}
-																										},
-																										{
-																											ctor: '::',
-																											_0: 'danger1',
-																											_1: {ctor: '[]'}
 																										}),
 																									A2(
 																										_elm_lang$core$Basics_ops['++'],
-																										A4(
+																										A2(
 																											_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																											25,
 																											{
 																												ctor: '::',
 																												_0: 'info y',
 																												_1: {ctor: '[]'}
-																											},
-																											{
-																												ctor: '::',
-																												_0: 'warn1',
-																												_1: {ctor: '[]'}
-																											},
-																											{
-																												ctor: '::',
-																												_0: 'danger1',
-																												_1: {ctor: '[]'}
 																											}),
 																										A2(
 																											_elm_lang$core$Basics_ops['++'],
-																											A4(
+																											A2(
 																												_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																												26,
 																												{
 																													ctor: '::',
 																													_0: 'info z',
 																													_1: {ctor: '[]'}
-																												},
-																												{
-																													ctor: '::',
-																													_0: 'warn1',
-																													_1: {ctor: '[]'}
-																												},
-																												{
-																													ctor: '::',
-																													_0: 'danger1',
-																													_1: {ctor: '[]'}
 																												}),
 																											A2(
 																												_elm_lang$core$Basics_ops['++'],
-																												A4(
+																												A2(
 																													_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																													27,
 																													{
 																														ctor: '::',
 																														_0: 'info ab',
 																														_1: {ctor: '[]'}
-																													},
-																													{
-																														ctor: '::',
-																														_0: 'warn1',
-																														_1: {ctor: '[]'}
-																													},
-																													{
-																														ctor: '::',
-																														_0: 'danger1',
-																														_1: {ctor: '[]'}
 																													}),
-																												A4(
+																												A2(
 																													_flarebyte$bubblegum_ui_tag$TagSuggestions$suggestion,
 																													28,
 																													{
 																														ctor: '::',
 																														_0: 'info ac',
-																														_1: {ctor: '[]'}
-																													},
-																													{
-																														ctor: '::',
-																														_0: 'warn1',
-																														_1: {ctor: '[]'}
-																													},
-																													{
-																														ctor: '::',
-																														_0: 'danger1',
 																														_1: {ctor: '[]'}
 																													})))))))))))))))))))))))))))));
 var _flarebyte$bubblegum_ui_tag$TagSuggestions$widgetId = 'id:tag:123';
