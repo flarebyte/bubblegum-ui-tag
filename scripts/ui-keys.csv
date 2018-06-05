@@ -3,6 +3,7 @@ content-language,Language of the content,String,small! user attribute,en-GB;ja;a
 content-right-to-left,Whether the content requires right to left,Bool,user attribute,
 selected,The selected tags for the field,List String,state,id:02 
 selectable,The selectable tags for the field,List String,state,id:02 
+suggesting,Suggesting is currently happening,Bool,state, 
 suggestion,The list of suggested tags for the field,List String,compactUris,id:01;id:02;id:03;id:04s 
 danger-help,Help message to highlight an issue with the content,String,medium! state,do not do this
 help,Some help tip related to the field,String,medium!,Lorem ipsum dolor sit amet consectetur adipiscing elit.;助けて

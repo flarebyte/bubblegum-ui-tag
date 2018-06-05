@@ -32,6 +32,11 @@ descSelectable =
     "The selectable tags for the field"
 
 
+descSuggesting : String
+descSuggesting =
+    "Suggesting is currently happening"
+
+
 descSuggestion : String
 descSuggestion =
     "The list of suggested tags for the field"

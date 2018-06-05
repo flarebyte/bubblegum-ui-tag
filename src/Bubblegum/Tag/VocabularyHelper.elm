@@ -52,6 +52,13 @@ getSelectable settings =
     findListString ui_selectable settings.attributes
 
 
+{-| Suggesting is currently happening
+-}
+isSuggesting : StateEntity.Model -> Outcome Bool
+isSuggesting settings =
+    findBool ui_suggesting settings.attributes
+
+
 {-| The list of suggested tags for the field
 -}
 getSuggestion : SettingsEntity.Model -> Outcome (List String)

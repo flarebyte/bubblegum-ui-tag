@@ -10,6 +10,7 @@ import Html exposing (..)
 adapter : Adapter.Model AppMsg
 adapter =
     { onInput = OnInputContent
+    , onToggleDropbox = OnToggleDropbox
     }
 
 

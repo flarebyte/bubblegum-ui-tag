@@ -11,12 +11,14 @@ This helper facilitates the creation of Bulma styled html elements.
 import Bubblegum.Entity.Outcome as Outcome exposing (..)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
+import Bubblegum.Tag.Adapter as TagAdapter
 import Bubblegum.Tag.Internationalization exposing (..)
 import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
 import Bubblegum.Tag.VocabularyHelper exposing (..)
 import Debug as Debug
 import Html exposing (..)
 import Html.Attributes as Attributes exposing (..)
+import Html.Events exposing (onClick, onInput, onMouseEnter, onMouseOut)
 import List
 import String exposing (join, lines, words)
 import Tuple exposing (first, second)
@@ -224,11 +226,21 @@ dangerHelp helpText =
         [ text helpText ]
 
 
-searchDropdown =
+searchDropdown : TagAdapter.Model msg -> Html msg
+searchDropdown adapter =
+    let
+        placeholder =
+            "Search"
+    in
     div [ class "dropdown-trigger" ]
-        [ button [ attribute "aria-controls" "dropdown-menu2", attribute "aria-haspopup" "true", class "button" ]
+        [ button
+            [ attribute "aria-controls" "dropdown-menu2"
+            , attribute "aria-haspopup" "true"
+            , class "button"
+            , onClick adapter.onToggleDropbox
+            ]
             [ span []
-                [ text "Content" ]
+                [ text placeholder ]
             , span [ class "icon is-small" ]
                 [ i [ attribute "aria-hidden" "true", class "fas fa-angle-down" ]
                     []
@@ -247,14 +259,6 @@ dropdownMenu list =
 suggestionDropbox : IsoLanguage -> SettingsEntity.Model -> List String -> Html msg
 suggestionDropbox userIsoLanguage settings suggestionsIds =
     suggestionsIds |> List.map (\id -> suggestionTag userIsoLanguage settings id) |> dropdownMenu
-
-
-suggestionDropboxMain : IsoLanguage -> SettingsEntity.Model -> List String -> Html msg
-suggestionDropboxMain userIsoLanguage settings suggestionsIds =
-    div [ asClass2 "dropdown" "is-active" ]
-        [ searchDropdown
-        , suggestionDropbox userIsoLanguage settings suggestionsIds
-        ]
 
 
 suggestionTag : IsoLanguage -> SettingsEntity.Model -> String -> Html msg
@@ -282,3 +286,11 @@ suggestionTag userIsoLanguage settings id =
             , tags ([] |> addTagsDanger |> addTagsWarning |> addTagsInfo)
             ]
         ]
+
+
+dropdownActiveStatus : Bool -> Attribute msg
+dropdownActiveStatus value =
+    if value then
+        asClass2 "dropdown" "is-active"
+    else
+        class "dropdown"

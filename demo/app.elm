@@ -63,6 +63,11 @@ update msg model =
                 |> StateEntity.asAttributesIn (getState model)
                 |> asStateIn model
 
+        OnToggleDropbox ->
+            replaceAttributeByKey ui_suggesting [ notSuggesting model.state ] model.state.attributes
+                |> StateEntity.asAttributesIn model.state
+                |> asStateIn model
+
 
 
 -- VIEW

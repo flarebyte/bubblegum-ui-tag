@@ -1,9 +1,11 @@
 module AppModel exposing (..)
 
 import Bubblegum.Entity.Attribute as Attribute exposing (replaceAttributeByKey)
+import Bubblegum.Entity.Outcome as Outcome exposing (..)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Tag.Vocabulary exposing (..)
+import Bubblegum.Tag.VocabularyHelper exposing (..)
 import Ipsum exposing (ipsum)
 import TagSuggestions exposing (getExampleAttributes)
 
@@ -80,5 +82,10 @@ reset : AppModel
 reset =
     { userSettings = { attributes = [] }
     , settings = { attributes = getExampleAttributes }
-    , state = { attributes = replaceAttributeByKey ui_selected [ "alpha", "beta" ] [] }
+    , state = { attributes = [] |> replaceAttributeByKey ui_selected [ "alpha", "beta" ] |> replaceAttributeByKey ui_suggesting [ "false" ] }
     }
+
+
+notSuggesting : StateEntity.Model -> String
+notSuggesting model =
+    isSuggesting model |> Outcome.toMaybe |> Maybe.withDefault True |> not |> toString |> String.toLower

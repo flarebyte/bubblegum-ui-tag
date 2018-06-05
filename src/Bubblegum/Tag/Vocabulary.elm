@@ -42,6 +42,13 @@ ui_selectable =
     "ui:selectable"
 
 
+{-| Suggesting is currently happening. (Bool)
+-}
+ui_suggesting : String
+ui_suggesting =
+    "ui:suggesting"
+
+
 {-| The list of suggested tags for the field. (List String)
 -}
 ui_suggestion : String

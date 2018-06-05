@@ -55,6 +55,14 @@ suite =
                 \value -> viewWidgetWithState (withStateSelectable value)
                     |> findWarningDiv           
 
+                , fuzz fuzzySuggesting "Correct settings for Suggesting is currently happening" <|
+                \value -> viewWidgetWithState (withStateSuggesting value)
+                    |> findComponent selectorsSuggesting
+
+              , fuzz fuzzyNotSuggesting "Wrong settings for Suggesting is currently happening" <|
+                \value -> viewWidgetWithState (withStateSuggesting value)
+                    |> findWarningDiv           
+
                 , fuzz fuzzySuggestion "Correct settings for The list of suggested tags for the field" <|
                 \value -> viewWidgetWithSettings (withSettingsSuggestion value)
                     |> findComponent selectorsSuggestion

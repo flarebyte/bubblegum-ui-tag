@@ -60,11 +60,20 @@ view adapter userSettings settings state =
 
         suggestions =
             getSuggestion settings |> Outcome.toMaybe |> Maybe.withDefault []
+
+        userIsoLanguage =
+            getUserIsoLanguage userSettings
+
+        isDropdownActive =
+            isSuggesting state |> Outcome.toMaybe |> Maybe.withDefault False |> dropdownActiveStatus
     in
     mainBox (getUserLanguage userSettings)
         (isUserRightToLeft userSettings)
         (addLabel []
-            ++ [ suggestionDropboxMain (getUserIsoLanguage userSettings) settings suggestions
+            ++ [ div [ isDropdownActive ]
+                    [ searchDropdown adapter
+                    , suggestionDropbox userIsoLanguage settings suggestions
+                    ]
                ]
             |> addDangerHelp
             |> addHelp

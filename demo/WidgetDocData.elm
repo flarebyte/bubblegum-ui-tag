@@ -22,7 +22,7 @@ tagWidgetDoc =
         , createKey ui_userRightToLeft ZeroOrOne [ "true", "false", "other" ] descUserRightToLeft
         ]
     , settings =
-        [ createKey ui_suggestion ZeroOrOne [ "id:suggestion:1", "id:suggestion:2", "id:suggestion:3" ] descSuggestion
+        [ createKey ui_suggestion ZeroOrOne [ "id:01", "id:02", "id:03", "id:04s", "other" ] descSuggestion
         , createKey ui_help ZeroOrOne [ "Lorem ipsum dolor sit amet consectetur adipiscing elit.", "助けて", "other" ] descHelp
         , createKey ui_label ZeroOrOne [ "Some label", "ラベル", "ضع الكلمة المناسبة", "other" ] descLabel
         , createKey ui_successMinimumTags ZeroOrOne [ "0", "20", "40", "80", "160", "320", "-5" ] descSuccessMinimumTags
@@ -32,8 +32,9 @@ tagWidgetDoc =
         ]
     , stateAttributes =
         [ createKey ui_contentId ZeroOrOne [ "id:aa61e603-9947-4fd8-86bb-d63a682259d0", "other" ] descContentId
-        , createKey ui_selected ZeroOrOne [ "id:suggestion:1", "id:suggestion:2", "id:suggestion:3", "other" ] descSelected
-        , createKey ui_selectable ZeroOrOne [ "id:suggestion:1", "id:suggestion:2", "id:suggestion:3", "other" ] descSelectable
+        , createKey ui_selected ZeroOrOne [ "id:02", "other" ] descSelected
+        , createKey ui_selectable ZeroOrOne [ "id:02", "other" ] descSelectable
+        , createKey ui_suggesting ZeroOrOne [ "true", "false", "other" ] descSuggesting
         , createKey ui_dangerHelp ZeroOrOne [ "do not do this", "other" ] descDangerHelp
         ]
     }

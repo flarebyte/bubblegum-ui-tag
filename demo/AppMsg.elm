@@ -7,3 +7,4 @@ type AppMsg
     | OnSelectState String String
     | OnActivateSetting Bool String
     | OnActivateState String
+    | OnToggleDropbox

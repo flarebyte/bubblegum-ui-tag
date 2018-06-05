@@ -12,4 +12,5 @@ See <https://www.w3schools.com/jsref/event_oninput.asp>
 -}
 type alias Model msg =
     { onInput : String -> msg
+    , onToggleDropbox : msg
     }
