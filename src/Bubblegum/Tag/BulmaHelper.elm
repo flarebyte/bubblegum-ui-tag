@@ -301,8 +301,8 @@ dropdownActiveStatus value =
 -- selected
 
 
-selectedTag : IsoLanguage -> SettingsEntity.Model -> String -> Html msg
-selectedTag userIsoLanguage settings id =
+selectedTag : TagAdapter.Model msg -> IsoLanguage -> SettingsEntity.Model -> String -> Html msg
+selectedTag adapter userIsoLanguage settings id =
     let
         addLabel =
             appendHtmlIfSuccess text (getConstituentLabel settings id)
@@ -310,10 +310,10 @@ selectedTag userIsoLanguage settings id =
         addDescription =
             appendHtmlIfSuccess text (getConstituentDescription settings id)
     in
-    div [ class "tags has-addons" ]
+    div [ class "tags has-addons", onClick (adapter.onDeleteTag id) ]
         [ span [ class "tag" ]
             ([] |> addLabel)
-        , a [ class "tag is-delete" ]
+        , span [ class "tag is-delete" ]
             []
         ]
 
@@ -327,4 +327,4 @@ selectedTags adapter userSettings settings state =
         selectedIds =
             getSelected state |> Outcome.toMaybe |> Maybe.withDefault []
     in
-    selectedIds |> List.map (\id -> selectedTag userIsoLanguage settings id) |> tags
+    selectedIds |> List.map (\id -> selectedTag adapter userIsoLanguage settings id) |> tags

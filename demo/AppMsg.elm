@@ -9,3 +9,4 @@ type AppMsg
     | OnActivateState String
     | OnToggleDropbox
     | OnAddTag String
+    | OnDeleteTag String

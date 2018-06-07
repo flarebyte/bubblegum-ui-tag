@@ -12,6 +12,7 @@ adapter =
     { onInput = OnInputContent
     , onToggleDropbox = OnToggleDropbox
     , onAddTag = OnAddTag
+    , onDeleteTag = OnDeleteTag
     }
 
 

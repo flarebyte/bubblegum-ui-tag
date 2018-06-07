@@ -10004,6 +10004,19 @@ var _flarebyte$bubblegum_ui_tag$TagSuggestions$getExampleAttributes = A2(
 																													})))))))))))))))))))))))))))));
 var _flarebyte$bubblegum_ui_tag$TagSuggestions$widgetId = 'id:tag:123';
 
+var _flarebyte$bubblegum_ui_tag$AppModel$deleteTagIdToSelected = F2(
+	function (tagId, state) {
+		return A2(
+			_elm_lang$core$List$filter,
+			function (t) {
+				return !_elm_lang$core$Native_Utils.eq(t, tagId);
+			},
+			A2(
+				_elm_lang$core$Maybe$withDefault,
+				{ctor: '[]'},
+				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected(state))));
+	});
 var _flarebyte$bubblegum_ui_tag$AppModel$addTagIdToSelected = F2(
 	function (tagId, state) {
 		return A2(
@@ -10041,19 +10054,7 @@ var _flarebyte$bubblegum_ui_tag$AppModel$reset = {
 				_0: 'false',
 				_1: {ctor: '[]'}
 			},
-			A3(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$replaceAttributeByKey,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected,
-				{
-					ctor: '::',
-					_0: 'alpha',
-					_1: {
-						ctor: '::',
-						_0: 'beta',
-						_1: {ctor: '[]'}
-					}
-				},
-				{ctor: '[]'}))
+			{ctor: '[]'})
 	}
 };
 var _flarebyte$bubblegum_ui_tag$AppModel$setState = F2(
@@ -10106,6 +10107,9 @@ var _flarebyte$bubblegum_ui_tag$AppModel$AppModel = F3(
 		return {userSettings: a, settings: b, state: c};
 	});
 
+var _flarebyte$bubblegum_ui_tag$AppMsg$OnDeleteTag = function (a) {
+	return {ctor: 'OnDeleteTag', _0: a};
+};
 var _flarebyte$bubblegum_ui_tag$AppMsg$OnAddTag = function (a) {
 	return {ctor: 'OnAddTag', _0: a};
 };
@@ -10129,9 +10133,9 @@ var _flarebyte$bubblegum_ui_tag$AppMsg$OnInputContent = function (a) {
 	return {ctor: 'OnInputContent', _0: a};
 };
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Adapter$Model = F3(
-	function (a, b, c) {
-		return {onInput: a, onToggleDropbox: b, onAddTag: c};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Adapter$Model = F4(
+	function (a, b, c, d) {
+		return {onInput: a, onToggleDropbox: b, onAddTag: c, onDeleteTag: d};
 	});
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$getLanguageCode = function (language) {
@@ -11143,8 +11147,8 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown = F
 				},
 				suggestionsIds));
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F3(
-	function (userIsoLanguage, settings, id) {
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F4(
+	function (adapter, userIsoLanguage, settings, id) {
 		var addDescription = A2(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
 			_elm_lang$html$Html$text,
@@ -11158,7 +11162,12 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F3(
 			{
 				ctor: '::',
 				_0: _elm_lang$html$Html_Attributes$class('tags has-addons'),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Events$onClick(
+						adapter.onDeleteTag(id)),
+					_1: {ctor: '[]'}
+				}
 			},
 			{
 				ctor: '::',
@@ -11174,7 +11183,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F3(
 				_1: {
 					ctor: '::',
 					_0: A2(
-						_elm_lang$html$Html$a,
+						_elm_lang$html$Html$span,
 						{
 							ctor: '::',
 							_0: _elm_lang$html$Html_Attributes$class('tag is-delete'),
@@ -11197,7 +11206,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTags = F4(
 			A2(
 				_elm_lang$core$List$map,
 				function (id) {
-					return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag, userIsoLanguage, settings, id);
+					return A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag, adapter, userIsoLanguage, settings, id);
 				},
 				selectedIds));
 	});
@@ -11286,7 +11295,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 							})))));
 	});
 
-var _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter = {onInput: _flarebyte$bubblegum_ui_tag$AppMsg$OnInputContent, onToggleDropbox: _flarebyte$bubblegum_ui_tag$AppMsg$OnToggleDropbox, onAddTag: _flarebyte$bubblegum_ui_tag$AppMsg$OnAddTag};
+var _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter = {onInput: _flarebyte$bubblegum_ui_tag$AppMsg$OnInputContent, onToggleDropbox: _flarebyte$bubblegum_ui_tag$AppMsg$OnToggleDropbox, onAddTag: _flarebyte$bubblegum_ui_tag$AppMsg$OnAddTag, onDeleteTag: _flarebyte$bubblegum_ui_tag$AppMsg$OnDeleteTag};
 var _flarebyte$bubblegum_ui_tag$WidgetBuilder$viewWidget = function (model) {
 	return A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view, _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter, model.userSettings, model.settings, model.state);
 };
@@ -12671,7 +12680,7 @@ var _flarebyte$bubblegum_ui_tag$App$update = F2(
 								_1: {ctor: '[]'}
 							},
 							model.state.attributes)));
-			default:
+			case 'OnAddTag':
 				return A2(
 					_flarebyte$bubblegum_ui_tag$AppModel$asStateIn,
 					model,
@@ -12682,6 +12691,18 @@ var _flarebyte$bubblegum_ui_tag$App$update = F2(
 							_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$replaceAttributeByKey,
 							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected,
 							A2(_flarebyte$bubblegum_ui_tag$AppModel$addTagIdToSelected, _p0._0, model.state),
+							model.state.attributes)));
+			default:
+				return A2(
+					_flarebyte$bubblegum_ui_tag$AppModel$asStateIn,
+					model,
+					A2(
+						_flarebyte$bubblegum_entity$Bubblegum_Entity_StateEntity$asAttributesIn,
+						model.state,
+						A3(
+							_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$replaceAttributeByKey,
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected,
+							A2(_flarebyte$bubblegum_ui_tag$AppModel$deleteTagIdToSelected, _p0._0, model.state),
 							model.state.attributes)));
 		}
 	});

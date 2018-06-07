@@ -14,4 +14,5 @@ type alias Model msg =
     { onInput : String -> msg
     , onToggleDropbox : msg
     , onAddTag : String -> msg
+    , onDeleteTag : String -> msg
     }

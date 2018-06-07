@@ -82,7 +82,7 @@ reset : AppModel
 reset =
     { userSettings = { attributes = [] }
     , settings = { attributes = getExampleAttributes }
-    , state = { attributes = [] |> replaceAttributeByKey ui_selected [ "alpha", "beta" ] |> replaceAttributeByKey ui_suggesting [ "false" ] }
+    , state = { attributes = [] |> replaceAttributeByKey ui_suggesting [ "false" ] }
     }
 
 
@@ -94,3 +94,8 @@ notSuggesting model =
 addTagIdToSelected : String -> StateEntity.Model -> List String
 addTagIdToSelected tagId state =
     getSelected state |> Outcome.toMaybe |> Maybe.withDefault [] |> (::) tagId
+
+
+deleteTagIdToSelected : String -> StateEntity.Model -> List String
+deleteTagIdToSelected tagId state =
+    getSelected state |> Outcome.toMaybe |> Maybe.withDefault [] |> List.filter (\t -> t /= tagId)
