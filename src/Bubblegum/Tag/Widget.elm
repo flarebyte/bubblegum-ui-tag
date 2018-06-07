@@ -69,10 +69,11 @@ view adapter userSettings settings state =
     in
     mainBox (getUserLanguage userSettings)
         (isUserRightToLeft userSettings)
-        (addLabel []
+        ([ selectedTags adapter userSettings settings state ]
+            ++ addLabel []
             ++ [ div [ isDropdownActive ]
                     [ searchDropdown adapter
-                    , suggestionDropbox userIsoLanguage settings suggestions
+                    , suggestionDropdown adapter userIsoLanguage settings suggestions
                     ]
                ]
             |> addDangerHelp

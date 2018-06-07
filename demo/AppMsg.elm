@@ -8,3 +8,4 @@ type AppMsg
     | OnActivateSetting Bool String
     | OnActivateState String
     | OnToggleDropbox
+    | OnAddTag String

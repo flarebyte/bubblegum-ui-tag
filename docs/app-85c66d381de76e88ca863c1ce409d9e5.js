@@ -10004,6 +10004,20 @@ var _flarebyte$bubblegum_ui_tag$TagSuggestions$getExampleAttributes = A2(
 																													})))))))))))))))))))))))))))));
 var _flarebyte$bubblegum_ui_tag$TagSuggestions$widgetId = 'id:tag:123';
 
+var _flarebyte$bubblegum_ui_tag$AppModel$addTagIdToSelected = F2(
+	function (tagId, state) {
+		return A2(
+			F2(
+				function (x, y) {
+					return {ctor: '::', _0: x, _1: y};
+				}),
+			tagId,
+			A2(
+				_elm_lang$core$Maybe$withDefault,
+				{ctor: '[]'},
+				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected(state))));
+	});
 var _flarebyte$bubblegum_ui_tag$AppModel$notSuggesting = function (model) {
 	return _elm_lang$core$String$toLower(
 		_elm_lang$core$Basics$toString(
@@ -10092,6 +10106,9 @@ var _flarebyte$bubblegum_ui_tag$AppModel$AppModel = F3(
 		return {userSettings: a, settings: b, state: c};
 	});
 
+var _flarebyte$bubblegum_ui_tag$AppMsg$OnAddTag = function (a) {
+	return {ctor: 'OnAddTag', _0: a};
+};
 var _flarebyte$bubblegum_ui_tag$AppMsg$OnToggleDropbox = {ctor: 'OnToggleDropbox'};
 var _flarebyte$bubblegum_ui_tag$AppMsg$OnActivateState = function (a) {
 	return {ctor: 'OnActivateState', _0: a};
@@ -10112,9 +10129,9 @@ var _flarebyte$bubblegum_ui_tag$AppMsg$OnInputContent = function (a) {
 	return {ctor: 'OnInputContent', _0: a};
 };
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Adapter$Model = F2(
-	function (a, b) {
-		return {onInput: a, onToggleDropbox: b};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Adapter$Model = F3(
+	function (a, b, c) {
+		return {onInput: a, onToggleDropbox: b, onAddTag: c};
 	});
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$getLanguageCode = function (language) {
@@ -10217,6 +10234,62 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage = functi
 			return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$English;
 	}
 };
+
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getContentLanguageOrEnglish = function (settings) {
+	return A2(
+		_elm_lang$core$Maybe$withDefault,
+		'en-GB',
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getContentLanguage(settings)));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getContentIsoLanguage = function (settings) {
+	return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage(
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getContentLanguageOrEnglish(settings));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserLanguageOrEnglish = function (settings) {
+	return A2(
+		_elm_lang$core$Maybe$withDefault,
+		'en-GB',
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getUserLanguage(settings)));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage = function (settings) {
+	return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage(
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserLanguageOrEnglish(settings));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$themeProgress = F2(
+	function (a, b) {
+		return A2(
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$withDefault,
+			'is-info',
+			A2(
+				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$or,
+				A2(
+					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$trueMapToConstant,
+					'is-success',
+					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$checkOrNone, _elm_lang$core$Basics$identity, a)),
+				A2(
+					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$trueMapToConstant,
+					'is-danger',
+					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$checkOrNone, _elm_lang$core$Basics$identity, b))));
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$titleCharRange = {ctor: '_Tuple2', _0: 1, _1: 70};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tupleify = F2(
+	function (a, b) {
+		return {ctor: '_Tuple2', _0: a, _1: b};
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange = F2(
+	function (size, range) {
+		return (_elm_lang$core$Native_Utils.cmp(
+			size,
+			_elm_lang$core$Tuple$first(range)) > -1) && (_elm_lang$core$Native_Utils.cmp(
+			size,
+			_elm_lang$core$Tuple$second(range)) < 0);
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$dangerRange = F2(
+	function (size, range) {
+		return !A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange, size, range);
+	});
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateDangerTag = function (language) {
 	var _p0 = language;
@@ -10971,8 +11044,8 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess = 
 					});
 		}
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag = F3(
-	function (userIsoLanguage, settings, id) {
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag = F4(
+	function (adapter, userIsoLanguage, settings, id) {
 		var addTagsDanger = A2(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendListHtmlIfSuccess,
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsDanger(userIsoLanguage),
@@ -10992,10 +11065,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag = F3(
 		var addLabel = A2(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
 			_elm_lang$html$Html$text,
-			A2(
-				_elm_lang$core$Debug$log,
-				'label',
-				A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentLabel, settings, id)));
+			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentLabel, settings, id));
 		return A2(
 			_elm_lang$html$Html$a,
 			{
@@ -11007,7 +11077,12 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag = F3(
 				ctor: '::',
 				_0: A2(
 					_elm_lang$html$Html$div,
-					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onClick(
+							adapter.onAddTag(id)),
+						_1: {ctor: '[]'}
+					},
 					{
 						ctor: '::',
 						_0: A2(
@@ -11058,75 +11133,77 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag = F3(
 				_1: {ctor: '[]'}
 			});
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropbox = F3(
-	function (userIsoLanguage, settings, suggestionsIds) {
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown = F4(
+	function (adapter, userIsoLanguage, settings, suggestionsIds) {
 		return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownMenu(
 			A2(
 				_elm_lang$core$List$map,
 				function (id) {
-					return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag, userIsoLanguage, settings, id);
+					return A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag, adapter, userIsoLanguage, settings, id);
 				},
 				suggestionsIds));
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F3(
+	function (userIsoLanguage, settings, id) {
+		var addDescription = A2(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
+			_elm_lang$html$Html$text,
+			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentDescription, settings, id));
+		var addLabel = A2(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
+			_elm_lang$html$Html$text,
+			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentLabel, settings, id));
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('tags has-addons'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$span,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('tag'),
+						_1: {ctor: '[]'}
+					},
+					addLabel(
+						{ctor: '[]'})),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$a,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('tag is-delete'),
+							_1: {ctor: '[]'}
+						},
+						{ctor: '[]'}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTags = F4(
+	function (adapter, userSettings, settings, state) {
+		var selectedIds = A2(
+			_elm_lang$core$Maybe$withDefault,
+			{ctor: '[]'},
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected(state)));
+		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
+		return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tags(
+			A2(
+				_elm_lang$core$List$map,
+				function (id) {
+					return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag, userIsoLanguage, settings, id);
+				},
+				selectedIds));
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$StyledText = F3(
 	function (a, b, c) {
 		return {text: a, style: b, title: c};
-	});
-
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getContentLanguageOrEnglish = function (settings) {
-	return A2(
-		_elm_lang$core$Maybe$withDefault,
-		'en-GB',
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getContentLanguage(settings)));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getContentIsoLanguage = function (settings) {
-	return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage(
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getContentLanguageOrEnglish(settings));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserLanguageOrEnglish = function (settings) {
-	return A2(
-		_elm_lang$core$Maybe$withDefault,
-		'en-GB',
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getUserLanguage(settings)));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage = function (settings) {
-	return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage(
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserLanguageOrEnglish(settings));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$themeProgress = F2(
-	function (a, b) {
-		return A2(
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$withDefault,
-			'is-info',
-			A2(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$or,
-				A2(
-					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$trueMapToConstant,
-					'is-success',
-					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$checkOrNone, _elm_lang$core$Basics$identity, a)),
-				A2(
-					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$trueMapToConstant,
-					'is-danger',
-					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$checkOrNone, _elm_lang$core$Basics$identity, b))));
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$titleCharRange = {ctor: '_Tuple2', _0: 1, _1: 70};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tupleify = F2(
-	function (a, b) {
-		return {ctor: '_Tuple2', _0: a, _1: b};
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange = F2(
-	function (size, range) {
-		return (_elm_lang$core$Native_Utils.cmp(
-			size,
-			_elm_lang$core$Tuple$first(range)) > -1) && (_elm_lang$core$Native_Utils.cmp(
-			size,
-			_elm_lang$core$Tuple$second(range)) < 0);
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$dangerRange = F2(
-	function (size, range) {
-		return !A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange, size, range);
 	});
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
@@ -11178,31 +11255,38 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 				addDangerHelp(
 					A2(
 						_elm_lang$core$Basics_ops['++'],
-						addLabel(
-							{ctor: '[]'}),
 						{
 							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: isDropdownActive,
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown(adapter),
-									_1: {
-										ctor: '::',
-										_0: A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropbox, userIsoLanguage, settings, suggestions),
-										_1: {ctor: '[]'}
-									}
-								}),
+							_0: A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTags, adapter, userSettings, settings, state),
 							_1: {ctor: '[]'}
-						}))));
+						},
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							addLabel(
+								{ctor: '[]'}),
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: isDropdownActive,
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown(adapter),
+										_1: {
+											ctor: '::',
+											_0: A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown, adapter, userIsoLanguage, settings, suggestions),
+											_1: {ctor: '[]'}
+										}
+									}),
+								_1: {ctor: '[]'}
+							})))));
 	});
 
-var _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter = {onInput: _flarebyte$bubblegum_ui_tag$AppMsg$OnInputContent, onToggleDropbox: _flarebyte$bubblegum_ui_tag$AppMsg$OnToggleDropbox};
+var _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter = {onInput: _flarebyte$bubblegum_ui_tag$AppMsg$OnInputContent, onToggleDropbox: _flarebyte$bubblegum_ui_tag$AppMsg$OnToggleDropbox, onAddTag: _flarebyte$bubblegum_ui_tag$AppMsg$OnAddTag};
 var _flarebyte$bubblegum_ui_tag$WidgetBuilder$viewWidget = function (model) {
 	return A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view, _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter, model.userSettings, model.settings, model.state);
 };
@@ -12571,7 +12655,7 @@ var _flarebyte$bubblegum_ui_tag$App$update = F2(
 							_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$deleteAttributeByKey,
 							_p0._0,
 							_flarebyte$bubblegum_ui_tag$AppModel$getStateAttributes(model))));
-			default:
+			case 'OnToggleDropbox':
 				return A2(
 					_flarebyte$bubblegum_ui_tag$AppModel$asStateIn,
 					model,
@@ -12586,6 +12670,18 @@ var _flarebyte$bubblegum_ui_tag$App$update = F2(
 								_0: _flarebyte$bubblegum_ui_tag$AppModel$notSuggesting(model.state),
 								_1: {ctor: '[]'}
 							},
+							model.state.attributes)));
+			default:
+				return A2(
+					_flarebyte$bubblegum_ui_tag$AppModel$asStateIn,
+					model,
+					A2(
+						_flarebyte$bubblegum_entity$Bubblegum_Entity_StateEntity$asAttributesIn,
+						model.state,
+						A3(
+							_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$replaceAttributeByKey,
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected,
+							A2(_flarebyte$bubblegum_ui_tag$AppModel$addTagIdToSelected, _p0._0, model.state),
 							model.state.attributes)));
 		}
 	});

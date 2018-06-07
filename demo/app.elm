@@ -68,6 +68,11 @@ update msg model =
                 |> StateEntity.asAttributesIn model.state
                 |> asStateIn model
 
+        OnAddTag tagId ->
+            replaceAttributeByKey ui_selected (addTagIdToSelected tagId model.state) model.state.attributes
+                |> StateEntity.asAttributesIn model.state
+                |> asStateIn model
+
 
 
 -- VIEW

@@ -11,6 +11,7 @@ adapter : Adapter.Model AppMsg
 adapter =
     { onInput = OnInputContent
     , onToggleDropbox = OnToggleDropbox
+    , onAddTag = OnAddTag
     }
 
 

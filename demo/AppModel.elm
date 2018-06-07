@@ -89,3 +89,8 @@ reset =
 notSuggesting : StateEntity.Model -> String
 notSuggesting model =
     isSuggesting model |> Outcome.toMaybe |> Maybe.withDefault True |> not |> toString |> String.toLower
+
+
+addTagIdToSelected : String -> StateEntity.Model -> List String
+addTagIdToSelected tagId state =
+    getSelected state |> Outcome.toMaybe |> Maybe.withDefault [] |> (::) tagId

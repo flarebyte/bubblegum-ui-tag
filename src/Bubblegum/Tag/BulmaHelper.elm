@@ -12,6 +12,7 @@ import Bubblegum.Entity.Outcome as Outcome exposing (..)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Tag.Adapter as TagAdapter
+import Bubblegum.Tag.Helper exposing (getUserIsoLanguage)
 import Bubblegum.Tag.Internationalization exposing (..)
 import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
 import Bubblegum.Tag.VocabularyHelper exposing (..)
@@ -256,16 +257,16 @@ dropdownMenu list =
         ]
 
 
-suggestionDropbox : IsoLanguage -> SettingsEntity.Model -> List String -> Html msg
-suggestionDropbox userIsoLanguage settings suggestionsIds =
-    suggestionsIds |> List.map (\id -> suggestionTag userIsoLanguage settings id) |> dropdownMenu
+suggestionDropdown : TagAdapter.Model msg -> IsoLanguage -> SettingsEntity.Model -> List String -> Html msg
+suggestionDropdown adapter userIsoLanguage settings suggestionsIds =
+    suggestionsIds |> List.map (\id -> suggestionTag adapter userIsoLanguage settings id) |> dropdownMenu
 
 
-suggestionTag : IsoLanguage -> SettingsEntity.Model -> String -> Html msg
-suggestionTag userIsoLanguage settings id =
+suggestionTag : TagAdapter.Model msg -> IsoLanguage -> SettingsEntity.Model -> String -> Html msg
+suggestionTag adapter userIsoLanguage settings id =
     let
         addLabel =
-            appendHtmlIfSuccess text (getConstituentLabel settings id |> Debug.log "label")
+            appendHtmlIfSuccess text (getConstituentLabel settings id)
 
         addDescription =
             appendHtmlIfSuccess text (getConstituentDescription settings id)
@@ -280,7 +281,7 @@ suggestionTag userIsoLanguage settings id =
             appendListHtmlIfSuccess (tagsDanger userIsoLanguage) (getConstituentDangerTag settings id)
     in
     a [ class "dropdown-item" ]
-        [ div []
+        [ div [ onClick (adapter.onAddTag id) ]
             [ div [] [ span [ class "is-size-6" ] ([] |> addLabel) ]
             , div [] [ span [ class "is-size-7 has-text-info" ] ([] |> addDescription) ]
             , tags ([] |> addTagsDanger |> addTagsWarning |> addTagsInfo)
@@ -294,3 +295,36 @@ dropdownActiveStatus value =
         asClass2 "dropdown" "is-active"
     else
         class "dropdown"
+
+
+
+-- selected
+
+
+selectedTag : IsoLanguage -> SettingsEntity.Model -> String -> Html msg
+selectedTag userIsoLanguage settings id =
+    let
+        addLabel =
+            appendHtmlIfSuccess text (getConstituentLabel settings id)
+
+        addDescription =
+            appendHtmlIfSuccess text (getConstituentDescription settings id)
+    in
+    div [ class "tags has-addons" ]
+        [ span [ class "tag" ]
+            ([] |> addLabel)
+        , a [ class "tag is-delete" ]
+            []
+        ]
+
+
+selectedTags : TagAdapter.Model msg -> SettingsEntity.Model -> SettingsEntity.Model -> StateEntity.Model -> Html msg
+selectedTags adapter userSettings settings state =
+    let
+        userIsoLanguage =
+            getUserIsoLanguage userSettings
+
+        selectedIds =
+            getSelected state |> Outcome.toMaybe |> Maybe.withDefault []
+    in
+    selectedIds |> List.map (\id -> selectedTag userIsoLanguage settings id) |> tags
