@@ -126,6 +126,11 @@ tags list =
     div [ class "tags" ] list
 
 
+tagsGroup : List (Html msg) -> Html msg
+tagsGroup list =
+    div [ class "field is-grouped is-grouped-multiline" ] list
+
+
 infoText : IsoLanguage -> String -> StyledText
 infoText userIsoLanguage text =
     { text = text
@@ -202,12 +207,11 @@ rtlOrLtr value =
 mainBox : Outcome String -> Outcome Bool -> List (Html msg) -> Html msg
 mainBox language rtl list =
     div
-        ([ class "bubblegum-tag__widget box is-marginless is-paddingless is-shadowless has-addons" ]
+        ([ class "bubblegum-tag__widget box is-marginless is-paddingless is-shadowless" ]
             |> appendAttributeIfSuccess lang language
             |> appendAttributeIfSuccess dir (rtl |> Outcome.map rtlOrLtr)
         )
-        [ div [ class "field" ] list
-        ]
+        list
 
 
 widgetLabel : String -> Html msg
@@ -310,11 +314,13 @@ selectedTag adapter userIsoLanguage settings id =
         addDescription =
             appendHtmlIfSuccess text (getConstituentDescription settings id)
     in
-    div [ class "tags has-addons", onClick (adapter.onDeleteTag id) ]
-        [ span [ class "tag" ]
-            ([] |> addLabel)
-        , span [ class "tag is-delete" ]
-            []
+    div [ class "control" ]
+        [ div [ class "tags has-addons", onClick (adapter.onDeleteTag id) ]
+            [ span [ class "tag is-primary" ]
+                ([] |> addLabel)
+            , span [ class "tag is-delete" ]
+                []
+            ]
         ]
 
 
@@ -327,4 +333,4 @@ selectedTags adapter userSettings settings state =
         selectedIds =
             getSelected state |> Outcome.toMaybe |> Maybe.withDefault []
     in
-    selectedIds |> List.map (\id -> selectedTag adapter userIsoLanguage settings id) |> tags
+    selectedIds |> List.map (\id -> selectedTag adapter userIsoLanguage settings id) |> tagsGroup

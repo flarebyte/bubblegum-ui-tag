@@ -10723,6 +10723,16 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$infoText = F2(
 			title: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateInfoTag(userIsoLanguage)
 		};
 	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = function (list) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
+			_1: {ctor: '[]'}
+		},
+		list);
+};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tags = function (list) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -10962,21 +10972,10 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$mainBox = F3(
 					language,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('bubblegum-tag__widget box is-marginless is-paddingless is-shadowless has-addons'),
+						_0: _elm_lang$html$Html_Attributes$class('bubblegum-tag__widget box is-marginless is-paddingless is-shadowless'),
 						_1: {ctor: '[]'}
 					})),
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('field'),
-						_1: {ctor: '[]'}
-					},
-					list),
-				_1: {ctor: '[]'}
-			});
+			list);
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendListHtmlIfSuccess = F3(
 	function (ifSuccess, outcome, htmlList) {
@@ -11161,37 +11160,48 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F4(
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('tags has-addons'),
-				_1: {
-					ctor: '::',
-					_0: _elm_lang$html$Html_Events$onClick(
-						adapter.onDeleteTag(id)),
-					_1: {ctor: '[]'}
-				}
+				_0: _elm_lang$html$Html_Attributes$class('control'),
+				_1: {ctor: '[]'}
 			},
 			{
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$span,
+					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('tag'),
-						_1: {ctor: '[]'}
-					},
-					addLabel(
-						{ctor: '[]'})),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$span,
-						{
+						_0: _elm_lang$html$Html_Attributes$class('tags has-addons'),
+						_1: {
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('tag is-delete'),
+							_0: _elm_lang$html$Html_Events$onClick(
+								adapter.onDeleteTag(id)),
 							_1: {ctor: '[]'}
-						},
-						{ctor: '[]'}),
-					_1: {ctor: '[]'}
-				}
+						}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$span,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('tag is-primary'),
+								_1: {ctor: '[]'}
+							},
+							addLabel(
+								{ctor: '[]'})),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$span,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('tag is-delete'),
+									_1: {ctor: '[]'}
+								},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {ctor: '[]'}
 			});
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTags = F4(
@@ -11202,7 +11212,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTags = F4(
 			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
 				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected(state)));
 		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
-		return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tags(
+		return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup(
 			A2(
 				_elm_lang$core$List$map,
 				function (id) {
