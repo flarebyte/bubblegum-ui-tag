@@ -1,8 +1,8 @@
 content-id,The unique id of the content,String,state curie! attribute,id:aa61e603-9947-4fd8-86bb-d63a682259d0 
 content-language,Language of the content,String,small! user attribute,en-GB;ja;ar;zh-CN-SC;ru-RUS;es;it;fr
 content-right-to-left,Whether the content requires right to left,Bool,user attribute,
-selected,The selected tags for the field,List String,state,id:02 
-selectable,The selectable tags for the field,List String,state,id:02 
+selected,The selected tags for the field,List String,state compactUris,id:02 
+selectable,The selectable tags for the field,List String,state compactUris,id:02 
 suggesting,Suggesting is currently happening,Bool,state, 
 suggestion,The list of suggested tags for the field,List String,compactUris,id:01;id:02;id:03;id:04s 
 danger-help,Help message to highlight an issue with the content,String,medium! state,do not do this

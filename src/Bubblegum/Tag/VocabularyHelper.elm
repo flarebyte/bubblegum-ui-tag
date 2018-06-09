@@ -42,14 +42,14 @@ isContentRightToLeft settings =
 -}
 getSelected : StateEntity.Model -> Outcome (List String)
 getSelected settings =
-    findListString ui_selected settings.attributes
+    findListCompactUri ui_selected settings.attributes
 
 
 {-| The selectable tags for the field
 -}
 getSelectable : StateEntity.Model -> Outcome (List String)
 getSelectable settings =
-    findListString ui_selectable settings.attributes
+    findListCompactUri ui_selectable settings.attributes
 
 
 {-| Suggesting is currently happening

@@ -45,7 +45,7 @@ findListString key attributes =
 
 findListStringForId : String -> List Attribute.Model -> String -> Outcome (List String)
 findListStringForId key attributes id =
-    findOutcomeByKeyAndId key attributes id |> Validation.listLessThan limitList |> Validation.withinListStringCharsRange limitSmallRangeNotEmpty
+    findOutcomeByKeyAndId key attributes id |> Validation.listLessThan compactUriLimitList |> Validation.withinListStringCharsRange limitSmallRangeNotEmpty
 
 
 findListCompactUri : String -> List Attribute.Model -> Outcome (List String)

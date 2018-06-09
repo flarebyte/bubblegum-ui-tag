@@ -9470,7 +9470,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListStringForId =
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRangeNotEmpty,
 			A2(
 				_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$listLessThan,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitList,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$compactUriLimitList,
 				A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findOutcomeByKeyAndId, key, attributes, id)));
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListString = F2(
@@ -9589,10 +9589,10 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isSuggesting = fu
 	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findBool, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting, settings.attributes);
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelectable = function (settings) {
-	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selectable, settings.attributes);
+	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListCompactUri, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selectable, settings.attributes);
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected = function (settings) {
-	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected, settings.attributes);
+	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListCompactUri, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected, settings.attributes);
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isContentRightToLeft = function (settings) {
 	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findBool, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentRightToLeft, settings.attributes);
