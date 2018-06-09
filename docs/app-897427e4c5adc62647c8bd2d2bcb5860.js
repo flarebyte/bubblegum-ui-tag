@@ -10597,61 +10597,138 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown = funct
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$button,
+				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-controls', 'dropdown-menu2'),
-					_1: {
-						ctor: '::',
-						_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-haspopup', 'true'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('button'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onClick(adapter.onToggleDropbox),
-								_1: {ctor: '[]'}
-							}
-						}
-					}
+					_0: _elm_lang$html$Html_Attributes$class('level'),
+					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
 					_0: A2(
-						_elm_lang$html$Html$span,
-						{ctor: '[]'},
+						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text(placeholder),
+							_0: _elm_lang$html$Html_Attributes$class('field has-addons'),
 							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$span,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('icon is-small'),
-								_1: {ctor: '[]'}
-							},
-							{
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('control has-icons-left'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$input,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('input'),
+											_1: {ctor: '[]'}
+										},
+										{ctor: '[]'}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$span,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$i,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$class('fas fa-search'),
+														_1: {ctor: '[]'}
+													},
+													{ctor: '[]'}),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}),
+							_1: {
 								ctor: '::',
 								_0: A2(
-									_elm_lang$html$Html$i,
+									_elm_lang$html$Html$p,
 									{
 										ctor: '::',
-										_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-hidden', 'true'),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('fas fa-angle-down'),
-											_1: {ctor: '[]'}
-										}
+										_0: _elm_lang$html$Html_Attributes$class('control'),
+										_1: {ctor: '[]'}
 									},
-									{ctor: '[]'}),
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$button,
+											{
+												ctor: '::',
+												_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-controls', 'dropdown-menu7'),
+												_1: {
+													ctor: '::',
+													_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-haspopup', 'true'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$class('button'),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html_Events$onClick(adapter.onToggleDropbox),
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											},
+											{
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$span,
+													{ctor: '[]'},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text(placeholder),
+														_1: {ctor: '[]'}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$span,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$class('icon is-small'),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$i,
+																{
+																	ctor: '::',
+																	_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-hidden', 'true'),
+																	_1: {
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$class('fas fa-angle-down'),
+																		_1: {ctor: '[]'}
+																	}
+																},
+																{ctor: '[]'}),
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												}
+											}),
+										_1: {ctor: '[]'}
+									}),
 								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					}
+							}
+						}),
+					_1: {ctor: '[]'}
 				}),
 			_1: {ctor: '[]'}
 		});

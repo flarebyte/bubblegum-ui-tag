@@ -238,17 +238,31 @@ searchDropdown adapter =
             "Search"
     in
     div [ class "dropdown-trigger" ]
-        [ button
-            [ attribute "aria-controls" "dropdown-menu2"
-            , attribute "aria-haspopup" "true"
-            , class "button"
-            , onClick adapter.onToggleDropbox
-            ]
-            [ span []
-                [ text placeholder ]
-            , span [ class "icon is-small" ]
-                [ i [ attribute "aria-hidden" "true", class "fas fa-angle-down" ]
-                    []
+        [ div [ class "level" ]
+            [ div [ class "field has-addons" ]
+                [ p [ class "control has-icons-left" ]
+                    [ input [ class "input" ]
+                        []
+                    , span [ class "icon is-small is-left" ]
+                        [ i [ class "fas fa-search" ]
+                            []
+                        ]
+                    ]
+                , p [ class "control" ]
+                    [ button
+                        [ attribute "aria-controls" "dropdown-menu7" --TODO check this
+                        , attribute "aria-haspopup" "true"
+                        , class "button"
+                        , onClick adapter.onToggleDropbox
+                        ]
+                        [ span []
+                            [ text placeholder ]
+                        , span [ class "icon is-small" ]
+                            [ i [ attribute "aria-hidden" "true", class "fas fa-angle-down" ]
+                                []
+                            ]
+                        ]
+                    ]
                 ]
             ]
         ]
