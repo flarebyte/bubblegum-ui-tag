@@ -128,7 +128,17 @@ tags list =
 
 tagsGroup : List (Html msg) -> Html msg
 tagsGroup list =
-    div [ class "field is-grouped is-grouped-multiline" ] list
+    div []
+        [ div [ class "field is-grouped is-grouped-multiline" ] list
+        , div []
+            [ p [ class "is-size-6" ]
+                [ span [ class "fas fa-clipboard-list" ] []
+                , span [ class "has-text-success" ] [ text (String.repeat 6 "•") ]
+                , span [ class "has-text-grey-light" ] [ text (String.repeat 4 "•") ]
+                , span [ class "has-text-danger" ] [ text (String.repeat 3 "•") ]
+                ]
+            ]
+        ]
 
 
 infoText : IsoLanguage -> String -> StyledText
