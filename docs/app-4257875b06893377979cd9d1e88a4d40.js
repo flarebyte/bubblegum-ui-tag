@@ -10023,12 +10023,16 @@ var _flarebyte$bubblegum_ui_tag$AppModel$deleteTagIdToSelected = F2(
 	});
 var _flarebyte$bubblegum_ui_tag$AppModel$addTagIdToSelected = F2(
 	function (tagId, state) {
-		return A2(
-			F2(
-				function (x, y) {
-					return {ctor: '::', _0: x, _1: y};
-				}),
-			tagId,
+		return function (list) {
+			return A2(
+				_elm_lang$core$Basics_ops['++'],
+				list,
+				{
+					ctor: '::',
+					_0: tagId,
+					_1: {ctor: '[]'}
+				});
+		}(
 			A2(
 				_elm_lang$core$Maybe$withDefault,
 				{ctor: '[]'},

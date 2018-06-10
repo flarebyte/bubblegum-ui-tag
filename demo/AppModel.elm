@@ -93,7 +93,7 @@ notSuggesting model =
 
 addTagIdToSelected : String -> StateEntity.Model -> List String
 addTagIdToSelected tagId state =
-    getSelected state |> Outcome.toMaybe |> Maybe.withDefault [] |> (::) tagId
+    getSelected state |> Outcome.toMaybe |> Maybe.withDefault [] |> (\list -> list ++ [ tagId ])
 
 
 deleteTagIdToSelected : String -> StateEntity.Model -> List String
