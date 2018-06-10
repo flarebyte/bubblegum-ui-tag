@@ -9,7 +9,7 @@ import Html exposing (..)
 
 adapter : Adapter.Model AppMsg
 adapter =
-    { onInput = OnInputContent
+    { onSearchInput = OnSearchInputContent
     , onToggleDropbox = OnToggleDropbox
     , onAddTag = OnAddTag
     , onDeleteTag = OnDeleteTag

@@ -2,7 +2,7 @@ module AppMsg exposing (AppMsg(..))
 
 
 type AppMsg
-    = OnInputContent String
+    = OnSearchInputContent String
     | OnSelectSetting Bool String String
     | OnSelectState String String
     | OnActivateSetting Bool String

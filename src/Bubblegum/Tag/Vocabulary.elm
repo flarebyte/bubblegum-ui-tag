@@ -56,6 +56,13 @@ ui_suggestion =
     "ui:suggestion"
 
 
+{-| Search term for filtering the available options. (String)
+-}
+ui_search : String
+ui_search =
+    "ui:search"
+
+
 {-| Help message to highlight an issue with the content. (String)
 -}
 ui_dangerHelp : String

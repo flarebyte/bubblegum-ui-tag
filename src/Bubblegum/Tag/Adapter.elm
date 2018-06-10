@@ -11,7 +11,7 @@ See <https://www.w3schools.com/jsref/event_oninput.asp>
 
 -}
 type alias Model msg =
-    { onInput : String -> msg
+    { onSearchInput : String -> msg
     , onToggleDropbox : msg
     , onAddTag : String -> msg
     , onDeleteTag : String -> msg

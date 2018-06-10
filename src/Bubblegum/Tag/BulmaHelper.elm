@@ -241,7 +241,7 @@ searchDropdown adapter =
         [ div [ class "level" ]
             [ div [ class "field has-addons" ]
                 [ p [ class "control has-icons-left" ]
-                    [ input [ class "input" ]
+                    [ input [ class "input", onInput adapter.onSearchInput ]
                         []
                     , span [ class "icon is-small is-left" ]
                         [ i [ class "fas fa-search" ]

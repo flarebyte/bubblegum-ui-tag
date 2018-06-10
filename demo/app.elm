@@ -38,8 +38,8 @@ main =
 update : AppMsg -> AppModel -> AppModel
 update msg model =
     case msg of
-        OnInputContent value ->
-            replaceAttributeByKey "ui_content" [ value ] model.state.attributes
+        OnSearchInputContent value ->
+            replaceAttributeByKey ui_search [ value ] model.state.attributes
                 |> StateEntity.asAttributesIn model.state
                 |> asStateIn model
 

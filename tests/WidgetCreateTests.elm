@@ -71,6 +71,14 @@ suite =
                 \value -> viewWidgetWithSettings (withSettingsSuggestion value)
                     |> findWarningDiv           
 
+                , fuzz fuzzySearch "Correct settings for Search term for filtering the available options" <|
+                \value -> viewWidgetWithState (withStateSearch value)
+                    |> findComponent selectorsSearch
+
+              , fuzz fuzzyNotSearch "Wrong settings for Search term for filtering the available options" <|
+                \value -> viewWidgetWithState (withStateSearch value)
+                    |> findWarningDiv           
+
                 , fuzz fuzzyDangerHelp "Correct settings for Help message to highlight an issue with the content" <|
                 \value -> viewWidgetWithState (withStateDangerHelp value)
                     |> findComponent selectorsDangerHelp

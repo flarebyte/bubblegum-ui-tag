@@ -66,6 +66,13 @@ getSuggestion settings =
     findListCompactUri ui_suggestion settings.attributes
 
 
+{-| Search term for filtering the available options
+-}
+getSearch : StateEntity.Model -> Outcome String
+getSearch settings =
+    findString ui_search settings.attributes
+
+
 {-| Help message to highlight an issue with the content
 -}
 getDangerHelp : StateEntity.Model -> Outcome String

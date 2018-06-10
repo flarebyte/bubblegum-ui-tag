@@ -42,6 +42,11 @@ descSuggestion =
     "The list of suggested tags for the field"
 
 
+descSearch : String
+descSearch =
+    "Search term for filtering the available options"
+
+
 descDangerHelp : String
 descDangerHelp =
     "Help message to highlight an issue with the content"

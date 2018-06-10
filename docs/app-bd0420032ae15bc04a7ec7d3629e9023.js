@@ -9385,6 +9385,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userLanguage = 'ui:u
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_label = 'ui:label';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_help = 'ui:help';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp = 'ui:danger-help';
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search = 'ui:search';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggestion = 'ui:suggestion';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting = 'ui:suggesting';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selectable = 'ui:selectable';
@@ -9581,6 +9582,9 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getDangerHelp = f
 		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
 		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitMediumRangeNotEmpty,
 		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp, settings.attributes));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSearch = function (settings) {
+	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search, settings.attributes);
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuggestion = function (settings) {
 	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListCompactUri, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggestion, settings.attributes);
@@ -10129,13 +10133,13 @@ var _flarebyte$bubblegum_ui_tag$AppMsg$OnSelectSetting = F3(
 	function (a, b, c) {
 		return {ctor: 'OnSelectSetting', _0: a, _1: b, _2: c};
 	});
-var _flarebyte$bubblegum_ui_tag$AppMsg$OnInputContent = function (a) {
-	return {ctor: 'OnInputContent', _0: a};
+var _flarebyte$bubblegum_ui_tag$AppMsg$OnSearchInputContent = function (a) {
+	return {ctor: 'OnSearchInputContent', _0: a};
 };
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Adapter$Model = F4(
 	function (a, b, c, d) {
-		return {onInput: a, onToggleDropbox: b, onAddTag: c, onDeleteTag: d};
+		return {onSearchInput: a, onToggleDropbox: b, onAddTag: c, onDeleteTag: d};
 	});
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$getLanguageCode = function (language) {
@@ -10628,7 +10632,11 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown = funct
 										{
 											ctor: '::',
 											_0: _elm_lang$html$Html_Attributes$class('input'),
-											_1: {ctor: '[]'}
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Events$onInput(adapter.onSearchInput),
+												_1: {ctor: '[]'}
+											}
 										},
 										{ctor: '[]'}),
 									_1: {
@@ -11382,7 +11390,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 							})))));
 	});
 
-var _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter = {onInput: _flarebyte$bubblegum_ui_tag$AppMsg$OnInputContent, onToggleDropbox: _flarebyte$bubblegum_ui_tag$AppMsg$OnToggleDropbox, onAddTag: _flarebyte$bubblegum_ui_tag$AppMsg$OnAddTag, onDeleteTag: _flarebyte$bubblegum_ui_tag$AppMsg$OnDeleteTag};
+var _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter = {onSearchInput: _flarebyte$bubblegum_ui_tag$AppMsg$OnSearchInputContent, onToggleDropbox: _flarebyte$bubblegum_ui_tag$AppMsg$OnToggleDropbox, onAddTag: _flarebyte$bubblegum_ui_tag$AppMsg$OnAddTag, onDeleteTag: _flarebyte$bubblegum_ui_tag$AppMsg$OnDeleteTag};
 var _flarebyte$bubblegum_ui_tag$WidgetBuilder$viewWidget = function (model) {
 	return A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view, _flarebyte$bubblegum_ui_tag$WidgetBuilder$adapter, model.userSettings, model.settings, model.state);
 };
@@ -11420,6 +11428,7 @@ var _flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage = 'Language used
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descLabel = 'Label related to the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descHelp = 'Some help tip related to the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descDangerHelp = 'Help message to highlight an issue with the content';
+var _flarebyte$bubblegum_ui_tag$KeyDescription$descSearch = 'Search term for filtering the available options';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSuggestion = 'The list of suggested tags for the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSuggesting = 'Suggesting is currently happening';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSelectable = 'The selectable tags for the field';
@@ -11593,21 +11602,17 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 			{
 				ctor: '::',
-				_0: 'id:01',
+				_0: 'id:suggestion:1',
 				_1: {
 					ctor: '::',
-					_0: 'id:02',
+					_0: 'id:suggestion:2',
 					_1: {
 						ctor: '::',
-						_0: 'id:03',
+						_0: 'id:suggestion:3',
 						_1: {
 							ctor: '::',
-							_0: 'id:04s',
-							_1: {
-								ctor: '::',
-								_0: 'other',
-								_1: {ctor: '[]'}
-							}
+							_0: 'other',
+							_1: {ctor: '[]'}
 						}
 					}
 				}
@@ -11833,7 +11838,7 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 				_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 				{
 					ctor: '::',
-					_0: 'id:02',
+					_0: 'id:suggestion:1',
 					_1: {
 						ctor: '::',
 						_0: 'other',
@@ -11849,11 +11854,15 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 					_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 					{
 						ctor: '::',
-						_0: 'id:02',
+						_0: 'id:suggestion:1',
 						_1: {
 							ctor: '::',
-							_0: 'other',
-							_1: {ctor: '[]'}
+							_0: 'id:suggestion:2',
+							_1: {
+								ctor: '::',
+								_0: 'other',
+								_1: {ctor: '[]'}
+							}
 						}
 					},
 					_flarebyte$bubblegum_ui_tag$KeyDescription$descSelectable),
@@ -11881,19 +11890,40 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 						ctor: '::',
 						_0: A4(
 							_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp,
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search,
 							_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 							{
 								ctor: '::',
-								_0: 'do not do this',
+								_0: 'ipsum',
 								_1: {
 									ctor: '::',
-									_0: 'other',
-									_1: {ctor: '[]'}
+									_0: 'dolor',
+									_1: {
+										ctor: '::',
+										_0: 'other',
+										_1: {ctor: '[]'}
+									}
 								}
 							},
-							_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerHelp),
-						_1: {ctor: '[]'}
+							_flarebyte$bubblegum_ui_tag$KeyDescription$descSearch),
+						_1: {
+							ctor: '::',
+							_0: A4(
+								_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
+								_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp,
+								_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
+								{
+									ctor: '::',
+									_0: 'do not do this',
+									_1: {
+										ctor: '::',
+										_0: 'other',
+										_1: {ctor: '[]'}
+									}
+								},
+								_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerHelp),
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}
@@ -12677,7 +12707,7 @@ var _flarebyte$bubblegum_ui_tag$App$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		switch (_p0.ctor) {
-			case 'OnInputContent':
+			case 'OnSearchInputContent':
 				return A2(
 					_flarebyte$bubblegum_ui_tag$AppModel$asStateIn,
 					model,
@@ -12686,7 +12716,7 @@ var _flarebyte$bubblegum_ui_tag$App$update = F2(
 						model.state,
 						A3(
 							_flarebyte$bubblegum_entity$Bubblegum_Entity_Attribute$replaceAttributeByKey,
-							'ui_content',
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search,
 							{
 								ctor: '::',
 								_0: _p0._0,
