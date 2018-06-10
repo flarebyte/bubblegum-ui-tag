@@ -10243,6 +10243,33 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage = functi
 	}
 };
 
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$deduceSelectable = F2(
+	function (suggestions, selected) {
+		return _elm_lang$core$Set$toList(
+			A2(
+				_elm_lang$core$Set$diff,
+				_elm_lang$core$Set$fromList(suggestions),
+				_elm_lang$core$Set$fromList(selected)));
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList = function (state) {
+	return A2(
+		_elm_lang$core$Maybe$withDefault,
+		{ctor: '[]'},
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected(state)));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getRemainingSuggestions = F2(
+	function (settings, state) {
+		return A2(
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
+			function (suggestions) {
+				return A2(
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$deduceSelectable,
+					suggestions,
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList(state));
+			},
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuggestion(settings));
+	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getContentLanguageOrEnglish = function (settings) {
 	return A2(
 		_elm_lang$core$Maybe$withDefault,
@@ -11313,15 +11340,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$StyledText = F3(
 		return {text: a, style: b, title: c};
 	});
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_WidgetAssistant$deduceSelectable = F2(
-	function (suggestions, selected) {
-		return _elm_lang$core$Set$toList(
-			A2(
-				_elm_lang$core$Set$diff,
-				_elm_lang$core$Set$fromList(suggestions),
-				_elm_lang$core$Set$fromList(selected)));
-	});
-
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 	function (adapter, userSettings, settings, state) {
 		var isDropdownActive = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownActiveStatus(
@@ -11331,7 +11349,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
 					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isSuggesting(state))));
 		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
-		var suggestions = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuggestion(settings);
+		var suggestions = A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getRemainingSuggestions, settings, state);
 		var addDangerHelp = A2(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dangerHelp,

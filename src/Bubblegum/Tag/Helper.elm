@@ -5,9 +5,11 @@ module Bubblegum.Tag.Helper exposing (..)
 
 import Bubblegum.Entity.Outcome as Outcome exposing (..)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
+import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
-import Bubblegum.Tag.VocabularyHelper exposing (getContentLanguage, getUserLanguage)
+import Bubblegum.Tag.VocabularyHelper exposing (getContentLanguage, getSelected, getSuggestion, getUserLanguage)
 import Maybe exposing (..)
+import Set as Set
 import Tuple exposing (first, second)
 
 
@@ -61,3 +63,18 @@ getUserIsoLanguage settings =
 getContentIsoLanguage : SettingsEntity.Model -> IsoLanguage
 getContentIsoLanguage settings =
     getContentLanguageOrEnglish settings |> toIsoLanguage
+
+
+getSelectedAsList : StateEntity.Model -> List String
+getSelectedAsList state =
+    getSelected state |> Outcome.toMaybe |> Maybe.withDefault []
+
+
+deduceSelectable : List String -> List String -> List String
+deduceSelectable suggestions selected =
+    Set.diff (Set.fromList suggestions) (Set.fromList selected) |> Set.toList
+
+
+getRemainingSuggestions : SettingsEntity.Model -> StateEntity.Model -> Outcome (List String)
+getRemainingSuggestions settings state =
+    getSuggestion settings |> Outcome.map (\suggestions -> deduceSelectable suggestions (getSelectedAsList state))
