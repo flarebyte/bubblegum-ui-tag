@@ -10243,6 +10243,28 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage = functi
 	}
 };
 
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$isLabelMatchSearch = F3(
+	function (settings, search, id) {
+		return A2(
+			_elm_lang$core$Maybe$withDefault,
+			false,
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
+				A2(
+					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
+					function (label) {
+						return A2(_elm_lang$core$String$contains, search, label);
+					},
+					A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentLabel, settings, id))));
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$filterSuggestionsBySearch = F3(
+	function (settings, search, suggestions) {
+		return _elm_lang$core$String$isEmpty(search) ? suggestions : A2(
+			_elm_lang$core$List$filter,
+			function (id) {
+				return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$isLabelMatchSearch, settings, search, id);
+			},
+			suggestions);
+	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$deduceSelectable = F2(
 	function (suggestions, selected) {
 		return _elm_lang$core$Set$toList(
@@ -10251,6 +10273,13 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$deduceSelectable = F2(
 				_elm_lang$core$Set$fromList(suggestions),
 				_elm_lang$core$Set$fromList(selected)));
 	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSearchAsString = function (state) {
+	return A2(
+		_elm_lang$core$Maybe$withDefault,
+		'',
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSearch(state)));
+};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList = function (state) {
 	return A2(
 		_elm_lang$core$Maybe$withDefault,
@@ -10263,12 +10292,21 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getRemainingSuggestions = F
 		return A2(
 			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
 			function (suggestions) {
-				return A2(
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$deduceSelectable,
-					suggestions,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList(state));
+				return A3(
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$filterSuggestionsBySearch,
+					settings,
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSearchAsString(state),
+					suggestions);
 			},
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuggestion(settings));
+			A2(
+				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
+				function (suggestions) {
+					return A2(
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$deduceSelectable,
+						suggestions,
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList(state));
+				},
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuggestion(settings)));
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getContentLanguageOrEnglish = function (settings) {
 	return A2(

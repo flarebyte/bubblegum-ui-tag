@@ -7,7 +7,15 @@ import Bubblegum.Entity.Outcome as Outcome exposing (..)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
-import Bubblegum.Tag.VocabularyHelper exposing (getContentLanguage, getSelected, getSuggestion, getUserLanguage)
+import Bubblegum.Tag.VocabularyHelper
+    exposing
+        ( getConstituentLabel
+        , getContentLanguage
+        , getSearch
+        , getSelected
+        , getSuggestion
+        , getUserLanguage
+        )
 import Maybe exposing (..)
 import Set as Set
 import Tuple exposing (first, second)
@@ -70,11 +78,31 @@ getSelectedAsList state =
     getSelected state |> Outcome.toMaybe |> Maybe.withDefault []
 
 
+getSearchAsString : StateEntity.Model -> String
+getSearchAsString state =
+    getSearch state |> Outcome.toMaybe |> Maybe.withDefault ""
+
+
 deduceSelectable : List String -> List String -> List String
 deduceSelectable suggestions selected =
     Set.diff (Set.fromList suggestions) (Set.fromList selected) |> Set.toList
 
 
+isLabelMatchSearch : SettingsEntity.Model -> String -> String -> Bool
+isLabelMatchSearch settings search id =
+    getConstituentLabel settings id |> Outcome.map (\label -> String.contains search label) |> Outcome.toMaybe |> Maybe.withDefault False
+
+
+filterSuggestionsBySearch : SettingsEntity.Model -> String -> List String -> List String
+filterSuggestionsBySearch settings search suggestions =
+    if String.isEmpty search then
+        suggestions
+    else
+        List.filter (\id -> isLabelMatchSearch settings search id) suggestions
+
+
 getRemainingSuggestions : SettingsEntity.Model -> StateEntity.Model -> Outcome (List String)
 getRemainingSuggestions settings state =
-    getSuggestion settings |> Outcome.map (\suggestions -> deduceSelectable suggestions (getSelectedAsList state))
+    getSuggestion settings
+        |> Outcome.map (\suggestions -> deduceSelectable suggestions (getSelectedAsList state))
+        |> Outcome.map (\suggestions -> filterSuggestionsBySearch settings (getSearchAsString state) suggestions)
