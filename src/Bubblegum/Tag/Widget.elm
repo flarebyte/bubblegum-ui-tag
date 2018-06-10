@@ -20,6 +20,7 @@ import Bubblegum.Tag.Adapter as TagAdapter
 import Bubblegum.Tag.BulmaHelper exposing (..)
 import Bubblegum.Tag.Helper exposing (getUserIsoLanguage)
 import Bubblegum.Tag.VocabularyHelper exposing (..)
+import Bubblegum.Tag.WidgetAssistant exposing (deduceSelectable)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput, onMouseEnter, onMouseOut)
@@ -59,7 +60,7 @@ view adapter userSettings settings state =
             appendHtmlIfSuccess dangerHelp (getDangerHelp state)
 
         suggestions =
-            getSuggestion settings |> Outcome.toMaybe |> Maybe.withDefault []
+            getSuggestion settings
 
         userIsoLanguage =
             getUserIsoLanguage userSettings

@@ -11222,14 +11222,17 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag = F4(
 			});
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown = F4(
-	function (adapter, userIsoLanguage, settings, suggestionsIds) {
+	function (adapter, userIsoLanguage, settings, outcomeSuggestionIds) {
+		var anySuggestionTag = A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag, adapter, userIsoLanguage, settings);
+		var addSuggestions = A2(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendListHtmlIfSuccess,
+			function (list) {
+				return A2(_elm_lang$core$List$map, anySuggestionTag, list);
+			},
+			outcomeSuggestionIds);
 		return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownMenu(
-			A2(
-				_elm_lang$core$List$map,
-				function (id) {
-					return A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag, adapter, userIsoLanguage, settings, id);
-				},
-				suggestionsIds));
+			addSuggestions(
+				{ctor: '[]'}));
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F4(
 	function (adapter, userIsoLanguage, settings, id) {
@@ -11310,6 +11313,15 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$StyledText = F3(
 		return {text: a, style: b, title: c};
 	});
 
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_WidgetAssistant$deduceSelectable = F2(
+	function (suggestions, selected) {
+		return _elm_lang$core$Set$toList(
+			A2(
+				_elm_lang$core$Set$diff,
+				_elm_lang$core$Set$fromList(suggestions),
+				_elm_lang$core$Set$fromList(selected)));
+	});
+
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 	function (adapter, userSettings, settings, state) {
 		var isDropdownActive = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownActiveStatus(
@@ -11319,11 +11331,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
 					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isSuggesting(state))));
 		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
-		var suggestions = A2(
-			_elm_lang$core$Maybe$withDefault,
-			{ctor: '[]'},
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuggestion(settings)));
+		var suggestions = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuggestion(settings);
 		var addDangerHelp = A2(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dangerHelp,

@@ -275,9 +275,16 @@ dropdownMenu list =
         ]
 
 
-suggestionDropdown : TagAdapter.Model msg -> IsoLanguage -> SettingsEntity.Model -> List String -> Html msg
-suggestionDropdown adapter userIsoLanguage settings suggestionsIds =
-    suggestionsIds |> List.map (\id -> suggestionTag adapter userIsoLanguage settings id) |> dropdownMenu
+suggestionDropdown : TagAdapter.Model msg -> IsoLanguage -> SettingsEntity.Model -> Outcome (List String) -> Html msg
+suggestionDropdown adapter userIsoLanguage settings outcomeSuggestionIds =
+    let
+        anySuggestionTag =
+            suggestionTag adapter userIsoLanguage settings
+
+        addSuggestions =
+            appendListHtmlIfSuccess (\list -> List.map anySuggestionTag list) outcomeSuggestionIds
+    in
+    ([] |> addSuggestions) |> dropdownMenu
 
 
 suggestionTag : TagAdapter.Model msg -> IsoLanguage -> SettingsEntity.Model -> String -> Html msg
