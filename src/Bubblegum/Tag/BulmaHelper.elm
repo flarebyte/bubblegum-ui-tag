@@ -146,6 +146,7 @@ tagsGroup userSettings settings state list =
                 (Outcome.map2 dangerRange (Valid numberOfTags) <| getDangerTagRange settings)
                 |> Outcome.toMaybe
                 |> Maybe.withDefault IsNeutral
+                
     in
     div []
         [ div [ class "field is-grouped is-grouped-multiline" ] list

@@ -67,6 +67,18 @@ tagStyle status =
         IsNeutral ->
             "is-dark"
 
+textStyle : ProgressStatus -> String
+textStyle status =
+    case status of
+        IsSuccess ->
+            "has-text-success"
+
+        IsDanger ->
+            "has-text-danger"
+
+        IsNeutral ->
+            "has-text-grey-light"
+
 
 getUserLanguageOrEnglish : SettingsEntity.Model -> String
 getUserLanguageOrEnglish settings =
