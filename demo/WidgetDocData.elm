@@ -25,10 +25,10 @@ tagWidgetDoc =
         [ createKey ui_suggestion ZeroOrOne [ "id:suggestion:1", "id:suggestion:2", "id:suggestion:3", "other" ] descSuggestion
         , createKey ui_help ZeroOrOne [ "Lorem ipsum dolor sit amet consectetur adipiscing elit.", "助けて", "other" ] descHelp
         , createKey ui_label ZeroOrOne [ "Some label", "ラベル", "ضع الكلمة المناسبة", "other" ] descLabel
-        , createKey ui_successMinimumTags ZeroOrOne [ "0", "20", "40", "80", "160", "320", "-5" ] descSuccessMinimumTags
-        , createKey ui_successMaximumTags ZeroOrOne [ "0", "20", "40", "80", "160", "320", "-5" ] descSuccessMaximumTags
-        , createKey ui_dangerMinimumTags ZeroOrOne [ "0", "20", "40", "80", "160", "320", "-5" ] descDangerMinimumTags
-        , createKey ui_dangerMaximumTags ZeroOrOne [ "0", "20", "40", "80", "160", "320", "-5" ] descDangerMaximumTags
+        , createKey ui_successMinimumTags ZeroOrOne [ "0", "2", "4", "8", "16", "32", "-5" ] descSuccessMinimumTags
+        , createKey ui_successMaximumTags ZeroOrOne [ "0", "2", "4", "8", "16", "32", "-5" ] descSuccessMaximumTags
+        , createKey ui_dangerMinimumTags ZeroOrOne [ "0", "2", "4", "8", "16", "32", "-5" ] descDangerMinimumTags
+        , createKey ui_dangerMaximumTags ZeroOrOne [ "0", "2", "4", "8", "16", "32", "-5" ] descDangerMaximumTags
         ]
     , stateAttributes =
         [ createKey ui_contentId ZeroOrOne [ "id:aa61e603-9947-4fd8-86bb-d63a682259d0", "other" ] descContentId

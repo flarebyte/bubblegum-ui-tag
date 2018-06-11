@@ -10869,6 +10869,14 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$infoText2 = F2(
 			title: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateInfoTag(userIsoLanguage)
 		};
 	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$coloredText = F3(
+	function (userIsoLanguage, text, style) {
+		return {
+			text: text,
+			style: style,
+			title: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateInfoTag(userIsoLanguage)
+		};
+	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$infoText = F2(
 	function (userIsoLanguage, text) {
 		return {
@@ -10877,100 +10885,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$infoText = F2(
 			title: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateInfoTag(userIsoLanguage)
 		};
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = function (list) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
-					_1: {ctor: '[]'}
-				},
-				list),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{ctor: '[]'},
-					{
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$p,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('is-size-6'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$span,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('fas fa-clipboard-list'),
-										_1: {ctor: '[]'}
-									},
-									{ctor: '[]'}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$span,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('has-text-success'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text(
-												A2(_elm_lang$core$String$repeat, 6, '•')),
-											_1: {ctor: '[]'}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('has-text-grey-light'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text(
-													A2(_elm_lang$core$String$repeat, 4, '•')),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$span,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('has-text-danger'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text(
-														A2(_elm_lang$core$String$repeat, 3, '•')),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}
-									}
-								}
-							}),
-						_1: {ctor: '[]'}
-					}),
-				_1: {ctor: '[]'}
-			}
-		});
-};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tags = function (list) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -11051,6 +10965,128 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag = function (tagInf
 			_1: {ctor: '[]'}
 		});
 };
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = F4(
+	function (userSettings, settings, state, list) {
+		var numberOfTags = _elm_lang$core$List$length(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList(state));
+		var themeBasedOnRange = A2(
+			_elm_lang$core$Maybe$withDefault,
+			'',
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
+				A2(
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$themeProgress,
+					A3(
+						_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map2,
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange,
+						_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$Valid(numberOfTags),
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuccessTagRange(settings)),
+					A3(
+						_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map2,
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$dangerRange,
+						_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$Valid(numberOfTags),
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getDangerTagRange(settings)))));
+		return A2(
+			_elm_lang$html$Html$div,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
+						_1: {ctor: '[]'}
+					},
+					list),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('is-size-6'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag(
+										A3(
+											_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$coloredText,
+											_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$English,
+											_elm_lang$core$Basics$toString(numberOfTags),
+											themeBasedOnRange)),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$span,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text(' '),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$span,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('has-text-success'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text(
+														A2(_elm_lang$core$String$repeat, numberOfTags, '•')),
+													_1: {ctor: '[]'}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$span,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$class('has-text-grey-light'),
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text(
+															A2(_elm_lang$core$String$repeat, 4, '•')),
+														_1: {ctor: '[]'}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$span,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$class('has-text-danger'),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text(
+																A2(_elm_lang$core$String$repeat, 3, '•')),
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsInfo = F2(
 	function (userIsoLanguage, list) {
 		return A2(
@@ -11453,7 +11489,11 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTags = F4(
 			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
 				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected(state)));
 		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
-		return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup(
+		return A4(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup,
+			userSettings,
+			settings,
+			state,
 			A2(
 				_elm_lang$core$List$map,
 				function (id) {
@@ -11825,19 +11865,19 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 							_0: '0',
 							_1: {
 								ctor: '::',
-								_0: '20',
+								_0: '2',
 								_1: {
 									ctor: '::',
-									_0: '40',
+									_0: '4',
 									_1: {
 										ctor: '::',
-										_0: '80',
+										_0: '8',
 										_1: {
 											ctor: '::',
-											_0: '160',
+											_0: '16',
 											_1: {
 												ctor: '::',
-												_0: '320',
+												_0: '32',
 												_1: {
 													ctor: '::',
 													_0: '-5',
@@ -11861,19 +11901,19 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 								_0: '0',
 								_1: {
 									ctor: '::',
-									_0: '20',
+									_0: '2',
 									_1: {
 										ctor: '::',
-										_0: '40',
+										_0: '4',
 										_1: {
 											ctor: '::',
-											_0: '80',
+											_0: '8',
 											_1: {
 												ctor: '::',
-												_0: '160',
+												_0: '16',
 												_1: {
 													ctor: '::',
-													_0: '320',
+													_0: '32',
 													_1: {
 														ctor: '::',
 														_0: '-5',
@@ -11897,19 +11937,19 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 									_0: '0',
 									_1: {
 										ctor: '::',
-										_0: '20',
+										_0: '2',
 										_1: {
 											ctor: '::',
-											_0: '40',
+											_0: '4',
 											_1: {
 												ctor: '::',
-												_0: '80',
+												_0: '8',
 												_1: {
 													ctor: '::',
-													_0: '160',
+													_0: '16',
 													_1: {
 														ctor: '::',
-														_0: '320',
+														_0: '32',
 														_1: {
 															ctor: '::',
 															_0: '-5',
@@ -11933,19 +11973,19 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 										_0: '0',
 										_1: {
 											ctor: '::',
-											_0: '20',
+											_0: '2',
 											_1: {
 												ctor: '::',
-												_0: '40',
+												_0: '4',
 												_1: {
 													ctor: '::',
-													_0: '80',
+													_0: '8',
 													_1: {
 														ctor: '::',
-														_0: '160',
+														_0: '16',
 														_1: {
 															ctor: '::',
-															_0: '320',
+															_0: '32',
 															_1: {
 																ctor: '::',
 																_0: '-5',

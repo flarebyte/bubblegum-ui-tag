@@ -258,7 +258,7 @@ def generateExamples(suggested, signature):
     if (signature == "Bool"):
         return quoteArray(["true", "false", "other"])
     elif (signature == "Int"):
-        return quoteArray(["0", "20", "40", "80", "160", "320", "-5"])
+        return quoteArray(["0", "2", "4", "8", "16", "32", "-5"])
     elif (suggested is not None):
         suggestions = suggested.strip().split(";")
         suggestions.append("other")

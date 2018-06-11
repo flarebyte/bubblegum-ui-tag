@@ -12,7 +12,7 @@ import Bubblegum.Entity.Outcome as Outcome exposing (..)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Tag.Adapter as TagAdapter
-import Bubblegum.Tag.Helper exposing (getUserIsoLanguage)
+import Bubblegum.Tag.Helper exposing (dangerRange, getSelectedAsList, getUserIsoLanguage, successRange, themeProgress)
 import Bubblegum.Tag.Internationalization exposing (..)
 import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
 import Bubblegum.Tag.VocabularyHelper exposing (..)
@@ -126,14 +126,25 @@ tags list =
     div [ class "tags" ] list
 
 
-tagsGroup : List (Html msg) -> Html msg
-tagsGroup list =
+tagsGroup : SettingsEntity.Model -> SettingsEntity.Model -> StateEntity.Model -> List (Html msg) -> Html msg
+tagsGroup userSettings settings state list =
+    let
+        numberOfTags =
+            getSelectedAsList state |> List.length
+
+        themeBasedOnRange =
+            themeProgress (Outcome.map2 successRange (Valid numberOfTags) <| getSuccessTagRange settings)
+                (Outcome.map2 dangerRange (Valid numberOfTags) <| getDangerTagRange settings)
+                |> Outcome.toMaybe
+                |> Maybe.withDefault ""
+    in
     div []
         [ div [ class "field is-grouped is-grouped-multiline" ] list
         , div []
             [ p [ class "is-size-6" ]
-                [ span [ class "fas fa-clipboard-list" ] []
-                , span [ class "has-text-success" ] [ text (String.repeat 6 "•") ]
+                [ coloredText English (toString numberOfTags) themeBasedOnRange |> tag
+                , span [] [ text " " ]
+                , span [ class "has-text-success" ] [ text (String.repeat numberOfTags "•") ]
                 , span [ class "has-text-grey-light" ] [ text (String.repeat 4 "•") ]
                 , span [ class "has-text-danger" ] [ text (String.repeat 3 "•") ]
                 ]
@@ -145,6 +156,14 @@ infoText : IsoLanguage -> String -> StyledText
 infoText userIsoLanguage text =
     { text = text
     , style = "is-dark"
+    , title = translateInfoTag userIsoLanguage
+    }
+
+
+coloredText : IsoLanguage -> String -> String -> StyledText
+coloredText userIsoLanguage text style =
+    { text = text
+    , style = style
     , title = translateInfoTag userIsoLanguage
     }
 
@@ -364,4 +383,4 @@ selectedTags adapter userSettings settings state =
         selectedIds =
             getSelected state |> Outcome.toMaybe |> Maybe.withDefault []
     in
-    selectedIds |> List.map (\id -> selectedTag adapter userIsoLanguage settings id) |> tagsGroup
+    selectedIds |> List.map (\id -> selectedTag adapter userIsoLanguage settings id) |> tagsGroup userSettings settings state
