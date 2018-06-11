@@ -41,12 +41,31 @@ titleCharRange =
     ( 1, 70 )
 
 
-themeProgress : Outcome Bool -> Outcome Bool -> Outcome String
+type ProgressStatus
+    = IsSuccess
+    | IsDanger
+    | IsNeutral
+
+
+themeProgress : Outcome Bool -> Outcome Bool -> Outcome ProgressStatus
 themeProgress a b =
     Outcome.or
-        (a |> Outcome.checkOrNone identity |> Outcome.trueMapToConstant "is-success")
-        (b |> Outcome.checkOrNone identity |> Outcome.trueMapToConstant "is-danger")
-        |> Outcome.withDefault "is-info"
+        (a |> Outcome.checkOrNone identity |> Outcome.trueMapToConstant IsSuccess)
+        (b |> Outcome.checkOrNone identity |> Outcome.trueMapToConstant IsDanger)
+        |> Outcome.withDefault IsNeutral
+
+
+tagStyle : ProgressStatus -> String
+tagStyle status =
+    case status of
+        IsSuccess ->
+            "is-success"
+
+        IsDanger ->
+            "is-danger"
+
+        IsNeutral ->
+            "is-dark"
 
 
 getUserLanguageOrEnglish : SettingsEntity.Model -> String

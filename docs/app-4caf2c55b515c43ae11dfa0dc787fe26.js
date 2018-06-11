@@ -10334,22 +10334,17 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage = functi
 	return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage(
 		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserLanguageOrEnglish(settings));
 };
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$themeProgress = F2(
-	function (a, b) {
-		return A2(
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$withDefault,
-			'is-info',
-			A2(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$or,
-				A2(
-					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$trueMapToConstant,
-					'is-success',
-					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$checkOrNone, _elm_lang$core$Basics$identity, a)),
-				A2(
-					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$trueMapToConstant,
-					'is-danger',
-					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$checkOrNone, _elm_lang$core$Basics$identity, b))));
-	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tagStyle = function (status) {
+	var _p0 = status;
+	switch (_p0.ctor) {
+		case 'IsSuccess':
+			return 'is-success';
+		case 'IsDanger':
+			return 'is-danger';
+		default:
+			return 'is-dark';
+	}
+};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$titleCharRange = {ctor: '_Tuple2', _0: 1, _1: 70};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tupleify = F2(
 	function (a, b) {
@@ -10366,6 +10361,25 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange = F2(
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$dangerRange = F2(
 	function (size, range) {
 		return !A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange, size, range);
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsNeutral = {ctor: 'IsNeutral'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsDanger = {ctor: 'IsDanger'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsSuccess = {ctor: 'IsSuccess'};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$themeProgress = F2(
+	function (a, b) {
+		return A2(
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$withDefault,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsNeutral,
+			A2(
+				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$or,
+				A2(
+					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$trueMapToConstant,
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsSuccess,
+					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$checkOrNone, _elm_lang$core$Basics$identity, a)),
+				A2(
+					_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$trueMapToConstant,
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsDanger,
+					A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$checkOrNone, _elm_lang$core$Basics$identity, b))));
 	});
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateDangerTag = function (language) {
@@ -10971,7 +10985,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = F4(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList(state));
 		var themeBasedOnRange = A2(
 			_elm_lang$core$Maybe$withDefault,
-			'',
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsNeutral,
 			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
 				A2(
 					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$themeProgress,
@@ -11019,7 +11033,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = F4(
 											_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$coloredText,
 											_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$English,
 											_elm_lang$core$Basics$toString(numberOfTags),
-											themeBasedOnRange)),
+											_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tagStyle(themeBasedOnRange))),
 									_1: {
 										ctor: '::',
 										_0: A2(

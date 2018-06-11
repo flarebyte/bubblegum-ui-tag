@@ -12,7 +12,16 @@ import Bubblegum.Entity.Outcome as Outcome exposing (..)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Tag.Adapter as TagAdapter
-import Bubblegum.Tag.Helper exposing (dangerRange, getSelectedAsList, getUserIsoLanguage, successRange, themeProgress)
+import Bubblegum.Tag.Helper
+    exposing
+        ( ProgressStatus(..)
+        , dangerRange
+        , getSelectedAsList
+        , getUserIsoLanguage
+        , successRange
+        , tagStyle
+        , themeProgress
+        )
 import Bubblegum.Tag.Internationalization exposing (..)
 import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
 import Bubblegum.Tag.VocabularyHelper exposing (..)
@@ -136,13 +145,13 @@ tagsGroup userSettings settings state list =
             themeProgress (Outcome.map2 successRange (Valid numberOfTags) <| getSuccessTagRange settings)
                 (Outcome.map2 dangerRange (Valid numberOfTags) <| getDangerTagRange settings)
                 |> Outcome.toMaybe
-                |> Maybe.withDefault ""
+                |> Maybe.withDefault IsNeutral
     in
     div []
         [ div [ class "field is-grouped is-grouped-multiline" ] list
         , div []
             [ p [ class "is-size-6" ]
-                [ coloredText English (toString numberOfTags) themeBasedOnRange |> tag
+                [ coloredText English (toString numberOfTags) (themeBasedOnRange |> tagStyle) |> tag
                 , span [] [ text " " ]
                 , span [ class "has-text-success" ] [ text (String.repeat numberOfTags "•") ]
                 , span [ class "has-text-grey-light" ] [ text (String.repeat 4 "•") ]
