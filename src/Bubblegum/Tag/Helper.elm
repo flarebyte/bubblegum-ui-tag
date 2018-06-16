@@ -23,7 +23,7 @@ import Tuple exposing (first, second)
 
 successRange : Int -> ( Int, Int ) -> Bool
 successRange size range =
-    (size >= first range) && (size < second range)
+    (size >= first range) && (size <= second range)
 
 
 dangerRange : Int -> ( Int, Int ) -> Bool
@@ -66,6 +66,7 @@ tagStyle status =
 
         IsNeutral ->
             "is-dark"
+
 
 textStyle : ProgressStatus -> String
 textStyle status =

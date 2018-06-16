@@ -20,6 +20,7 @@ import Bubblegum.Tag.Helper
         , getUserIsoLanguage
         , successRange
         , tagStyle
+        , textStyle
         , themeProgress
         )
 import Bubblegum.Tag.Internationalization exposing (..)
@@ -138,6 +139,9 @@ tags list =
 tagsGroup : SettingsEntity.Model -> SettingsEntity.Model -> StateEntity.Model -> List (Html msg) -> Html msg
 tagsGroup userSettings settings state list =
     let
+        userIsoLanguage =
+            getUserIsoLanguage userSettings
+
         numberOfTags =
             getSelectedAsList state |> List.length
 
@@ -146,17 +150,14 @@ tagsGroup userSettings settings state list =
                 (Outcome.map2 dangerRange (Valid numberOfTags) <| getDangerTagRange settings)
                 |> Outcome.toMaybe
                 |> Maybe.withDefault IsNeutral
-                
     in
     div []
         [ div [ class "field is-grouped is-grouped-multiline" ] list
         , div []
             [ p [ class "is-size-6" ]
-                [ coloredText English (toString numberOfTags) (themeBasedOnRange |> tagStyle) |> tag
+                [ coloredText userIsoLanguage (toString numberOfTags) (themeBasedOnRange |> tagStyle) |> tag
                 , span [] [ text " " ]
-                , span [ class "has-text-success" ] [ text (String.repeat numberOfTags "•") ]
-                , span [ class "has-text-grey-light" ] [ text (String.repeat 4 "•") ]
-                , span [ class "has-text-danger" ] [ text (String.repeat 3 "•") ]
+                , span [ class (themeBasedOnRange |> textStyle) ] [ text (String.repeat numberOfTags "•") ]
                 ]
             ]
         ]

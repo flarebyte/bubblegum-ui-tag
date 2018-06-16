@@ -10334,9 +10334,20 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage = functi
 	return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage(
 		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserLanguageOrEnglish(settings));
 };
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tagStyle = function (status) {
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$textStyle = function (status) {
 	var _p0 = status;
 	switch (_p0.ctor) {
+		case 'IsSuccess':
+			return 'has-text-success';
+		case 'IsDanger':
+			return 'has-text-danger';
+		default:
+			return 'has-text-grey-light';
+	}
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tagStyle = function (status) {
+	var _p1 = status;
+	switch (_p1.ctor) {
 		case 'IsSuccess':
 			return 'is-success';
 		case 'IsDanger':
@@ -10356,7 +10367,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange = F2(
 			size,
 			_elm_lang$core$Tuple$first(range)) > -1) && (_elm_lang$core$Native_Utils.cmp(
 			size,
-			_elm_lang$core$Tuple$second(range)) < 0);
+			_elm_lang$core$Tuple$second(range)) < 1);
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$dangerRange = F2(
 	function (size, range) {
@@ -10999,6 +11010,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = F4(
 						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$dangerRange,
 						_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$Valid(numberOfTags),
 						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getDangerTagRange(settings)))));
+		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
 		return A2(
 			_elm_lang$html$Html$div,
 			{ctor: '[]'},
@@ -11031,7 +11043,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = F4(
 									_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag(
 										A3(
 											_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$coloredText,
-											_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$English,
+											userIsoLanguage,
 											_elm_lang$core$Basics$toString(numberOfTags),
 											_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tagStyle(themeBasedOnRange))),
 									_1: {
@@ -11050,7 +11062,8 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = F4(
 												_elm_lang$html$Html$span,
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('has-text-success'),
+													_0: _elm_lang$html$Html_Attributes$class(
+														_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$textStyle(themeBasedOnRange)),
 													_1: {ctor: '[]'}
 												},
 												{
@@ -11059,39 +11072,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = F4(
 														A2(_elm_lang$core$String$repeat, numberOfTags, '•')),
 													_1: {ctor: '[]'}
 												}),
-											_1: {
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$span,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('has-text-grey-light'),
-														_1: {ctor: '[]'}
-													},
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html$text(
-															A2(_elm_lang$core$String$repeat, 4, '•')),
-														_1: {ctor: '[]'}
-													}),
-												_1: {
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$span,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('has-text-danger'),
-															_1: {ctor: '[]'}
-														},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text(
-																A2(_elm_lang$core$String$repeat, 3, '•')),
-															_1: {ctor: '[]'}
-														}),
-													_1: {ctor: '[]'}
-												}
-											}
+											_1: {ctor: '[]'}
 										}
 									}
 								}),
