@@ -3,7 +3,7 @@ module Bubblegum.Tag.Helper exposing (..)
 {-| Helper to keep the noise away from Widget
 -}
 
-import Bubblegum.Entity.Outcome as Outcome exposing (..)
+import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
@@ -16,7 +16,7 @@ import Bubblegum.Tag.VocabularyHelper
         , getSuggestion
         , getUserLanguage
         )
-import Maybe exposing (..)
+import Maybe exposing (Maybe(..))
 import Set as Set
 import Tuple exposing (first, second)
 

@@ -1,4 +1,4 @@
-module Bubblegum.Tag.Adapter exposing (..)
+module Bubblegum.Tag.Adapter exposing (Model)
 
 {-| Adapter which converts event handlers for the tag widget
 -}

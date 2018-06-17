@@ -13,16 +13,25 @@ Please have a look at the main [documentation](https://github.com/flarebyte/bubb
 
 -}
 
-import Bubblegum.Entity.Outcome as Outcome exposing (..)
+import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Tag.Adapter as TagAdapter
-import Bubblegum.Tag.BulmaHelper exposing (..)
-import Bubblegum.Tag.Helper exposing (getRemainingSuggestions, getUserIsoLanguage)
+import Bubblegum.Tag.BulmaHelper
+    exposing
+        ( appendHtmlIfSuccess
+        , dangerHelp
+        , dropdownActiveStatus
+        , infoHelp
+        , mainBox
+        , searchDropdown
+        , selectedTags
+        , suggestionDropdown
+        , widgetLabel
+        )
+import Bubblegum.Tag.Helper exposing (getRemainingSuggestions)
 import Bubblegum.Tag.VocabularyHelper exposing (..)
 import Html exposing (..)
-import Html.Attributes exposing (..)
-import Html.Events exposing (onClick, onInput, onMouseEnter, onMouseOut)
 
 
 {-| View for the widget

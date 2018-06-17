@@ -1,4 +1,15 @@
-module Bubblegum.Tag.BulmaHelper exposing (..)
+module Bubblegum.Tag.BulmaHelper
+    exposing
+        ( appendHtmlIfSuccess
+        , dangerHelp
+        , dropdownActiveStatus
+        , infoHelp
+        , mainBox
+        , searchDropdown
+        , selectedTags
+        , suggestionDropdown
+        , widgetLabel
+        )
 
 {-| The Bulma css framework is used for styling the widget.
 
@@ -8,7 +19,7 @@ This helper facilitates the creation of Bulma styled html elements.
 
 -}
 
-import Bubblegum.Entity.Outcome as Outcome exposing (..)
+import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Tag.Adapter as TagAdapter
@@ -23,7 +34,7 @@ import Bubblegum.Tag.Helper
         , textStyle
         , themeProgress
         )
-import Bubblegum.Tag.Internationalization exposing (..)
+import Bubblegum.Tag.Internationalization exposing (translateDangerTag, translateInfoTag, translateWarningTag)
 import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..))
 import Bubblegum.Tag.VocabularyHelper exposing (..)
 import Html exposing (..)
@@ -31,7 +42,6 @@ import Html.Attributes as Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 import List
 import String exposing (join)
-import Tuple exposing (first, second)
 
 
 {-| Append some html code when the outcome is successful otherwise hide a warning in the html
@@ -100,34 +110,10 @@ asClass2 a b =
     [ b, a ] |> asClass
 
 
-asClass3 : String -> String -> String -> Attribute msg
-asClass3 a b c =
-    [ c, b, a ] |> asClass
-
-
-progressBar : ( String, String ) -> Html msg
-progressBar tuple =
-    progress [ second tuple |> asClass3 "progress" "is-small", Attributes.max "100", first tuple |> value ]
-        [ text (first tuple ++ "%") ]
-
-
-styledIcon : String -> String -> Html msg
-styledIcon iconName iconTextStyle =
-    span [ asClass2 "icon" iconTextStyle ]
-        [ i [ asClass2 "fas" iconName ]
-            []
-        ]
-
-
 tag : StyledText -> Html msg
 tag tagInfo =
     span [ asClass2 "tag" tagInfo.style, Attributes.title tagInfo.title ]
         [ text tagInfo.text ]
-
-
-tagsAddons : List (Html msg) -> Html msg
-tagsAddons list =
-    div [ class "tags has-addons" ] list
 
 
 tags : List (Html msg) -> Html msg
@@ -178,22 +164,6 @@ coloredText userIsoLanguage text style =
     }
 
 
-infoText2 : IsoLanguage -> String -> StyledText
-infoText2 userIsoLanguage text =
-    { text = text
-    , style = "is-primary"
-    , title = translateInfoTag userIsoLanguage
-    }
-
-
-successTagText : IsoLanguage -> String -> StyledText
-successTagText userIsoLanguage text =
-    { text = text
-    , style = "is-success"
-    , title = translateSuccessTag userIsoLanguage
-    }
-
-
 warningTagText : IsoLanguage -> String -> StyledText
 warningTagText userIsoLanguage text =
     { text = text
@@ -215,11 +185,6 @@ tagsInfo userIsoLanguage list =
     list |> List.map (infoText userIsoLanguage) |> List.map tag
 
 
-tagsSuccess : IsoLanguage -> List String -> List (Html msg)
-tagsSuccess userIsoLanguage list =
-    list |> List.map (successTagText userIsoLanguage) |> List.map tag
-
-
 tagsWarning : IsoLanguage -> List String -> List (Html msg)
 tagsWarning userIsoLanguage list =
     list |> List.map (warningTagText userIsoLanguage) |> List.map tag
@@ -228,11 +193,6 @@ tagsWarning userIsoLanguage list =
 tagsDanger : IsoLanguage -> List String -> List (Html msg)
 tagsDanger userIsoLanguage list =
     list |> List.map (dangerTagText userIsoLanguage) |> List.map tag
-
-
-groupFields : List (Html msg) -> Html msg
-groupFields list =
-    div [ class "field is-grouped is-grouped-multiline" ] list
 
 
 rtlOrLtr : Bool -> String

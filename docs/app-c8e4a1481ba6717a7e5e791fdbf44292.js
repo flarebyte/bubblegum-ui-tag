@@ -9403,11 +9403,9 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitVeryLargeRange =
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitMediumRange = {ctor: '_Tuple2', _0: 0, _1: 128};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRange = {ctor: '_Tuple2', _0: 0, _1: 32};
 
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$compactUriRegex = _elm_lang$core$Regex$regex('^[a-z][a-z0-9_.-]{1,15}:\\w[^\\s]*$');
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$helperCompactUri = function (value) {
-	return A2(
-		_elm_lang$core$Regex$contains,
-		_elm_lang$core$Regex$regex('^[a-z][a-z0-9_.-]{1,15}:\\w[^\\s]*$'),
-		value);
+	return A2(_elm_lang$core$Regex$contains, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$compactUriRegex, value);
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$listMatchCompactUri = function (outcome) {
 	return A3(
@@ -10825,16 +10823,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$widgetLabel = function
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$rtlOrLtr = function (value) {
 	return value ? 'rtl' : 'ltr';
 };
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$groupFields = function (list) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
-			_1: {ctor: '[]'}
-		},
-		list);
-};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dangerTagText = F2(
 	function (userIsoLanguage, text) {
 		return {
@@ -10849,22 +10837,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$warningTagText = F2(
 			text: text,
 			style: 'is-warning',
 			title: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateWarningTag(userIsoLanguage)
-		};
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$successTagText = F2(
-	function (userIsoLanguage, text) {
-		return {
-			text: text,
-			style: 'is-success',
-			title: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateSuccessTag(userIsoLanguage)
-		};
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$infoText2 = F2(
-	function (userIsoLanguage, text) {
-		return {
-			text: text,
-			style: 'is-primary',
-			title: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$translateInfoTag(userIsoLanguage)
 		};
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$coloredText = F3(
@@ -10893,16 +10865,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tags = function (list)
 		},
 		list);
 };
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsAddons = function (list) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('tags has-addons'),
-			_1: {ctor: '[]'}
-		},
-		list);
-};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass = function (list) {
 	return _elm_lang$html$Html_Attributes$class(
 		A2(
@@ -10921,28 +10883,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass2 = F2(
 					_0: a,
 					_1: {ctor: '[]'}
 				}
-			});
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$styledIcon = F2(
-	function (iconName, iconTextStyle) {
-		return A2(
-			_elm_lang$html$Html$span,
-			{
-				ctor: '::',
-				_0: A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass2, 'icon', iconTextStyle),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$i,
-					{
-						ctor: '::',
-						_0: A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass2, 'fas', iconName),
-						_1: {ctor: '[]'}
-					},
-					{ctor: '[]'}),
-				_1: {ctor: '[]'}
 			});
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag = function (tagInfo) {
@@ -11065,16 +11005,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsInfo = F2(
 				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$infoText(userIsoLanguage),
 				list));
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsSuccess = F2(
-	function (userIsoLanguage, list) {
-		return A2(
-			_elm_lang$core$List$map,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag,
-			A2(
-				_elm_lang$core$List$map,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$successTagText(userIsoLanguage),
-				list));
-	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsWarning = F2(
 	function (userIsoLanguage, list) {
 		return A2(
@@ -11125,54 +11055,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dangerHelp = function 
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownActiveStatus = function (value) {
 	return value ? A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass2, 'dropdown', 'is-active') : _elm_lang$html$Html_Attributes$class('dropdown');
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass3 = F3(
-	function (a, b, c) {
-		return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass(
-			{
-				ctor: '::',
-				_0: c,
-				_1: {
-					ctor: '::',
-					_0: b,
-					_1: {
-						ctor: '::',
-						_0: a,
-						_1: {ctor: '[]'}
-					}
-				}
-			});
-	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$progressBar = function (tuple) {
-	return A2(
-		_elm_lang$html$Html$progress,
-		{
-			ctor: '::',
-			_0: A3(
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$asClass3,
-				'progress',
-				'is-small',
-				_elm_lang$core$Tuple$second(tuple)),
-			_1: {
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$max('100'),
-				_1: {
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$value(
-						_elm_lang$core$Tuple$first(tuple)),
-					_1: {ctor: '[]'}
-				}
-			}
-		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					_elm_lang$core$Tuple$first(tuple),
-					'%')),
-			_1: {ctor: '[]'}
-		});
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess = F3(
 	function (ifSuccess, outcome, attributes) {

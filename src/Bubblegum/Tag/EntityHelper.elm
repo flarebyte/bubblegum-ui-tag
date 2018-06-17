@@ -4,7 +4,7 @@ module Bubblegum.Tag.EntityHelper exposing (..)
 -}
 
 import Bubblegum.Entity.Attribute as Attribute
-import Bubblegum.Entity.Outcome as Outcome exposing (..)
+import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
 import Bubblegum.Entity.Validation as Validation
 import Bubblegum.Tag.HelperLimits exposing (compactUriLimitList, limitList, limitMediumRangeNotEmpty, limitSmallRangeNotEmpty)
 import Regex
@@ -89,6 +89,11 @@ listMatchCompactUri outcome =
     Outcome.check (\list -> List.all helperCompactUri list) "unsatisfied-constraint:list-compact-uri" outcome
 
 
+compactUriRegex : Regex.Regex
+compactUriRegex =
+    Regex.regex "^[a-z][a-z0-9_.-]{1,15}:\\w[^\\s]*$"
+
+
 helperCompactUri : String -> Bool
 helperCompactUri value =
-    Regex.contains (Regex.regex "^[a-z][a-z0-9_.-]{1,15}:\\w[^\\s]*$") value
+    Regex.contains compactUriRegex value

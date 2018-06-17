@@ -6,7 +6,7 @@ module Bubblegum.Tag.VocabularyHelper exposing (..)
 
 -}
 
-import Bubblegum.Entity.Outcome as Outcome exposing (..)
+import Bubblegum.Entity.Outcome exposing (..)
 import Bubblegum.Entity.SettingsEntity as SettingsEntity
 import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Entity.Validation as Validation
