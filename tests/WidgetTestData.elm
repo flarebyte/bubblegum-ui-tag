@@ -61,7 +61,8 @@ defaultState: StateEntity.Model
 defaultState = {
     attributes = [
         attr ui_suggesting "true"
-        , attr ui_selected "id:suggestion:1"
+        , attrs ui_selected ["id:suggestion:1", "id:suggestion:3"]
+        , attrs ui_selectable ["id:suggestion:2", "id:suggestion:4", "id:suggestion:5", "id:suggestion:6", "id:suggestion:7"]
     ]
  }          
       
@@ -224,22 +225,21 @@ selectorsDangerHelp = [ Selector.classes ["help", "is-danger"] ]
 withStateSelected: Int -> StateEntity.Model
 withStateSelected value = {
     attributes = [
-        attr ui_selected (createString value)
+        attr ui_selected ("id:suggestion:" ++ (toString value))
     ]
  }
 
 fuzzySelected : Fuzzer Int
-fuzzySelected = intRange 1 1
+fuzzySelected = intRange 1 9
 
 fuzzyNotSelected : Fuzzer Int
 fuzzyNotSelected = intRange 100 400
 
 selectorsSelected : List Selector
-selectorsSelected = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+selectorsSelected = [ Selector.class "tag", Selector.class "is-dark", Selector.text "1" ]
 
 selectorsNotSelected : List Selector
-selectorsNotSelected = [ Selector.class "bubblegum-tag__input",
-    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+selectorsNotSelected = [ Selector.class "tag", Selector.class "is-dark", Selector.text "1" ]
 
 
 
@@ -456,6 +456,14 @@ attr key value =
     , key = key
     , facets = []
     , values = [value]
+    }  
+
+attrs: String -> List String -> Attribute.Model
+attrs key values =
+     { id = Nothing
+    , key = key
+    , facets = []
+    , values = values
     }  
 
 ipsum =
