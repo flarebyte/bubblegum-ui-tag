@@ -24,14 +24,13 @@ import Bubblegum.Tag.Helper
         , themeProgress
         )
 import Bubblegum.Tag.Internationalization exposing (..)
-import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
+import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..))
 import Bubblegum.Tag.VocabularyHelper exposing (..)
-import Debug as Debug
 import Html exposing (..)
 import Html.Attributes as Attributes exposing (..)
-import Html.Events exposing (onClick, onInput, onMouseEnter, onMouseOut)
+import Html.Events exposing (onClick, onInput)
 import List
-import String exposing (join, lines, words)
+import String exposing (join)
 import Tuple exposing (first, second)
 
 
@@ -286,8 +285,7 @@ searchDropdown searchLabel adapter =
                     ]
                 , p [ class "control" ]
                     [ button
-                        [ attribute "aria-controls" "dropdown-menu7" --TODO check this
-                        , attribute "aria-haspopup" "true"
+                        [ attribute "aria-haspopup" "true"
                         , class "button"
                         , onClick adapter.onToggleDropbox
                         ]
@@ -369,8 +367,8 @@ dropdownActiveStatus value =
 -- selected
 
 
-selectedTag : TagAdapter.Model msg -> IsoLanguage -> SettingsEntity.Model -> String -> Html msg
-selectedTag adapter userIsoLanguage settings id =
+selectedTag : TagAdapter.Model msg -> SettingsEntity.Model -> String -> Html msg
+selectedTag adapter settings id =
     let
         addLabel =
             appendHtmlIfSuccess text (getConstituentLabel settings id)
@@ -391,10 +389,7 @@ selectedTag adapter userIsoLanguage settings id =
 selectedTags : TagAdapter.Model msg -> SettingsEntity.Model -> SettingsEntity.Model -> StateEntity.Model -> Html msg
 selectedTags adapter userSettings settings state =
     let
-        userIsoLanguage =
-            getUserIsoLanguage userSettings
-
         selectedIds =
             getSelected state |> Outcome.toMaybe |> Maybe.withDefault []
     in
-    selectedIds |> List.map (\id -> selectedTag adapter userIsoLanguage settings id) |> tagsGroup userSettings settings state
+    selectedIds |> List.map (\id -> selectedTag adapter settings id) |> tagsGroup userSettings settings state

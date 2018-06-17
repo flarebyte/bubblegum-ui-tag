@@ -10749,18 +10749,14 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown = F2(
 												_elm_lang$html$Html$button,
 												{
 													ctor: '::',
-													_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-controls', 'dropdown-menu7'),
+													_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-haspopup', 'true'),
 													_1: {
 														ctor: '::',
-														_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-haspopup', 'true'),
+														_0: _elm_lang$html$Html_Attributes$class('button'),
 														_1: {
 															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('button'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Events$onClick(adapter.onToggleDropbox),
-																_1: {ctor: '[]'}
-															}
+															_0: _elm_lang$html$Html_Events$onClick(adapter.onToggleDropbox),
+															_1: {ctor: '[]'}
 														}
 													}
 												},
@@ -11432,8 +11428,8 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown = F
 			addSuggestions(
 				{ctor: '[]'}));
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F4(
-	function (adapter, userIsoLanguage, settings, id) {
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F3(
+	function (adapter, settings, id) {
 		var addDescription = A2(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
 			_elm_lang$html$Html_Attributes$title,
@@ -11498,7 +11494,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTags = F4(
 			{ctor: '[]'},
 			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
 				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected(state)));
-		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
 		return A4(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup,
 			userSettings,
@@ -11507,7 +11502,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTags = F4(
 			A2(
 				_elm_lang$core$List$map,
 				function (id) {
-					return A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag, adapter, userIsoLanguage, settings, id);
+					return A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag, adapter, settings, id);
 				},
 				selectedIds));
 	});
