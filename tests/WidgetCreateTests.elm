@@ -95,6 +95,14 @@ suite =
                 \value -> viewWidgetWithSettings (withSettingsLabel value)
                     |> findWarningDiv           
 
+                , fuzz fuzzySearchLabel "Correct settings for Label related to the search field" <|
+                \value -> viewWidgetWithSettings (withSettingsSearchLabel value)
+                    |> findComponent selectorsSearchLabel
+
+              , fuzz fuzzyNotSearchLabel "Wrong settings for Label related to the search field" <|
+                \value -> viewWidgetWithSettings (withSettingsSearchLabel value)
+                    |> findWarningDiv           
+
                 , fuzz fuzzyUserLanguage "Correct settings for Language used by the user" <|
                 \value -> viewWidgetWithUserSettings (withUserSettingsUserLanguage value)
                     |> findComponent selectorsUserLanguage

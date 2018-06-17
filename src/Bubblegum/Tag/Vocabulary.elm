@@ -77,6 +77,13 @@ ui_label =
     "ui:label"
 
 
+{-| Label related to the search field. (String)
+-}
+ui_searchLabel : String
+ui_searchLabel =
+    "ui:search-label"
+
+
 {-| Language used by the user. (String)
 -}
 ui_userLanguage : String

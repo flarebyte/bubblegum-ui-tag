@@ -89,6 +89,14 @@ getLabel settings =
         |> Validation.withinStringCharsRange limitMediumRangeNotEmpty
 
 
+{-| Label related to the search field
+-}
+getSearchLabel : SettingsEntity.Model -> Outcome String
+getSearchLabel settings =
+    findString ui_searchLabel settings.attributes
+        |> Validation.withinStringCharsRange limitSmallRangeNotEmpty
+
+
 {-| Language used by the user
 -}
 getUserLanguage : SettingsEntity.Model -> Outcome String

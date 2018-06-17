@@ -49,6 +49,9 @@ view adapter userSettings settings state =
         addDangerHelp =
             appendHtmlIfSuccess dangerHelp (getDangerHelp state)
 
+        searchLabel =
+            getSearchLabel settings |> Outcome.toMaybe |> Maybe.withDefault ""
+
         suggestions =
             getRemainingSuggestions settings state
 
@@ -60,7 +63,7 @@ view adapter userSettings settings state =
         ([ selectedTags adapter userSettings settings state ]
             ++ addLabel []
             ++ [ div [ isDropdownActive ]
-                    [ searchDropdown adapter
+                    [ searchDropdown searchLabel adapter
                     , suggestionDropdown adapter userSettings settings suggestions
                     ]
                ]

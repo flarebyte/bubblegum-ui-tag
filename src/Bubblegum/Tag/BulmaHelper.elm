@@ -271,12 +271,8 @@ dangerHelp helpText =
         [ text helpText ]
 
 
-searchDropdown : TagAdapter.Model msg -> Html msg
-searchDropdown adapter =
-    let
-        placeholder =
-            "Search"
-    in
+searchDropdown : String -> TagAdapter.Model msg -> Html msg
+searchDropdown searchLabel adapter =
     div [ class "dropdown-trigger" ]
         [ div [ class "level" ]
             [ div [ class "field has-addons" ]
@@ -296,7 +292,7 @@ searchDropdown adapter =
                         , onClick adapter.onToggleDropbox
                         ]
                         [ span []
-                            [ text placeholder ]
+                            [ text searchLabel ]
                         , span [ class "icon is-small" ]
                             [ i [ attribute "aria-hidden" "true", class "fas fa-angle-down" ]
                                 []

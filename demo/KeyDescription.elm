@@ -57,6 +57,11 @@ descLabel =
     "Label related to the field"
 
 
+descSearchLabel : String
+descSearchLabel =
+    "Label related to the search field"
+
+
 descUserLanguage : String
 descUserLanguage =
     "Language used by the user"

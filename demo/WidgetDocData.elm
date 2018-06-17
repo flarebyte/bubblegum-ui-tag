@@ -25,6 +25,7 @@ tagWidgetDoc =
         [ createKey ui_suggestion ZeroOrOne [ "id:suggestion:1", "id:suggestion:2", "id:suggestion:3", "other" ] descSuggestion
         , createKey ui_help ZeroOrOne [ "Lorem ipsum dolor sit amet consectetur adipiscing elit.", "助けて", "other" ] descHelp
         , createKey ui_label ZeroOrOne [ "Some label", "ラベル", "ضع الكلمة المناسبة", "other" ] descLabel
+        , createKey ui_searchLabel ZeroOrOne [ "Search", "搜索", "пошук", "other" ] descSearchLabel
         , createKey ui_successMinimumTags ZeroOrOne [ "0", "2", "4", "8", "16", "32", "-5" ] descSuccessMinimumTags
         , createKey ui_successMaximumTags ZeroOrOne [ "0", "2", "4", "8", "16", "32", "-5" ] descSuccessMaximumTags
         , createKey ui_dangerMinimumTags ZeroOrOne [ "0", "2", "4", "8", "16", "32", "-5" ] descDangerMinimumTags

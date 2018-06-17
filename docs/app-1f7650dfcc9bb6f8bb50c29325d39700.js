@@ -9382,6 +9382,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMaximumTags =
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMinimumTags = 'ui:success-minimum-tags';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userRightToLeft = 'ui:user-right-to-left';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userLanguage = 'ui:user-language';
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_searchLabel = 'ui:search-label';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_label = 'ui:label';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_help = 'ui:help';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp = 'ui:danger-help';
@@ -9563,6 +9564,12 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getUserLanguage =
 		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
 		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRangeNotEmpty,
 		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userLanguage, settings.attributes));
+};
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSearchLabel = function (settings) {
+	return A2(
+		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
+		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRangeNotEmpty,
+		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_searchLabel, settings.attributes));
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getLabel = function (settings) {
 	return A2(
@@ -10653,158 +10660,158 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$pickSingularO
 		return (_elm_lang$core$Native_Utils.cmp(howMany, 2) < 0) ? _elm_lang$core$Tuple$first(singularOrPlural) : _elm_lang$core$Tuple$second(singularOrPlural);
 	});
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown = function (adapter) {
-	var placeholder = 'Search';
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('dropdown-trigger'),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('level'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('field has-addons'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$p,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('control has-icons-left'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$input,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('input'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Events$onInput(adapter.onSearchInput),
-												_1: {ctor: '[]'}
-											}
-										},
-										{ctor: '[]'}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$i,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('fas fa-search'),
-														_1: {ctor: '[]'}
-													},
-													{ctor: '[]'}),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}
-								}),
-							_1: {
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown = F2(
+	function (searchLabel, adapter) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('dropdown-trigger'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('level'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('field has-addons'),
+								_1: {ctor: '[]'}
+							},
+							{
 								ctor: '::',
 								_0: A2(
 									_elm_lang$html$Html$p,
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('control'),
+										_0: _elm_lang$html$Html_Attributes$class('control has-icons-left'),
 										_1: {ctor: '[]'}
 									},
 									{
 										ctor: '::',
 										_0: A2(
-											_elm_lang$html$Html$button,
+											_elm_lang$html$Html$input,
 											{
 												ctor: '::',
-												_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-controls', 'dropdown-menu7'),
+												_0: _elm_lang$html$Html_Attributes$class('input'),
 												_1: {
 													ctor: '::',
-													_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-haspopup', 'true'),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('button'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Events$onClick(adapter.onToggleDropbox),
-															_1: {ctor: '[]'}
-														}
-													}
+													_0: _elm_lang$html$Html_Events$onInput(adapter.onSearchInput),
+													_1: {ctor: '[]'}
 												}
 											},
-											{
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$span,
-													{ctor: '[]'},
-													{
+											{ctor: '[]'}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$span,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('icon is-small is-left'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$i,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$class('fas fa-search'),
+															_1: {ctor: '[]'}
+														},
+														{ctor: '[]'}),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$p,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('control'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$button,
+												{
+													ctor: '::',
+													_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-controls', 'dropdown-menu7'),
+													_1: {
 														ctor: '::',
-														_0: _elm_lang$html$Html$text(placeholder),
-														_1: {ctor: '[]'}
-													}),
-												_1: {
+														_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-haspopup', 'true'),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$class('button'),
+															_1: {
+																ctor: '::',
+																_0: _elm_lang$html$Html_Events$onClick(adapter.onToggleDropbox),
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												},
+												{
 													ctor: '::',
 													_0: A2(
 														_elm_lang$html$Html$span,
+														{ctor: '[]'},
 														{
 															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('icon is-small'),
-															_1: {ctor: '[]'}
-														},
-														{
-															ctor: '::',
-															_0: A2(
-																_elm_lang$html$Html$i,
-																{
-																	ctor: '::',
-																	_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-hidden', 'true'),
-																	_1: {
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$class('fas fa-angle-down'),
-																		_1: {ctor: '[]'}
-																	}
-																},
-																{ctor: '[]'}),
+															_0: _elm_lang$html$Html$text(searchLabel),
 															_1: {ctor: '[]'}
 														}),
-													_1: {ctor: '[]'}
-												}
-											}),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$span,
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$class('icon is-small'),
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: A2(
+																	_elm_lang$html$Html$i,
+																	{
+																		ctor: '::',
+																		_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-hidden', 'true'),
+																		_1: {
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Attributes$class('fas fa-angle-down'),
+																			_1: {ctor: '[]'}
+																		}
+																	},
+																	{ctor: '[]'}),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			});
+	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$widgetLabel = function (widgetText) {
 	return A2(
 		_elm_lang$html$Html$label,
@@ -11518,6 +11525,11 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
 					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isSuggesting(state))));
 		var suggestions = A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getRemainingSuggestions, settings, state);
+		var searchLabel = A2(
+			_elm_lang$core$Maybe$withDefault,
+			'',
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSearchLabel(settings)));
 		var addDangerHelp = A2(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dangerHelp,
@@ -11558,7 +11570,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 									},
 									{
 										ctor: '::',
-										_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown(adapter),
+										_0: A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown, searchLabel, adapter),
 										_1: {
 											ctor: '::',
 											_0: A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown, adapter, userSettings, settings, suggestions),
@@ -11604,6 +11616,7 @@ var _flarebyte$bubblegum_ui_tag$KeyDescription$descSuccessMaximumTags = 'The max
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSuccessMinimumTags = 'The minimum number of tags needed for successful content';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descUserRightToLeft = 'Whether the user is using right to left';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage = 'Language used by the user';
+var _flarebyte$bubblegum_ui_tag$KeyDescription$descSearchLabel = 'Label related to the search field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descLabel = 'Label related to the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descHelp = 'Some help tip related to the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descDangerHelp = 'Help message to highlight an issue with the content';
@@ -11844,43 +11857,31 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 					ctor: '::',
 					_0: A4(
 						_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMinimumTags,
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_searchLabel,
 						_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 						{
 							ctor: '::',
-							_0: '0',
+							_0: 'Search',
 							_1: {
 								ctor: '::',
-								_0: '2',
+								_0: '搜索',
 								_1: {
 									ctor: '::',
-									_0: '4',
+									_0: 'пошук',
 									_1: {
 										ctor: '::',
-										_0: '8',
-										_1: {
-											ctor: '::',
-											_0: '16',
-											_1: {
-												ctor: '::',
-												_0: '32',
-												_1: {
-													ctor: '::',
-													_0: '-5',
-													_1: {ctor: '[]'}
-												}
-											}
-										}
+										_0: 'other',
+										_1: {ctor: '[]'}
 									}
 								}
 							}
 						},
-						_flarebyte$bubblegum_ui_tag$KeyDescription$descSuccessMinimumTags),
+						_flarebyte$bubblegum_ui_tag$KeyDescription$descSearchLabel),
 					_1: {
 						ctor: '::',
 						_0: A4(
 							_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMaximumTags,
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMinimumTags,
 							_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 							{
 								ctor: '::',
@@ -11911,12 +11912,12 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 									}
 								}
 							},
-							_flarebyte$bubblegum_ui_tag$KeyDescription$descSuccessMaximumTags),
+							_flarebyte$bubblegum_ui_tag$KeyDescription$descSuccessMinimumTags),
 						_1: {
 							ctor: '::',
 							_0: A4(
 								_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-								_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerMinimumTags,
+								_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_successMaximumTags,
 								_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 								{
 									ctor: '::',
@@ -11947,12 +11948,12 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 										}
 									}
 								},
-								_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerMinimumTags),
+								_flarebyte$bubblegum_ui_tag$KeyDescription$descSuccessMaximumTags),
 							_1: {
 								ctor: '::',
 								_0: A4(
 									_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-									_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerMaximumTags,
+									_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerMinimumTags,
 									_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 									{
 										ctor: '::',
@@ -11983,8 +11984,45 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 											}
 										}
 									},
-									_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerMaximumTags),
-								_1: {ctor: '[]'}
+									_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerMinimumTags),
+								_1: {
+									ctor: '::',
+									_0: A4(
+										_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
+										_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerMaximumTags,
+										_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
+										{
+											ctor: '::',
+											_0: '0',
+											_1: {
+												ctor: '::',
+												_0: '2',
+												_1: {
+													ctor: '::',
+													_0: '4',
+													_1: {
+														ctor: '::',
+														_0: '8',
+														_1: {
+															ctor: '::',
+															_0: '16',
+															_1: {
+																ctor: '::',
+																_0: '32',
+																_1: {
+																	ctor: '::',
+																	_0: '-5',
+																	_1: {ctor: '[]'}
+																}
+															}
+														}
+													}
+												}
+											}
+										},
+										_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerMaximumTags),
+									_1: {ctor: '[]'}
+								}
 							}
 						}
 					}
