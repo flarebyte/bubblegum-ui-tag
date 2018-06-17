@@ -60,6 +60,8 @@ defaultSettings = {
 defaultState: StateEntity.Model
 defaultState = {
     attributes = [
+        attr ui_suggesting "true"
+        , attr ui_selected "id:suggestion:1"
     ]
  }          
       
@@ -195,10 +197,10 @@ fuzzyNotContentRightToLeft : Fuzzer Int
 fuzzyNotContentRightToLeft= intRange 3 1000
 
 selectorsContentRightToLeft : List Selector
-selectorsContentRightToLeft = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.dir "rtl") ]
+selectorsContentRightToLeft = [ Selector.class "dropdown-content", Selector.attribute (Attributes.dir "rtl") ]
 
 selectorsNotContentRightToLeft : List Selector
-selectorsNotContentRightToLeft = [ Selector.class "bubblegum-tag__input", 
+selectorsNotContentRightToLeft = [ Selector.class "dropdown-content", 
     Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:bool") ]
 
 -- Help message to highlight an issue with the content
@@ -508,7 +510,7 @@ suggestion uid infoTags =
 
 defaultSuggestions : List String
 defaultSuggestions =
-    List.range 1 28 |> List.map (toString >> (++) "id:suggestion:")
+    List.range 1 10 |> List.map (toString >> (++) "id:suggestion:")
 
 
 getExampleAttributes : List Attribute.Model
@@ -518,27 +520,9 @@ getExampleAttributes =
         ++ suggestion 2 [ "info b" ]
         ++ suggestion 3 [ "info c", "info2" ]
         ++ suggestion 4 [ "info d" ]
-        ++ suggestion 5 [ "info e" ]
+        ++ suggestion 5 []
         ++ suggestion 6 [ "info f" ]
         ++ suggestion 7 [ "info g" ]
         ++ suggestion 8 [ "info h" ]
         ++ suggestion 9 [ "info i" ]
         ++ suggestion 10 [ "info j" ]
-        ++ suggestion 11 [ "info k" ]
-        ++ suggestion 12 [ "info l" ]
-        ++ suggestion 13 [ "info m" ]
-        ++ suggestion 14 [ "info n" ]
-        ++ suggestion 15 [ "info o" ]
-        ++ suggestion 16 [ "info p" ]
-        ++ suggestion 17 [ "info q" ]
-        ++ suggestion 18 [ "info r" ]
-        ++ suggestion 19 [ "info s" ]
-        ++ suggestion 20 [ "info t" ]
-        ++ suggestion 21 [ "info u" ]
-        ++ suggestion 22 [ "info v" ]
-        ++ suggestion 23 [ "info w" ]
-        ++ suggestion 24 [ "info x" ]
-        ++ suggestion 25 [ "info y" ]
-        ++ suggestion 26 [ "info z" ]
-        ++ suggestion 27 [ "info ab" ]
-        ++ suggestion 28 [ "info ac" ]
