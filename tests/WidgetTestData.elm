@@ -247,18 +247,18 @@ selectorsNotSelected = [ Selector.class "tag", Selector.class "is-dark", Selecto
 withStateSelectable: Int -> StateEntity.Model
 withStateSelectable value = {
     attributes = [
-        attr ui_selectable (createString value)
+        attr ui_selectable ("id:suggestion:" ++ (toString value))
     ]
  }
 
 fuzzySelectable : Fuzzer Int
-fuzzySelectable = intRange 1 1
+fuzzySelectable = constant 7
 
 fuzzyNotSelectable : Fuzzer Int
 fuzzyNotSelectable = intRange 100 400
 
 selectorsSelectable : List Selector
-selectorsSelectable = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+selectorsSelectable = [ Selector.class "is-size-6", Selector.text "label7" ]
 
 selectorsNotSelectable : List Selector
 selectorsNotSelectable = [ Selector.class "bubblegum-tag__input",
@@ -491,20 +491,20 @@ suggestion uid infoTags =
             "id:suggestion:" ++ toString uid
 
         label =
-            String.slice uid (2 * uid) ipsum
+             "label" ++ toString uid
 
         description =
-            ipsum |> String.reverse |> String.slice uid (3 * uid)
+            "description" ++ toString uid
 
         warningTags =
             if uid % 3 == 0 then
-                [ String.slice uid (uid + 5) ipsum ]
+                [ "attention" ]
             else
                 []
 
         dangerTags =
             if uid % 5 == 0 then
-                [ String.slice uid (uid + 7) ipsum |> String.reverse ]
+                [ "risk" ]
             else
                 []
     in
