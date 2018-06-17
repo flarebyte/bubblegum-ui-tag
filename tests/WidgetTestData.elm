@@ -151,29 +151,6 @@ selectorsNotUserLanguage : List Selector
 selectorsNotUserLanguage = [ Selector.class "bubblegum-tag__widget", 
     Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:within-string-chars-range:(1,32)") ]
 
-
--- Language of the content
-withUserSettingsContentLanguage: Int -> SettingsEntity.Model
-withUserSettingsContentLanguage value = {
-    attributes = [
-        attr ui_contentLanguage (createLanguageOrRandom value)
-    ]
- }
-
-fuzzyContentLanguage : Fuzzer Int
-fuzzyContentLanguage=intRange 1 1
-
-fuzzyNotContentLanguage : Fuzzer Int
-fuzzyNotContentLanguage= intRange 100 400 
-
-selectorsContentLanguage : List Selector
-selectorsContentLanguage = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
-
-selectorsNotContentLanguage : List Selector
-selectorsNotContentLanguage = [ Selector.class "bubblegum-tag__input", 
-    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:within-string-chars-range:(1,32)") ]
-
-
 -- Whether the user is using right to left
 createTrueOrRandom: Int -> String
 createTrueOrRandom number =

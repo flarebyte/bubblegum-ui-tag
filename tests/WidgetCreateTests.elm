@@ -15,15 +15,7 @@ suite =
         [ describe "Widget.view"
             [
 
-                fuzz fuzzyContentLanguage "Correct settings for Language of the content" <|
-                \value -> viewWidgetWithUserSettings (withUserSettingsContentLanguage value)
-                    |> findComponent selectorsContentLanguage
-
-             , fuzz fuzzyNotContentLanguage "Wrong settings for Language of the content" <|
-                \value -> viewWidgetWithUserSettings (withUserSettingsContentLanguage value) 
-                    |> findComponent selectorsNotContentLanguage
-
-                , fuzz fuzzyContentRightToLeft "Correct settings for Whether the content requires right to left" <|
+                fuzz fuzzyContentRightToLeft "Correct settings for Whether the content requires right to left" <|
                 \value -> viewWidgetWithUserSettings (withUserSettingsContentRightToLeft value)
                     |> findComponent selectorsContentRightToLeft
 

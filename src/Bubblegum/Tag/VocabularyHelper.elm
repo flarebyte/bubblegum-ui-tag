@@ -16,12 +16,6 @@ import Bubblegum.Tag.HelperLimits exposing (..)
 import Bubblegum.Tag.Vocabulary exposing (..)
 
 
-{-|  Language of the content -}
-getContentLanguage : SettingsEntity.Model -> Outcome String
-getContentLanguage settings =
-    findString ui_contentLanguage settings.attributes
-        |> Validation.withinStringCharsRange limitSmallRangeNotEmpty
-
 {-|  Whether the content requires right to left -}
 isContentRightToLeft : SettingsEntity.Model -> Outcome Bool
 isContentRightToLeft settings =

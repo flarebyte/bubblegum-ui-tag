@@ -1,4 +1,3 @@
-content-language,Language of the content,String,small! user attribute,en-GB;ja;ar;zh-CN-SC;ru-RUS;es;it;fr
 content-right-to-left,Whether the content requires right to left,Bool,user attribute,
 selected,The selected tags for the field,List String,state compactUris,id:suggestion:1 
 selectable,The selectable tags for the field,List String,state compactUris,id:suggestion:1;id:suggestion:2

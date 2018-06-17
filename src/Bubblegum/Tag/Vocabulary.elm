@@ -8,11 +8,6 @@ module Bubblegum.Tag.Vocabulary exposing (..)
 -}
 
 
-{-|  Language of the content. (String) -}
-ui_contentLanguage: String
-ui_contentLanguage =
-    "ui:content-language"
-
 {-|  Whether the content requires right to left. (Bool) -}
 ui_contentRightToLeft: String
 ui_contentRightToLeft =

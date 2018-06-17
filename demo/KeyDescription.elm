@@ -8,10 +8,6 @@ module KeyDescription exposing (..)
 -}
 
 
-descContentLanguage: String
-descContentLanguage =
-    "Language of the content"    
-
 descContentRightToLeft: String
 descContentRightToLeft =
     "Whether the content requires right to left"    
