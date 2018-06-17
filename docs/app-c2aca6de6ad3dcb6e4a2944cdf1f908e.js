@@ -9392,7 +9392,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting = 'ui:sug
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selectable = 'ui:selectable';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected = 'ui:selected';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentRightToLeft = 'ui:content-right-to-left';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentLanguage = 'ui:content-language';
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$compactUriLimitList = 512;
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitList = 8;
@@ -9604,12 +9603,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected = fun
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isContentRightToLeft = function (settings) {
 	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findBool, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentRightToLeft, settings.attributes);
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getContentLanguage = function (settings) {
-	return A2(
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRangeNotEmpty,
-		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentLanguage, settings.attributes));
 };
 
 var _flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
@@ -11487,7 +11480,6 @@ var _flarebyte$bubblegum_ui_tag$KeyDescription$descSuggesting = 'Suggesting is c
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSelectable = 'The selectable tags for the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSelected = 'The selected tags for the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentRightToLeft = 'Whether the content requires right to left';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentLanguage = 'Language of the content';
 
 var _flarebyte$bubblegum_ui_tag$PackageJson$Model = F5(
 	function (a, b, c, d, e) {
@@ -11517,101 +11509,56 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 		ctor: '::',
 		_0: A4(
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentLanguage,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentRightToLeft,
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 			{
 				ctor: '::',
-				_0: 'en-GB',
+				_0: 'true',
 				_1: {
 					ctor: '::',
-					_0: 'ja',
+					_0: 'false',
 					_1: {
 						ctor: '::',
-						_0: 'ar',
-						_1: {
-							ctor: '::',
-							_0: 'zh-CN-SC',
-							_1: {
-								ctor: '::',
-								_0: 'ru-RUS',
-								_1: {
-									ctor: '::',
-									_0: 'es',
-									_1: {
-										ctor: '::',
-										_0: 'it',
-										_1: {
-											ctor: '::',
-											_0: 'fr',
-											_1: {
-												ctor: '::',
-												_0: 'other',
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
+						_0: 'other',
+						_1: {ctor: '[]'}
 					}
 				}
 			},
-			_flarebyte$bubblegum_ui_tag$KeyDescription$descContentLanguage),
+			_flarebyte$bubblegum_ui_tag$KeyDescription$descContentRightToLeft),
 		_1: {
 			ctor: '::',
 			_0: A4(
 				_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentRightToLeft,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userLanguage,
 				_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 				{
 					ctor: '::',
-					_0: 'true',
+					_0: 'en-GB',
 					_1: {
 						ctor: '::',
-						_0: 'false',
+						_0: 'ja',
 						_1: {
 							ctor: '::',
-							_0: 'other',
-							_1: {ctor: '[]'}
-						}
-					}
-				},
-				_flarebyte$bubblegum_ui_tag$KeyDescription$descContentRightToLeft),
-			_1: {
-				ctor: '::',
-				_0: A4(
-					_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userLanguage,
-					_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-					{
-						ctor: '::',
-						_0: 'en-GB',
-						_1: {
-							ctor: '::',
-							_0: 'ja',
+							_0: 'ar',
 							_1: {
 								ctor: '::',
-								_0: 'ar',
+								_0: 'zh-CN-SC',
 								_1: {
 									ctor: '::',
-									_0: 'zh-CN-SC',
+									_0: 'ru-RUS',
 									_1: {
 										ctor: '::',
-										_0: 'ru-RUS',
+										_0: 'es',
 										_1: {
 											ctor: '::',
-											_0: 'es',
+											_0: 'it',
 											_1: {
 												ctor: '::',
-												_0: 'it',
+												_0: 'fr',
 												_1: {
 													ctor: '::',
-													_0: 'fr',
-													_1: {
-														ctor: '::',
-														_0: 'other',
-														_1: {ctor: '[]'}
-													}
+													_0: 'other',
+													_1: {ctor: '[]'}
 												}
 											}
 										}
@@ -11619,30 +11566,30 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 								}
 							}
 						}
-					},
-					_flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage),
-				_1: {
-					ctor: '::',
-					_0: A4(
-						_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userRightToLeft,
-						_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-						{
+					}
+				},
+				_flarebyte$bubblegum_ui_tag$KeyDescription$descUserLanguage),
+			_1: {
+				ctor: '::',
+				_0: A4(
+					_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_userRightToLeft,
+					_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
+					{
+						ctor: '::',
+						_0: 'true',
+						_1: {
 							ctor: '::',
-							_0: 'true',
+							_0: 'false',
 							_1: {
 								ctor: '::',
-								_0: 'false',
-								_1: {
-									ctor: '::',
-									_0: 'other',
-									_1: {ctor: '[]'}
-								}
+								_0: 'other',
+								_1: {ctor: '[]'}
 							}
-						},
-						_flarebyte$bubblegum_ui_tag$KeyDescription$descUserRightToLeft),
-					_1: {ctor: '[]'}
-				}
+						}
+					},
+					_flarebyte$bubblegum_ui_tag$KeyDescription$descUserRightToLeft),
+				_1: {ctor: '[]'}
 			}
 		}
 	},
