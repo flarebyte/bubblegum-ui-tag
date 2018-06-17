@@ -10312,17 +10312,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getRemainingSuggestions = F
 				},
 				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuggestion(settings)));
 	});
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getContentLanguageOrEnglish = function (settings) {
-	return A2(
-		_elm_lang$core$Maybe$withDefault,
-		'en-GB',
-		_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getContentLanguage(settings)));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getContentIsoLanguage = function (settings) {
-	return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_IsoLanguage$toIsoLanguage(
-		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getContentLanguageOrEnglish(settings));
-};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserLanguageOrEnglish = function (settings) {
 	return A2(
 		_elm_lang$core$Maybe$withDefault,
@@ -10356,11 +10345,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tagStyle = function (status
 			return 'is-dark';
 	}
 };
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$titleCharRange = {ctor: '_Tuple2', _0: 1, _1: 70};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tupleify = F2(
-	function (a, b) {
-		return {ctor: '_Tuple2', _0: a, _1: b};
-	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange = F2(
 	function (size, range) {
 		return (_elm_lang$core$Native_Utils.cmp(

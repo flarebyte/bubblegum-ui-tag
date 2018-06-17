@@ -1,4 +1,15 @@
-module Bubblegum.Tag.Helper exposing (..)
+module Bubblegum.Tag.Helper
+    exposing
+        ( ProgressStatus(..)
+        , dangerRange
+        , getRemainingSuggestions
+        , getSelectedAsList
+        , getUserIsoLanguage
+        , successRange
+        , tagStyle
+        , textStyle
+        , themeProgress
+        )
 
 {-| Helper to keep the noise away from Widget
 -}
@@ -10,7 +21,6 @@ import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
 import Bubblegum.Tag.VocabularyHelper
     exposing
         ( getConstituentLabel
-        , getContentLanguage
         , getSearch
         , getSelected
         , getSuggestion
@@ -29,16 +39,6 @@ successRange size range =
 dangerRange : Int -> ( Int, Int ) -> Bool
 dangerRange size range =
     not (successRange size range)
-
-
-tupleify : a -> b -> ( a, b )
-tupleify a b =
-    ( a, b )
-
-
-titleCharRange : ( Int, Int )
-titleCharRange =
-    ( 1, 70 )
 
 
 type ProgressStatus
@@ -88,21 +88,9 @@ getUserLanguageOrEnglish settings =
         |> Maybe.withDefault "en-GB"
 
 
-getContentLanguageOrEnglish : SettingsEntity.Model -> String
-getContentLanguageOrEnglish settings =
-    getContentLanguage settings
-        |> Outcome.toMaybe
-        |> Maybe.withDefault "en-GB"
-
-
 getUserIsoLanguage : SettingsEntity.Model -> IsoLanguage
 getUserIsoLanguage settings =
     getUserLanguageOrEnglish settings |> toIsoLanguage
-
-
-getContentIsoLanguage : SettingsEntity.Model -> IsoLanguage
-getContentIsoLanguage settings =
-    getContentLanguageOrEnglish settings |> toIsoLanguage
 
 
 getSelectedAsList : StateEntity.Model -> List String

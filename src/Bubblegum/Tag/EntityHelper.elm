@@ -1,4 +1,12 @@
-module Bubblegum.Tag.EntityHelper exposing (..)
+module Bubblegum.Tag.EntityHelper
+    exposing
+        ( findBool
+        , findIntRange
+        , findListCompactUri
+        , findListStringForId
+        , findString
+        , findStringForId
+        )
 
 {-| Basic functions for the VocabularyHelper to facilitate the retrieval of data from the configuration
 -}
