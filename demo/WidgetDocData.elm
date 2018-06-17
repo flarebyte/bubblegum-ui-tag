@@ -31,8 +31,7 @@ tagWidgetDoc =
         , createKey ui_dangerMaximumTags ZeroOrOne [ "0", "2", "4", "8", "16", "32", "-5" ] descDangerMaximumTags
         ]
     , stateAttributes =
-        [ createKey ui_contentId ZeroOrOne [ "id:aa61e603-9947-4fd8-86bb-d63a682259d0", "other" ] descContentId
-        , createKey ui_selected ZeroOrOne [ "id:suggestion:1", "other" ] descSelected
+        [ createKey ui_selected ZeroOrOne [ "id:suggestion:1", "other" ] descSelected
         , createKey ui_selectable ZeroOrOne [ "id:suggestion:1", "id:suggestion:2", "other" ] descSelectable
         , createKey ui_suggesting ZeroOrOne [ "true", "false", "other" ] descSuggesting
         , createKey ui_search ZeroOrOne [ "ipsum", "dolor", "other" ] descSearch

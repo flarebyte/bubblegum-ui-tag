@@ -7,11 +7,6 @@ module KeyDescription exposing (..)
 -}
 
 
-descContentId : String
-descContentId =
-    "The unique id of the content"
-
-
 descContentLanguage : String
 descContentLanguage =
     "Language of the content"

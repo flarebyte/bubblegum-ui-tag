@@ -308,23 +308,30 @@ searchDropdown adapter =
         ]
 
 
-dropdownMenu : List (Html msg) -> Html msg
-dropdownMenu list =
+dropdownMenu : SettingsEntity.Model -> List (Html msg) -> Html msg
+dropdownMenu userSettings list =
+    let
+        addContentRtl =
+            appendAttributeIfSuccess dir <| (isContentRightToLeft userSettings |> Outcome.map rtlOrLtr)
+    in
     div [ class "dropdown-menu", attribute "role" "menu" ]
-        [ div [ class "dropdown-content scrollable" ] list
+        [ div ([ class "dropdown-content scrollable" ] |> addContentRtl) list
         ]
 
 
-suggestionDropdown : TagAdapter.Model msg -> IsoLanguage -> SettingsEntity.Model -> Outcome (List String) -> Html msg
-suggestionDropdown adapter userIsoLanguage settings outcomeSuggestionIds =
+suggestionDropdown : TagAdapter.Model msg -> SettingsEntity.Model -> SettingsEntity.Model -> Outcome (List String) -> Html msg
+suggestionDropdown adapter userSettings settings outcomeSuggestionIds =
     let
+        userIsoLanguage =
+            getUserIsoLanguage userSettings
+
         anySuggestionTag =
             suggestionTag adapter userIsoLanguage settings
 
         addSuggestions =
             appendListHtmlIfSuccess (\list -> List.map anySuggestionTag list) outcomeSuggestionIds
     in
-    ([] |> addSuggestions) |> dropdownMenu
+    ([] |> addSuggestions) |> dropdownMenu userSettings
 
 
 suggestionTag : TagAdapter.Model msg -> IsoLanguage -> SettingsEntity.Model -> String -> Html msg
@@ -373,11 +380,11 @@ selectedTag adapter userIsoLanguage settings id =
             appendHtmlIfSuccess text (getConstituentLabel settings id)
 
         addDescription =
-            appendHtmlIfSuccess text (getConstituentDescription settings id)
+            appendAttributeIfSuccess title (getConstituentDescription settings id)
     in
     div [ class "control" ]
         [ div [ class "tags has-addons", onClick (adapter.onDeleteTag id) ]
-            [ span [ class "tag is-primary" ]
+            [ span ([ class "tag is-primary" ] |> addDescription)
                 ([] |> addLabel)
             , span [ class "tag is-delete" ]
                 []

@@ -15,14 +15,6 @@ import Bubblegum.Tag.HelperLimits exposing (..)
 import Bubblegum.Tag.Vocabulary exposing (..)
 
 
-{-| The unique id of the content
--}
-getContentId : StateEntity.Model -> Outcome String
-getContentId settings =
-    findString ui_contentId settings.attributes
-        |> Validation.matchCompactUri
-
-
 {-| Language of the content
 -}
 getContentLanguage : SettingsEntity.Model -> Outcome String

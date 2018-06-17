@@ -9392,7 +9392,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selectable = 'ui:sel
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected = 'ui:selected';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentRightToLeft = 'ui:content-right-to-left';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentLanguage = 'ui:content-language';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentId = 'ui:content-id';
 
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$compactUriLimitList = 512;
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitList = 8;
@@ -9606,10 +9605,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getContentLanguag
 		_flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$withinStringCharsRange,
 		_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_HelperLimits$limitSmallRangeNotEmpty,
 		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentLanguage, settings.attributes));
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getContentId = function (settings) {
-	return _flarebyte$bubblegum_entity$Bubblegum_Entity_Validation$matchCompactUri(
-		A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findString, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentId, settings.attributes));
 };
 
 var _flarebyte$bubblegum_ui_tag$Ipsum$ipsumPart = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mauris dolor, suscipit at nulla a, molestie scelerisque lectus. Nullam quis leo a felis auctor mollis ac vel turpis. Praesent eleifend ut sem et hendrerit. Vivamus sagittis tortor ipsum, eu suscipit lectus accumsan a. Vivamus elit ante, ornare vitae sem at, ornare eleifend nibh. Mauris venenatis nunc sit amet leo aliquam, in ornare quam vehicula. Morbi consequat ante sed felis semper egestas. Donec efficitur suscipit ipsum vitae ultrices. Quisque eget vehicula odio. Aliquam vitae posuere mauris. Nulla ac pulvinar felis. Integer odio libero, vulputate in erat in, tristique cursus erat.';
@@ -10658,31 +10653,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Internationalization$pickSingularO
 		return (_elm_lang$core$Native_Utils.cmp(howMany, 2) < 0) ? _elm_lang$core$Tuple$first(singularOrPlural) : _elm_lang$core$Tuple$second(singularOrPlural);
 	});
 
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownMenu = function (list) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('dropdown-menu'),
-			_1: {
-				ctor: '::',
-				_0: A2(_elm_lang$html$Html_Attributes$attribute, 'role', 'menu'),
-				_1: {ctor: '[]'}
-			}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('dropdown-content scrollable'),
-					_1: {ctor: '[]'}
-				},
-				list),
-			_1: {ctor: '[]'}
-		});
-};
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown = function (adapter) {
 	var placeholder = 'Search';
 	return A2(
@@ -11246,6 +11216,40 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$mainBox = F3(
 					})),
 			list);
 	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownMenu = F2(
+	function (userSettings, list) {
+		var addContentRtl = A2(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
+			_elm_lang$html$Html_Attributes$dir,
+			A2(
+				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$rtlOrLtr,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isContentRightToLeft(userSettings)));
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('dropdown-menu'),
+				_1: {
+					ctor: '::',
+					_0: A2(_elm_lang$html$Html_Attributes$attribute, 'role', 'menu'),
+					_1: {ctor: '[]'}
+				}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					addContentRtl(
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('dropdown-content scrollable'),
+							_1: {ctor: '[]'}
+						}),
+					list),
+				_1: {ctor: '[]'}
+			});
+	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendListHtmlIfSuccess = F3(
 	function (ifSuccess, outcome, htmlList) {
 		var _p1 = outcome;
@@ -11406,7 +11410,8 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag = F4(
 			});
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown = F4(
-	function (adapter, userIsoLanguage, settings, outcomeSuggestionIds) {
+	function (adapter, userSettings, settings, outcomeSuggestionIds) {
+		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
 		var anySuggestionTag = A3(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionTag, adapter, userIsoLanguage, settings);
 		var addSuggestions = A2(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendListHtmlIfSuccess,
@@ -11414,15 +11419,17 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown = F
 				return A2(_elm_lang$core$List$map, anySuggestionTag, list);
 			},
 			outcomeSuggestionIds);
-		return _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownMenu(
+		return A2(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$dropdownMenu,
+			userSettings,
 			addSuggestions(
 				{ctor: '[]'}));
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F4(
 	function (adapter, userIsoLanguage, settings, id) {
 		var addDescription = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
-			_elm_lang$html$Html$text,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
+			_elm_lang$html$Html_Attributes$title,
 			A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getConstituentDescription, settings, id));
 		var addLabel = A2(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
@@ -11453,11 +11460,12 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$selectedTag = F4(
 						ctor: '::',
 						_0: A2(
 							_elm_lang$html$Html$span,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('tag is-primary'),
-								_1: {ctor: '[]'}
-							},
+							addDescription(
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('tag is-primary'),
+									_1: {ctor: '[]'}
+								}),
 							addLabel(
 								{ctor: '[]'})),
 						_1: {
@@ -11509,7 +11517,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 				false,
 				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
 					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isSuggesting(state))));
-		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
 		var suggestions = A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getRemainingSuggestions, settings, state);
 		var addDangerHelp = A2(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
@@ -11523,21 +11530,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$widgetLabel,
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getLabel(settings));
-		var addContentRtl = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
-			_elm_lang$html$Html_Attributes$dir,
-			A2(
-				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$rtlOrLtr,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isContentRightToLeft(userSettings)));
-		var addContentLanguage = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
-			_elm_lang$html$Html_Attributes$lang,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getContentLanguage(userSettings));
-		var addContentId = A2(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
-			_elm_lang$html$Html_Attributes$id,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getContentId(state));
 		return A3(
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$mainBox,
 			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getUserLanguage(userSettings),
@@ -11569,7 +11561,7 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Widget$view = F4(
 										_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown(adapter),
 										_1: {
 											ctor: '::',
-											_0: A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown, adapter, userIsoLanguage, settings, suggestions),
+											_0: A4(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$suggestionDropdown, adapter, userSettings, settings, suggestions),
 											_1: {ctor: '[]'}
 										}
 									}),
@@ -11622,7 +11614,6 @@ var _flarebyte$bubblegum_ui_tag$KeyDescription$descSelectable = 'The selectable 
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSelected = 'The selected tags for the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentRightToLeft = 'Whether the content requires right to left';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentLanguage = 'Language of the content';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentId = 'The unique id of the content';
 
 var _flarebyte$bubblegum_ui_tag$PackageJson$Model = F5(
 	function (a, b, c, d, e) {
@@ -12005,46 +11996,50 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 		ctor: '::',
 		_0: A4(
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentId,
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected,
 			_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 			{
 				ctor: '::',
-				_0: 'id:aa61e603-9947-4fd8-86bb-d63a682259d0',
+				_0: 'id:suggestion:1',
 				_1: {
 					ctor: '::',
 					_0: 'other',
 					_1: {ctor: '[]'}
 				}
 			},
-			_flarebyte$bubblegum_ui_tag$KeyDescription$descContentId),
+			_flarebyte$bubblegum_ui_tag$KeyDescription$descSelected),
 		_1: {
 			ctor: '::',
 			_0: A4(
 				_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selectable,
 				_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 				{
 					ctor: '::',
 					_0: 'id:suggestion:1',
 					_1: {
 						ctor: '::',
-						_0: 'other',
-						_1: {ctor: '[]'}
+						_0: 'id:suggestion:2',
+						_1: {
+							ctor: '::',
+							_0: 'other',
+							_1: {ctor: '[]'}
+						}
 					}
 				},
-				_flarebyte$bubblegum_ui_tag$KeyDescription$descSelected),
+				_flarebyte$bubblegum_ui_tag$KeyDescription$descSelectable),
 			_1: {
 				ctor: '::',
 				_0: A4(
 					_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selectable,
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting,
 					_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 					{
 						ctor: '::',
-						_0: 'id:suggestion:1',
+						_0: 'true',
 						_1: {
 							ctor: '::',
-							_0: 'id:suggestion:2',
+							_0: 'false',
 							_1: {
 								ctor: '::',
 								_0: 'other',
@@ -12052,19 +12047,19 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 							}
 						}
 					},
-					_flarebyte$bubblegum_ui_tag$KeyDescription$descSelectable),
+					_flarebyte$bubblegum_ui_tag$KeyDescription$descSuggesting),
 				_1: {
 					ctor: '::',
 					_0: A4(
 						_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting,
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search,
 						_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 						{
 							ctor: '::',
-							_0: 'true',
+							_0: 'ipsum',
 							_1: {
 								ctor: '::',
-								_0: 'false',
+								_0: 'dolor',
 								_1: {
 									ctor: '::',
 									_0: 'other',
@@ -12072,45 +12067,24 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 								}
 							}
 						},
-						_flarebyte$bubblegum_ui_tag$KeyDescription$descSuggesting),
+						_flarebyte$bubblegum_ui_tag$KeyDescription$descSearch),
 					_1: {
 						ctor: '::',
 						_0: A4(
 							_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search,
+							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp,
 							_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 							{
 								ctor: '::',
-								_0: 'ipsum',
+								_0: 'do not do this',
 								_1: {
 									ctor: '::',
-									_0: 'dolor',
-									_1: {
-										ctor: '::',
-										_0: 'other',
-										_1: {ctor: '[]'}
-									}
+									_0: 'other',
+									_1: {ctor: '[]'}
 								}
 							},
-							_flarebyte$bubblegum_ui_tag$KeyDescription$descSearch),
-						_1: {
-							ctor: '::',
-							_0: A4(
-								_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-								_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp,
-								_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-								{
-									ctor: '::',
-									_0: 'do not do this',
-									_1: {
-										ctor: '::',
-										_0: 'other',
-										_1: {ctor: '[]'}
-									}
-								},
-								_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerHelp),
-							_1: {ctor: '[]'}
-						}
+							_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerHelp),
+						_1: {ctor: '[]'}
 					}
 				}
 			}

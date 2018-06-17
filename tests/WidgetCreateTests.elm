@@ -15,15 +15,7 @@ suite =
         [ describe "Widget.view"
             [
 
-                fuzz fuzzyContentId "Correct settings for The unique id of the content" <|
-                \value -> viewWidgetWithState (withStateContentId value)
-                    |> findComponent selectorsContentId
-
-             , fuzz fuzzyNotContentId "Wrong settings for The unique id of the content" <|
-                \value -> viewWidgetWithState (withStateContentId value) 
-                    |> findComponent selectorsNotContentId
-
-                , fuzz fuzzyContentLanguage "Correct settings for Language of the content" <|
+                fuzz fuzzyContentLanguage "Correct settings for Language of the content" <|
                 \value -> viewWidgetWithUserSettings (withUserSettingsContentLanguage value)
                     |> findComponent selectorsContentLanguage
 

@@ -7,13 +7,6 @@ module Bubblegum.Tag.Vocabulary exposing (..)
 -}
 
 
-{-| The unique id of the content. (String)
--}
-ui_contentId : String
-ui_contentId =
-    "ui:content-id"
-
-
 {-| Language of the content. (String)
 -}
 ui_contentLanguage : String

@@ -40,15 +40,6 @@ import Html.Events exposing (onClick, onInput, onMouseEnter, onMouseOut)
 view : TagAdapter.Model msg -> SettingsEntity.Model -> SettingsEntity.Model -> StateEntity.Model -> Html msg
 view adapter userSettings settings state =
     let
-        addContentId =
-            appendAttributeIfSuccess id (getContentId state)
-
-        addContentLanguage =
-            appendAttributeIfSuccess lang (getContentLanguage userSettings)
-
-        addContentRtl =
-            appendAttributeIfSuccess dir <| (isContentRightToLeft userSettings |> Outcome.map rtlOrLtr)
-
         addLabel =
             appendHtmlIfSuccess widgetLabel (getLabel settings)
 
@@ -61,9 +52,6 @@ view adapter userSettings settings state =
         suggestions =
             getRemainingSuggestions settings state
 
-        userIsoLanguage =
-            getUserIsoLanguage userSettings
-
         isDropdownActive =
             isSuggesting state |> Outcome.toMaybe |> Maybe.withDefault False |> dropdownActiveStatus
     in
@@ -73,7 +61,7 @@ view adapter userSettings settings state =
             ++ addLabel []
             ++ [ div [ isDropdownActive ]
                     [ searchDropdown adapter
-                    , suggestionDropdown adapter userIsoLanguage settings suggestions
+                    , suggestionDropdown adapter userSettings settings suggestions
                     ]
                ]
             |> addDangerHelp
