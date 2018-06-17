@@ -241,6 +241,234 @@ fuzzyNotDangerHelp= intRange 300 400
 selectorsDangerHelp : List Selector
 selectorsDangerHelp = [ Selector.classes ["help", "is-danger"] ]
 
+-- The selected tags for the field
+withStateSelected: Int -> StateEntity.Model
+withStateSelected value = {
+    attributes = [
+        attr ui_selected (createString value)
+    ]
+ }
+
+fuzzySelected : Fuzzer Int
+fuzzySelected = intRange 1 1
+
+fuzzyNotSelected : Fuzzer Int
+fuzzyNotSelected = intRange 100 400
+
+selectorsSelected : List Selector
+selectorsSelected = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotSelected : List Selector
+selectorsNotSelected = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
+
+
+-- The selectable tags for the field
+withStateSelectable: Int -> StateEntity.Model
+withStateSelectable value = {
+    attributes = [
+        attr ui_selectable (createString value)
+    ]
+ }
+
+fuzzySelectable : Fuzzer Int
+fuzzySelectable = intRange 1 1
+
+fuzzyNotSelectable : Fuzzer Int
+fuzzyNotSelectable = intRange 100 400
+
+selectorsSelectable : List Selector
+selectorsSelectable = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotSelectable : List Selector
+selectorsNotSelectable = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
+
+
+-- Suggesting is currently happening
+withStateSuggesting: Int -> StateEntity.Model
+withStateSuggesting value = {
+    attributes = [
+        attr ui_suggesting (createString value)
+    ]
+ }
+
+fuzzySuggesting : Fuzzer Int
+fuzzySuggesting = intRange 1 1
+
+fuzzyNotSuggesting : Fuzzer Int
+fuzzyNotSuggesting = intRange 100 400
+
+selectorsSuggesting : List Selector
+selectorsSuggesting = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotSuggesting : List Selector
+selectorsNotSuggesting = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
+
+
+-- The list of suggested tags for the field
+withSettingsSuggestion: Int -> SettingsEntity.Model
+withSettingsSuggestion value = {
+    attributes = [
+        attr ui_suggestion (createString value)
+    ]
+ }
+
+fuzzySuggestion : Fuzzer Int
+fuzzySuggestion = intRange 1 1
+
+fuzzyNotSuggestion : Fuzzer Int
+fuzzyNotSuggestion = intRange 100 400
+
+selectorsSuggestion : List Selector
+selectorsSuggestion = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotSuggestion : List Selector
+selectorsNotSuggestion = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
+
+
+-- Search term for filtering the available options
+withStateSearch: Int -> StateEntity.Model
+withStateSearch value = {
+    attributes = [
+        attr ui_search (createString value)
+    ]
+ }
+
+fuzzySearch : Fuzzer Int
+fuzzySearch = intRange 1 1
+
+fuzzyNotSearch : Fuzzer Int
+fuzzyNotSearch = intRange 100 400
+
+selectorsSearch : List Selector
+selectorsSearch = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotSearch : List Selector
+selectorsNotSearch = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
+
+
+-- Label related to the search field
+withSettingsSearchLabel: Int -> SettingsEntity.Model
+withSettingsSearchLabel value = {
+    attributes = [
+        attr ui_searchLabel (createString value)
+    ]
+ }
+
+fuzzySearchLabel : Fuzzer Int
+fuzzySearchLabel = intRange 1 1
+
+fuzzyNotSearchLabel : Fuzzer Int
+fuzzyNotSearchLabel = intRange 100 400
+
+selectorsSearchLabel : List Selector
+selectorsSearchLabel = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotSearchLabel : List Selector
+selectorsNotSearchLabel = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
+
+
+-- The minimum number of tags needed for successful content
+withSettingsSuccessMinimumTags: Int -> SettingsEntity.Model
+withSettingsSuccessMinimumTags value = {
+    attributes = [
+        attr ui_successMinimumTags (createString value)
+    ]
+ }
+
+fuzzySuccessMinimumTags : Fuzzer Int
+fuzzySuccessMinimumTags = intRange 1 1
+
+fuzzyNotSuccessMinimumTags : Fuzzer Int
+fuzzyNotSuccessMinimumTags = intRange 100 400
+
+selectorsSuccessMinimumTags : List Selector
+selectorsSuccessMinimumTags = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotSuccessMinimumTags : List Selector
+selectorsNotSuccessMinimumTags = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
+
+
+-- The maximum number of tags needed for successful content
+withSettingsSuccessMaximumTags: Int -> SettingsEntity.Model
+withSettingsSuccessMaximumTags value = {
+    attributes = [
+        attr ui_successMaximumTags (createString value)
+    ]
+ }
+
+fuzzySuccessMaximumTags : Fuzzer Int
+fuzzySuccessMaximumTags = intRange 1 1
+
+fuzzyNotSuccessMaximumTags : Fuzzer Int
+fuzzyNotSuccessMaximumTags = intRange 100 400
+
+selectorsSuccessMaximumTags : List Selector
+selectorsSuccessMaximumTags = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotSuccessMaximumTags : List Selector
+selectorsNotSuccessMaximumTags = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
+
+
+-- Warning when under the minimum number of tags
+withSettingsDangerMinimumTags: Int -> SettingsEntity.Model
+withSettingsDangerMinimumTags value = {
+    attributes = [
+        attr ui_dangerMinimumTags (createString value)
+    ]
+ }
+
+fuzzyDangerMinimumTags : Fuzzer Int
+fuzzyDangerMinimumTags = intRange 1 1
+
+fuzzyNotDangerMinimumTags : Fuzzer Int
+fuzzyNotDangerMinimumTags = intRange 100 400
+
+selectorsDangerMinimumTags : List Selector
+selectorsDangerMinimumTags = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotDangerMinimumTags : List Selector
+selectorsNotDangerMinimumTags = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
+
+
+-- Warning when over the maximum number of tags
+withSettingsDangerMaximumTags: Int -> SettingsEntity.Model
+withSettingsDangerMaximumTags value = {
+    attributes = [
+        attr ui_dangerMaximumTags (createString value)
+    ]
+ }
+
+fuzzyDangerMaximumTags : Fuzzer Int
+fuzzyDangerMaximumTags = intRange 1 1
+
+fuzzyNotDangerMaximumTags : Fuzzer Int
+fuzzyNotDangerMaximumTags = intRange 100 400
+
+selectorsDangerMaximumTags : List Selector
+selectorsDangerMaximumTags = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNotDangerMaximumTags : List Selector
+selectorsNotDangerMaximumTags = [ Selector.class "bubblegum-tag__input",
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+
 -- private
 
 attr: String -> String -> Attribute.Model

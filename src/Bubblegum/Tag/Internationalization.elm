@@ -1,394 +1,400 @@
+
 module Bubblegum.Tag.Internationalization exposing (..)
 
 {-| Utility to translate some of the text used by the widget
-
+ 
     **Generated** by generate-translation.py
 
 -}
 
-import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..))
 import Tuple exposing (first, second)
+import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..))
 
-
-pickSingularOrPlural : Int -> ( String, String ) -> String
+pickSingularOrPlural: Int -> (String, String) -> String
 pickSingularOrPlural howMany singularOrPlural =
     if howMany < 2 then
         first singularOrPlural
     else
         second singularOrPlural
 
-
 translateInfoTag : IsoLanguage -> String
 translateInfoTag language =
-    case language of
-        Chinese ->
-            "信息標籤"
+     case language of
 
-        English ->
-            "information tag"
+       Chinese ->
+             "信息標籤"
 
-        French ->
-            "étiquette d'information"
+       English ->
+             "information tag"
 
-        German ->
-            "Informationstag"
+       French ->
+             "étiquette d'information"
 
-        Italian ->
-            "tag di informazione"
+       German ->
+             "Informationstag"
 
-        Japanese ->
-            "情報タグ"
+       Italian ->
+             "tag di informazione"
 
-        Russian ->
-            "информационный тег"
+       Japanese ->
+             "情報タグ"
 
-        Spanish ->
-            "etiqueta de información"
+       Russian ->
+             "информационный тег"
 
-        Swedish ->
-            "information tag"
+       Spanish ->
+             "etiqueta de información"
 
-        Vietnamese ->
-            "information tag"
+       Swedish ->
+             "information tag"
 
-        Romanian ->
-            "information tag"
+       Vietnamese ->
+             "information tag"
 
-        Dutch ->
-            "information tag"
+       Romanian ->
+             "information tag"
 
-        Korean ->
-            "information tag"
+       Dutch ->
+             "information tag"
 
-        Danish ->
-            "information tag"
+       Korean ->
+             "information tag"
 
-        Bulgarian ->
-            "information tag"
+       Danish ->
+             "information tag"
 
-        Hungarian ->
-            "information tag"
+       Bulgarian ->
+             "information tag"
 
-        Ukrainian ->
-            "information tag"
+       Hungarian ->
+             "information tag"
 
-        Turkish ->
-            "information tag"
+       Ukrainian ->
+             "information tag"
 
-        Norwegian ->
-            "information tag"
+       Turkish ->
+             "information tag"
 
-        Thai ->
-            "information tag"
+       Norwegian ->
+             "information tag"
 
-        Finnish ->
-            "information tag"
+       Thai ->
+             "information tag"
 
-        Indonesian ->
-            "information tag"
+       Finnish ->
+             "information tag"
 
-        Greek ->
-            "information tag"
+       Indonesian ->
+             "information tag"
 
-        Portuguese ->
-            "information tag"
+       Greek ->
+             "information tag"
 
-        Czech ->
-            "information tag"
+       Portuguese ->
+             "information tag"
 
-        Persian ->
-            "information tag"
+       Czech ->
+             "information tag"
 
-        Slovak ->
-            "information tag"
+       Persian ->
+             "information tag"
 
-        Hebrew ->
-            "information tag"
+       Slovak ->
+             "information tag"
 
-        Polish ->
-            "information tag"
+       Hebrew ->
+             "information tag"
 
-        Arabic ->
-            "information tag"
+       Polish ->
+             "information tag"
+
+       Arabic ->
+             "information tag"
+
 
 
 translateSuccessTag : IsoLanguage -> String
 translateSuccessTag language =
-    case language of
-        Chinese ->
-            "成功標籤"
+     case language of
 
-        English ->
-            "tag indicating success"
+       Chinese ->
+             "成功標籤"
 
-        French ->
-            "étiquette indiquant le succès"
+       English ->
+             "tag indicating success"
 
-        German ->
-            "Tag der den Erfolg anzeigt"
+       French ->
+             "étiquette indiquant le succès"
 
-        Italian ->
-            "tag che indica il successo"
+       German ->
+             "Tag der den Erfolg anzeigt"
 
-        Japanese ->
-            "成功を示すタグ"
+       Italian ->
+             "tag che indica il successo"
 
-        Russian ->
-            "тег указывающий успех"
+       Japanese ->
+             "成功を示すタグ"
 
-        Spanish ->
-            "etiqueta que indica el éxito"
+       Russian ->
+             "тег указывающий успех"
 
-        Swedish ->
-            "tag indicating success"
+       Spanish ->
+             "etiqueta que indica el éxito"
 
-        Vietnamese ->
-            "tag indicating success"
+       Swedish ->
+             "tag indicating success"
 
-        Romanian ->
-            "tag indicating success"
+       Vietnamese ->
+             "tag indicating success"
 
-        Dutch ->
-            "tag indicating success"
+       Romanian ->
+             "tag indicating success"
 
-        Korean ->
-            "tag indicating success"
+       Dutch ->
+             "tag indicating success"
 
-        Danish ->
-            "tag indicating success"
+       Korean ->
+             "tag indicating success"
 
-        Bulgarian ->
-            "tag indicating success"
+       Danish ->
+             "tag indicating success"
 
-        Hungarian ->
-            "tag indicating success"
+       Bulgarian ->
+             "tag indicating success"
 
-        Ukrainian ->
-            "tag indicating success"
+       Hungarian ->
+             "tag indicating success"
 
-        Turkish ->
-            "tag indicating success"
+       Ukrainian ->
+             "tag indicating success"
 
-        Norwegian ->
-            "tag indicating success"
+       Turkish ->
+             "tag indicating success"
 
-        Thai ->
-            "tag indicating success"
+       Norwegian ->
+             "tag indicating success"
 
-        Finnish ->
-            "tag indicating success"
+       Thai ->
+             "tag indicating success"
 
-        Indonesian ->
-            "tag indicating success"
+       Finnish ->
+             "tag indicating success"
 
-        Greek ->
-            "tag indicating success"
+       Indonesian ->
+             "tag indicating success"
 
-        Portuguese ->
-            "tag indicating success"
+       Greek ->
+             "tag indicating success"
 
-        Czech ->
-            "tag indicating success"
+       Portuguese ->
+             "tag indicating success"
 
-        Persian ->
-            "tag indicating success"
+       Czech ->
+             "tag indicating success"
 
-        Slovak ->
-            "tag indicating success"
+       Persian ->
+             "tag indicating success"
 
-        Hebrew ->
-            "tag indicating success"
+       Slovak ->
+             "tag indicating success"
 
-        Polish ->
-            "tag indicating success"
+       Hebrew ->
+             "tag indicating success"
 
-        Arabic ->
-            "tag indicating success"
+       Polish ->
+             "tag indicating success"
+
+       Arabic ->
+             "tag indicating success"
+
 
 
 translateWarningTag : IsoLanguage -> String
 translateWarningTag language =
-    case language of
-        Chinese ->
-            "警告標籤"
+     case language of
 
-        English ->
-            "tag indicating warning"
+       Chinese ->
+             "警告標籤"
 
-        French ->
-            "étiquette indiquant l'avertissement"
+       English ->
+             "tag indicating warning"
 
-        German ->
-            "Tag der die Warnung anzeigt"
+       French ->
+             "étiquette indiquant l'avertissement"
 
-        Italian ->
-            "tag che indica avvertimento"
+       German ->
+             "Tag der die Warnung anzeigt"
 
-        Japanese ->
-            "警告を示すタグ"
+       Italian ->
+             "tag che indica avvertimento"
 
-        Russian ->
-            "тег указывающий предупреждение"
+       Japanese ->
+             "警告を示すタグ"
 
-        Spanish ->
-            "etiqueta que indica advertencia"
+       Russian ->
+             "тег указывающий предупреждение"
 
-        Swedish ->
-            "tag indicating warning"
+       Spanish ->
+             "etiqueta que indica advertencia"
 
-        Vietnamese ->
-            "tag indicating warning"
+       Swedish ->
+             "tag indicating warning"
 
-        Romanian ->
-            "tag indicating warning"
+       Vietnamese ->
+             "tag indicating warning"
 
-        Dutch ->
-            "tag indicating warning"
+       Romanian ->
+             "tag indicating warning"
 
-        Korean ->
-            "tag indicating warning"
+       Dutch ->
+             "tag indicating warning"
 
-        Danish ->
-            "tag indicating warning"
+       Korean ->
+             "tag indicating warning"
 
-        Bulgarian ->
-            "tag indicating warning"
+       Danish ->
+             "tag indicating warning"
 
-        Hungarian ->
-            "tag indicating warning"
+       Bulgarian ->
+             "tag indicating warning"
 
-        Ukrainian ->
-            "tag indicating warning"
+       Hungarian ->
+             "tag indicating warning"
 
-        Turkish ->
-            "tag indicating warning"
+       Ukrainian ->
+             "tag indicating warning"
 
-        Norwegian ->
-            "tag indicating warning"
+       Turkish ->
+             "tag indicating warning"
 
-        Thai ->
-            "tag indicating warning"
+       Norwegian ->
+             "tag indicating warning"
 
-        Finnish ->
-            "tag indicating warning"
+       Thai ->
+             "tag indicating warning"
 
-        Indonesian ->
-            "tag indicating warning"
+       Finnish ->
+             "tag indicating warning"
 
-        Greek ->
-            "tag indicating warning"
+       Indonesian ->
+             "tag indicating warning"
 
-        Portuguese ->
-            "tag indicating warning"
+       Greek ->
+             "tag indicating warning"
 
-        Czech ->
-            "tag indicating warning"
+       Portuguese ->
+             "tag indicating warning"
 
-        Persian ->
-            "tag indicating warning"
+       Czech ->
+             "tag indicating warning"
 
-        Slovak ->
-            "tag indicating warning"
+       Persian ->
+             "tag indicating warning"
 
-        Hebrew ->
-            "tag indicating warning"
+       Slovak ->
+             "tag indicating warning"
 
-        Polish ->
-            "tag indicating warning"
+       Hebrew ->
+             "tag indicating warning"
 
-        Arabic ->
-            "tag indicating warning"
+       Polish ->
+             "tag indicating warning"
+
+       Arabic ->
+             "tag indicating warning"
+
 
 
 translateDangerTag : IsoLanguage -> String
 translateDangerTag language =
-    case language of
-        Chinese ->
-            "危險標籤"
+     case language of
 
-        English ->
-            "tag indicating danger"
+       Chinese ->
+             "危險標籤"
 
-        French ->
-            "étiquette indiquant le danger"
+       English ->
+             "tag indicating danger"
 
-        German ->
-            "Tag der die Gefahr anzeigt"
+       French ->
+             "étiquette indiquant le danger"
 
-        Italian ->
-            "tag che indica pericolo"
+       German ->
+             "Tag der die Gefahr anzeigt"
 
-        Japanese ->
-            "危険を示すタグ"
+       Italian ->
+             "tag che indica pericolo"
 
-        Russian ->
-            "тег указывающий опасность"
+       Japanese ->
+             "危険を示すタグ"
 
-        Spanish ->
-            "etiqueta que indica peligro"
+       Russian ->
+             "тег указывающий опасность"
 
-        Swedish ->
-            "tag indicating danger"
+       Spanish ->
+             "etiqueta que indica peligro"
 
-        Vietnamese ->
-            "tag indicating danger"
+       Swedish ->
+             "tag indicating danger"
 
-        Romanian ->
-            "tag indicating danger"
+       Vietnamese ->
+             "tag indicating danger"
 
-        Dutch ->
-            "tag indicating danger"
+       Romanian ->
+             "tag indicating danger"
 
-        Korean ->
-            "tag indicating danger"
+       Dutch ->
+             "tag indicating danger"
 
-        Danish ->
-            "tag indicating danger"
+       Korean ->
+             "tag indicating danger"
 
-        Bulgarian ->
-            "tag indicating danger"
+       Danish ->
+             "tag indicating danger"
 
-        Hungarian ->
-            "tag indicating danger"
+       Bulgarian ->
+             "tag indicating danger"
 
-        Ukrainian ->
-            "tag indicating danger"
+       Hungarian ->
+             "tag indicating danger"
 
-        Turkish ->
-            "tag indicating danger"
+       Ukrainian ->
+             "tag indicating danger"
 
-        Norwegian ->
-            "tag indicating danger"
+       Turkish ->
+             "tag indicating danger"
 
-        Thai ->
-            "tag indicating danger"
+       Norwegian ->
+             "tag indicating danger"
 
-        Finnish ->
-            "tag indicating danger"
+       Thai ->
+             "tag indicating danger"
 
-        Indonesian ->
-            "tag indicating danger"
+       Finnish ->
+             "tag indicating danger"
 
-        Greek ->
-            "tag indicating danger"
+       Indonesian ->
+             "tag indicating danger"
 
-        Portuguese ->
-            "tag indicating danger"
+       Greek ->
+             "tag indicating danger"
 
-        Czech ->
-            "tag indicating danger"
+       Portuguese ->
+             "tag indicating danger"
 
-        Persian ->
-            "tag indicating danger"
+       Czech ->
+             "tag indicating danger"
 
-        Slovak ->
-            "tag indicating danger"
+       Persian ->
+             "tag indicating danger"
 
-        Hebrew ->
-            "tag indicating danger"
+       Slovak ->
+             "tag indicating danger"
 
-        Polish ->
-            "tag indicating danger"
+       Hebrew ->
+             "tag indicating danger"
 
-        Arabic ->
-            "tag indicating danger"
+       Polish ->
+             "tag indicating danger"
+
+       Arabic ->
+             "tag indicating danger"

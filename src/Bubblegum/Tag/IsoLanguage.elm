@@ -1,3 +1,4 @@
+
 module Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
 
 {-| Utility to identify ISO languages
@@ -6,20 +7,18 @@ module Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..), toIsoLanguage)
     And https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
     **Generated** by generate-translation.py
-
 -}
 
 import String exposing (left)
-
 
 getLanguageCode : String -> String
 getLanguageCode language =
     left 2 language
 
-
-toIsoLanguage : String -> IsoLanguage
+toIsoLanguage: String -> IsoLanguage
 toIsoLanguage language =
-    case getLanguageCode language of
+    case (getLanguageCode language) of
+
         "ar" ->
             Arabic
 
@@ -113,35 +112,33 @@ toIsoLanguage language =
         _ ->
             English
 
-
-type IsoLanguage
-    = Arabic
-    | Bulgarian
-    | Chinese
-    | Czech
-    | Danish
-    | Dutch
-    | English
-    | Finnish
-    | French
-    | German
-    | Greek
-    | Hebrew
-    | Hungarian
-    | Indonesian
-    | Italian
-    | Japanese
-    | Korean
-    | Norwegian
-    | Persian
-    | Polish
-    | Portuguese
-    | Romanian
-    | Russian
-    | Slovak
-    | Spanish
-    | Swedish
-    | Thai
-    | Turkish
-    | Ukrainian
-    | Vietnamese
+type IsoLanguage = Arabic 
+  | Bulgarian 
+  | Chinese 
+  | Czech 
+  | Danish 
+  | Dutch 
+  | English 
+  | Finnish 
+  | French 
+  | German 
+  | Greek 
+  | Hebrew 
+  | Hungarian 
+  | Indonesian 
+  | Italian 
+  | Japanese 
+  | Korean 
+  | Norwegian 
+  | Persian 
+  | Polish 
+  | Portuguese 
+  | Romanian 
+  | Russian 
+  | Slovak 
+  | Spanish 
+  | Swedish 
+  | Thai 
+  | Turkish 
+  | Ukrainian 
+  | Vietnamese

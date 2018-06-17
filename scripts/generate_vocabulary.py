@@ -3,7 +3,7 @@
 import sys
 import csv
 from string import Template
-from generator_helper import camelCase, camelCaseUpper, quoteArray, readCsv
+from generator_helper import camelCase, camelCaseUpper, quoteArray, readCsv, readFileAsString
 from vocabulary_template import * 
 
 ui_keys_csv = "ui-keys.csv"
@@ -145,6 +145,7 @@ def createWidgetCreateTests():
     content = readCsv(ui_keys_csv)
     rangeContent = readCsv(ui_range_keys_csv)
     file = open("../tests/WidgetCreateTests.elm", "w")
+    existingTestDataContent = readFileAsString("../tests/WidgetTestData.elm")
     file.write(headerWidgetCreateTests)
     withComa = False
     for row in content:
@@ -173,6 +174,9 @@ def createWidgetCreateTests():
                 else:
                     file.write(formatTemplate(templateWidgetCreateTestsStateWrong, row))
                 withComa = True
+            if not formatTemplate(checkTemplateTestData, row) in existingTestDataContent:
+                print formatTemplate(templateTestData, row)
+
     file.write(footerWidgetCreateTests)            
     file.close()    
 
