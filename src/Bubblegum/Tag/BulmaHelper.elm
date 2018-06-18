@@ -230,7 +230,7 @@ dangerHelp helpText =
         [ text helpText ]
 
 
-searchDropdown : String -> TagAdapter.Model msg -> Html msg
+searchDropdown : Outcome String -> TagAdapter.Model msg -> Html msg
 searchDropdown searchLabel adapter =
     div [ class "dropdown-trigger" ]
         [ div [ class "level" ]
@@ -250,7 +250,7 @@ searchDropdown searchLabel adapter =
                         , onClick adapter.onToggleDropbox
                         ]
                         [ span []
-                            [ text searchLabel ]
+                            ([] |> appendHtmlIfSuccess text searchLabel)
                         , span [ class "icon is-small" ]
                             [ i [ attribute "aria-hidden" "true", class "fas fa-angle-down" ]
                                 []
