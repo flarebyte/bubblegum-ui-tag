@@ -27,25 +27,13 @@ suite =
                 \value -> viewWidgetWithState (withStateSelected value)
                     |> findComponent selectorsSelected
 
-              , fuzz fuzzyNotSelected "Wrong settings for The selected tags for the field" <|
-                \value -> viewWidgetWithState (withStateSelected value)
-                    |> findWarningDiv           
-
                 , fuzz fuzzySelectable "Correct settings for The selectable tags for the field" <|
                 \value -> viewWidgetWithState (withStateSelectable value)
                     |> findComponent selectorsSelectable
 
-              , fuzz fuzzyNotSelectable "Wrong settings for The selectable tags for the field" <|
-                \value -> viewWidgetWithState (withStateSelectable value)
-                    |> findWarningDiv           
-
                 , fuzz fuzzySuggesting "Correct settings for Suggesting is currently happening" <|
                 \value -> viewWidgetWithState (withStateSuggesting value)
                     |> findComponent selectorsSuggesting
-
-              , fuzz fuzzyNotSuggesting "Wrong settings for Suggesting is currently happening" <|
-                \value -> viewWidgetWithState (withStateSuggesting value)
-                    |> findWarningDiv           
 
                 , fuzz fuzzySuggestion "Correct settings for The list of suggested tags for the field" <|
                 \value -> viewWidgetWithSettings (withSettingsSuggestion value)
@@ -59,17 +47,9 @@ suite =
                 \value -> viewWidgetWithState (withStateSearch value)
                     |> findComponent selectorsSearch
 
-              , fuzz fuzzyNotSearch "Wrong settings for Search term for filtering the available options" <|
-                \value -> viewWidgetWithState (withStateSearch value)
-                    |> findWarningDiv           
-
                 , fuzz fuzzyDangerHelp "Correct settings for Help message to highlight an issue with the content" <|
                 \value -> viewWidgetWithState (withStateDangerHelp value)
                     |> findComponent selectorsDangerHelp
-
-              , fuzz fuzzyNotDangerHelp "Wrong settings for Help message to highlight an issue with the content" <|
-                \value -> viewWidgetWithState (withStateDangerHelp value)
-                    |> findWarningDiv           
 
                 , fuzz fuzzyHelp "Correct settings for Some help tip related to the field" <|
                 \value -> viewWidgetWithSettings (withSettingsHelp value)

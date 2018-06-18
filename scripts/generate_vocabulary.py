@@ -169,10 +169,10 @@ def createWidgetCreateTests():
             if isState(row):
                 content = prefixWithComa("fuzz ", withComa, formatTemplate(templateWidgetCreateTestsStateCorrect, row))
                 file.write(content)
-                if isAttribute(row):
-                    file.write(formatTemplate(templateWidgetCreateTestsStateWrongAttr, row))
-                else:
-                    file.write(formatTemplate(templateWidgetCreateTestsStateWrong, row))
+                # if isAttribute(row):
+                #     file.write(formatTemplate(templateWidgetCreateTestsStateWrongAttr, row))
+                # else:
+                #     file.write(formatTemplate(templateWidgetCreateTestsStateWrong, row))
                 withComa = True
             if not formatTemplate(checkTemplateTestData, row) in existingTestDataContent:
                 print formatTemplate(templateTestData, row)
