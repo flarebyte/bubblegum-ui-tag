@@ -452,28 +452,27 @@ selectorsNotSuggestion =
 -- Search term for filtering the available options
 
 
-withStateSearch : Int -> StateEntity.Model
+withStateSearch : String -> StateEntity.Model
 withStateSearch value =
     { attributes =
-        [ attr ui_search (createString value)
+        [ attr ui_search "label"
         ]
     }
 
 
-fuzzySearch : Fuzzer Int
+fuzzySearch : Fuzzer String
 fuzzySearch =
-    intRange 1 1
+   constant "label1"
 
 
-fuzzyNotSearch : Fuzzer Int
+fuzzyNotSearch : Fuzzer String
 fuzzyNotSearch =
-    intRange 100 400
+    string
 
 
 selectorsSearch : List Selector
 selectorsSearch =
-    [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
-
+    [ Selector.text "label1"]
 
 selectorsNotSearch : List Selector
 selectorsNotSearch =
