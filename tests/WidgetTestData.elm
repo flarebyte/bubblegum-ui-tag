@@ -17,6 +17,7 @@ import Fuzz exposing (Fuzzer, int, list, string, intRange, constant)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector exposing(Selector)
 import Bubblegum.Tag.Vocabulary exposing (..)
+import Debug as Debug
 
 
 type TestMsg
@@ -247,7 +248,7 @@ selectorsNotSelected = [ Selector.class "tag", Selector.class "is-dark", Selecto
 withStateSelectable: Int -> StateEntity.Model
 withStateSelectable value = {
     attributes = [
-        attr ui_selectable ("id:suggestion:" ++ (toString value))
+        attr ui_selectable ("id:suggestion:7" ++ (toString value))
     ]
  }
 
@@ -267,44 +268,52 @@ selectorsNotSelectable = [ Selector.class "bubblegum-tag__input",
 
 
 -- Suggesting is currently happening
-withStateSuggesting: Int -> StateEntity.Model
+withStateSuggesting: Bool -> StateEntity.Model
 withStateSuggesting value = {
     attributes = [
-        attr ui_suggesting (createString value)
+        attr ui_suggesting (if value then "true" else "false")
     ]
  }
 
-fuzzySuggesting : Fuzzer Int
-fuzzySuggesting = intRange 1 1
+fuzzySuggesting : Fuzzer Bool
+fuzzySuggesting = constant True
 
-fuzzyNotSuggesting : Fuzzer Int
-fuzzyNotSuggesting = intRange 100 400
+fuzzyNotSuggesting : Fuzzer Bool
+fuzzyNotSuggesting = constant False
 
 selectorsSuggesting : List Selector
-selectorsSuggesting = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+selectorsSuggesting = [ Selector.class "dropdown", Selector.class "is-active" ]
 
 selectorsNotSuggesting : List Selector
-selectorsNotSuggesting = [ Selector.class "bubblegum-tag__input",
-    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
+selectorsNotSuggesting = []
 
 
 
 -- The list of suggested tags for the field
 withSettingsSuggestion: Int -> SettingsEntity.Model
-withSettingsSuggestion value = {
+withSettingsSuggestion value = 
+    if value == -1 then
+ {
     attributes = [
-        attr ui_suggestion (createString value)
+        attr ui_suggestion "bad-id"
     ]
  }
+    else
+ {
+    attributes = [
+        attrs ui_suggestion ["id:suggestion:" ++ (toString value), "id:suggestion:" ++ (value + 1 |> toString )]
+    ] ++ suggestion value [ "infoA", "infoB" ]
+    ++ suggestion (value + 1) [ "infoC"]
+  }
 
 fuzzySuggestion : Fuzzer Int
-fuzzySuggestion = intRange 1 1
+fuzzySuggestion = intRange 4 1000
 
 fuzzyNotSuggestion : Fuzzer Int
-fuzzyNotSuggestion = intRange 100 400
+fuzzyNotSuggestion = constant -1
 
 selectorsSuggestion : List Selector
-selectorsSuggestion = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+selectorsSuggestion = [ Selector.class "tag", Selector.class "is-dark", Selector.text "infoA" ]
 
 selectorsNotSuggestion : List Selector
 selectorsNotSuggestion = [ Selector.class "bubblegum-tag__input",
