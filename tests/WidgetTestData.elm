@@ -526,31 +526,28 @@ selectorsNotSearchLabel =
 withSettingsSuccessMinimumTags : Int -> SettingsEntity.Model
 withSettingsSuccessMinimumTags value =
     { attributes =
-        [ attr ui_successMinimumTags (createString value)
+        defaultSettings.attributes ++
+        [ attr ui_successMinimumTags (value |> toString)
+            , attr ui_successMaximumTags (value + 7 |> toString)
         ]
     }
 
-
 fuzzySuccessMinimumTags : Fuzzer Int
-fuzzySuccessMinimumTags =
-    intRange 1 1
+fuzzySuccessMinimumTags = intRange 1 2
 
 
 fuzzyNotSuccessMinimumTags : Fuzzer Int
-fuzzyNotSuccessMinimumTags =
-    intRange 100 400
+fuzzyNotSuccessMinimumTags = intRange -10 -1
 
 
 selectorsSuccessMinimumTags : List Selector
 selectorsSuccessMinimumTags =
-    [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+    [ Selector.class "tag", Selector.class "is-success", Selector.text "2" ]
 
 
 selectorsNotSuccessMinimumTags : List Selector
 selectorsNotSuccessMinimumTags =
-    [ Selector.class "bubblegum-tag__input"
-    , Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:")
-    ]
+    [ Selector.class "tag", Selector.class "is-success", Selector.text "2" ]
 
 
 
@@ -559,32 +556,30 @@ selectorsNotSuccessMinimumTags =
 
 withSettingsSuccessMaximumTags : Int -> SettingsEntity.Model
 withSettingsSuccessMaximumTags value =
-    { attributes =
-        [ attr ui_successMaximumTags (createString value)
+     { attributes =
+        defaultSettings.attributes ++
+        [ attr ui_successMinimumTags "1"
+            , attr ui_successMaximumTags (value + 7 |> toString)
         ]
     }
 
 
 fuzzySuccessMaximumTags : Fuzzer Int
-fuzzySuccessMaximumTags =
-    intRange 1 1
+fuzzySuccessMaximumTags = intRange 5 100
 
 
 fuzzyNotSuccessMaximumTags : Fuzzer Int
-fuzzyNotSuccessMaximumTags =
-    intRange 100 400
+fuzzyNotSuccessMaximumTags = intRange -10 -1
 
 
 selectorsSuccessMaximumTags : List Selector
 selectorsSuccessMaximumTags =
-    [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+    [ Selector.class "tag", Selector.class "is-success", Selector.text "2" ]
 
 
 selectorsNotSuccessMaximumTags : List Selector
 selectorsNotSuccessMaximumTags =
-    [ Selector.class "bubblegum-tag__input"
-    , Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:")
-    ]
+    [ Selector.class "tag", Selector.class "is-success", Selector.text "2" ]
 
 
 
@@ -594,32 +589,31 @@ selectorsNotSuccessMaximumTags =
 withSettingsDangerMinimumTags : Int -> SettingsEntity.Model
 withSettingsDangerMinimumTags value =
     { attributes =
-        [ attr ui_dangerMinimumTags (createString value)
+        defaultSettings.attributes ++
+        [ attr ui_successMinimumTags "3"
+            , attr ui_successMaximumTags "4"
+            , attr ui_dangerMinimumTags (value |> toString)
+            , attr ui_dangerMaximumTags "200"
         ]
     }
 
 
 fuzzyDangerMinimumTags : Fuzzer Int
-fuzzyDangerMinimumTags =
-    intRange 1 1
+fuzzyDangerMinimumTags = intRange 3 100
 
 
 fuzzyNotDangerMinimumTags : Fuzzer Int
-fuzzyNotDangerMinimumTags =
-    intRange 100 400
+fuzzyNotDangerMinimumTags = intRange -10 -3
 
 
 selectorsDangerMinimumTags : List Selector
 selectorsDangerMinimumTags =
-    [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+    [ Selector.class "tag", Selector.class "is-danger", Selector.text "2" ]
 
 
 selectorsNotDangerMinimumTags : List Selector
 selectorsNotDangerMinimumTags =
-    [ Selector.class "bubblegum-tag__input"
-    , Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:")
-    ]
-
+    [ Selector.class "tag", Selector.class "is-danger", Selector.text "2" ]
 
 
 -- Warning when over the maximum number of tags
@@ -628,31 +622,31 @@ selectorsNotDangerMinimumTags =
 withSettingsDangerMaximumTags : Int -> SettingsEntity.Model
 withSettingsDangerMaximumTags value =
     { attributes =
-        [ attr ui_dangerMaximumTags (createString value)
+        defaultSettings.attributes ++
+        [ attr ui_successMinimumTags "1"
+            , attr ui_successMaximumTags "2"
+            , attr ui_dangerMinimumTags "1"
+            , attr ui_dangerMaximumTags (value |> toString)
         ]
     }
 
 
 fuzzyDangerMaximumTags : Fuzzer Int
-fuzzyDangerMaximumTags =
-    intRange 1 1
+fuzzyDangerMaximumTags = constant 1
 
 
 fuzzyNotDangerMaximumTags : Fuzzer Int
-fuzzyNotDangerMaximumTags =
-    intRange 100 400
+fuzzyNotDangerMaximumTags = intRange -10 -3
 
 
 selectorsDangerMaximumTags : List Selector
 selectorsDangerMaximumTags =
-    [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+    [ Selector.class "tag", Selector.class "is-danger", Selector.text "2" ]
 
 
 selectorsNotDangerMaximumTags : List Selector
 selectorsNotDangerMaximumTags =
-    [ Selector.class "bubblegum-tag__input"
-    , Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:")
-    ]
+    [ Selector.class "tag", Selector.class "is-danger", Selector.text "2" ]
 
 
 
