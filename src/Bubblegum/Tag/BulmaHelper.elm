@@ -133,17 +133,24 @@ tagsGroup userSettings settings state list =
         themeBasedOnRange =
             themeProgress (Outcome.map2 successRange (Valid numberOfTags) <| getSuccessTagRange settings)
                 (Outcome.map2 dangerRange (Valid numberOfTags) <| getDangerTagRange settings)
-                |> Outcome.toMaybe
-                |> Maybe.withDefault IsNeutral
+
+        addNumberTag : Outcome StyledText
+        addNumberTag =
+            themeBasedOnRange |> Outcome.map tagStyle |> Outcome.map (coloredText userIsoLanguage (toString numberOfTags))
+
+        addDotStyle : Outcome String
+        addDotStyle =
+            themeBasedOnRange |> Outcome.map textStyle
     in
     div []
         [ div [ class "field is-grouped is-grouped-multiline" ] list
         , div []
             [ p [ class "is-size-6" ]
-                [ coloredText userIsoLanguage (toString numberOfTags) (themeBasedOnRange |> tagStyle) |> tag
-                , span [] [ text " " ]
-                , span [ class (themeBasedOnRange |> textStyle) ] [ text (String.repeat numberOfTags "•") ]
-                ]
+                (([] |> appendHtmlIfSuccess tag addNumberTag)
+                    ++ [ span [] [ text " " ]
+                       , span ([] |> appendAttributeIfSuccess class addDotStyle) [ text (String.repeat numberOfTags "•") ]
+                       ]
+                )
             ]
         ]
 

@@ -10728,98 +10728,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag = function (tagInf
 			_1: {ctor: '[]'}
 		});
 };
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = F4(
-	function (userSettings, settings, state, list) {
-		var numberOfTags = _elm_lang$core$List$length(
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList(state));
-		var themeBasedOnRange = A2(
-			_elm_lang$core$Maybe$withDefault,
-			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$IsNeutral,
-			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$toMaybe(
-				A2(
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$themeProgress,
-					A3(
-						_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map2,
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange,
-						_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$Valid(numberOfTags),
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuccessTagRange(settings)),
-					A3(
-						_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map2,
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$dangerRange,
-						_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$Valid(numberOfTags),
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getDangerTagRange(settings)))));
-		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
-		return A2(
-			_elm_lang$html$Html$div,
-			{ctor: '[]'},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
-						_1: {ctor: '[]'}
-					},
-					list),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$p,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('is-size-6'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag(
-										A3(
-											_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$coloredText,
-											userIsoLanguage,
-											_elm_lang$core$Basics$toString(numberOfTags),
-											_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tagStyle(themeBasedOnRange))),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{ctor: '[]'},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text(' '),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$span,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class(
-														_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$textStyle(themeBasedOnRange)),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text(
-														A2(_elm_lang$core$String$repeat, numberOfTags, '•')),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}
-									}
-								}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}
-			});
-	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsInfo = F2(
 	function (userIsoLanguage, list) {
 		return A2(
@@ -11029,6 +10937,99 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess = 
 						_1: {ctor: '[]'}
 					});
 		}
+	});
+var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tagsGroup = F4(
+	function (userSettings, settings, state, list) {
+		var numberOfTags = _elm_lang$core$List$length(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getSelectedAsList(state));
+		var themeBasedOnRange = A2(
+			_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$themeProgress,
+			A3(
+				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map2,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$successRange,
+				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$Valid(numberOfTags),
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuccessTagRange(settings)),
+			A3(
+				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map2,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$dangerRange,
+				_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$Valid(numberOfTags),
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getDangerTagRange(settings)));
+		var addDotStyle = A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$textStyle, themeBasedOnRange);
+		var userIsoLanguage = _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$getUserIsoLanguage(userSettings);
+		var addNumberTag = A2(
+			_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map,
+			A2(
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$coloredText,
+				userIsoLanguage,
+				_elm_lang$core$Basics$toString(numberOfTags)),
+			A2(_flarebyte$bubblegum_entity$Bubblegum_Entity_Outcome$map, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Helper$tagStyle, themeBasedOnRange));
+		return A2(
+			_elm_lang$html$Html$div,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('field is-grouped is-grouped-multiline'),
+						_1: {ctor: '[]'}
+					},
+					list),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('is-size-6'),
+									_1: {ctor: '[]'}
+								},
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									A3(
+										_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendHtmlIfSuccess,
+										_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$tag,
+										addNumberTag,
+										{ctor: '[]'}),
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$span,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text(' '),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$span,
+												A3(
+													_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$appendAttributeIfSuccess,
+													_elm_lang$html$Html_Attributes$class,
+													addDotStyle,
+													{ctor: '[]'}),
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text(
+														A2(_elm_lang$core$String$repeat, numberOfTags, '•')),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									})),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			});
 	});
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_BulmaHelper$searchDropdown = F2(
 	function (searchLabel, adapter) {
