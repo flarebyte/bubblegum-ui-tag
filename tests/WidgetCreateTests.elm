@@ -27,10 +27,6 @@ suite =
                 \value -> viewWidgetWithState (withStateSelected value)
                     |> findComponent selectorsSelected
 
-                , fuzz fuzzySelectable "Correct settings for The selectable tags for the field" <|
-                \value -> viewWidgetWithState (withStateSelectable value)
-                    |> findComponent selectorsSelectable
-
                 , fuzz fuzzySuggesting "Correct settings for Suggesting is currently happening" <|
                 \value -> viewWidgetWithState (withStateSuggesting value)
                     |> findComponent selectorsSuggesting

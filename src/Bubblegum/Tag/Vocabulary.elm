@@ -21,13 +21,6 @@ ui_selected =
     "ui:selected"
 
 
-{-| The selectable tags for the field. (List String)
--}
-ui_selectable : String
-ui_selectable =
-    "ui:selectable"
-
-
 {-| Suggesting is currently happening. (Bool)
 -}
 ui_suggesting : String

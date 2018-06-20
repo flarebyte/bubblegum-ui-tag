@@ -32,7 +32,6 @@ tagWidgetDoc =
         ]
     , stateAttributes =
         [ createKey ui_selected ZeroOrOne [ "id:suggestion:1", "other" ] descSelected
-        , createKey ui_selectable ZeroOrOne [ "id:suggestion:1", "id:suggestion:2", "other" ] descSelectable
         , createKey ui_suggesting ZeroOrOne [ "true", "false", "other" ] descSuggesting
         , createKey ui_search ZeroOrOne [ "ipsum", "dolor", "other" ] descSearch
         , createKey ui_dangerHelp ZeroOrOne [ "do not do this", "other" ] descDangerHelp

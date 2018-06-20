@@ -9389,7 +9389,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp = 'ui:dan
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search = 'ui:search';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggestion = 'ui:suggestion';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting = 'ui:suggesting';
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selectable = 'ui:selectable';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected = 'ui:selected';
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_contentRightToLeft = 'ui:content-right-to-left';
 
@@ -9594,9 +9593,6 @@ var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSuggestion = f
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$isSuggesting = function (settings) {
 	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findBool, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting, settings.attributes);
-};
-var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelectable = function (settings) {
-	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListCompactUri, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selectable, settings.attributes);
 };
 var _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_VocabularyHelper$getSelected = function (settings) {
 	return A2(_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_EntityHelper$findListCompactUri, _flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selected, settings.attributes);
@@ -11473,7 +11469,6 @@ var _flarebyte$bubblegum_ui_tag$KeyDescription$descDangerHelp = 'Help message to
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSearch = 'Search term for filtering the available options';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSuggestion = 'The list of suggested tags for the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSuggesting = 'Suggesting is currently happening';
-var _flarebyte$bubblegum_ui_tag$KeyDescription$descSelectable = 'The selectable tags for the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descSelected = 'The selected tags for the field';
 var _flarebyte$bubblegum_ui_tag$KeyDescription$descContentRightToLeft = 'Whether the content requires right to left';
 
@@ -11854,14 +11849,14 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 			ctor: '::',
 			_0: A4(
 				_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_selectable,
+				_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting,
 				_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 				{
 					ctor: '::',
-					_0: 'id:suggestion:1',
+					_0: 'true',
 					_1: {
 						ctor: '::',
-						_0: 'id:suggestion:2',
+						_0: 'false',
 						_1: {
 							ctor: '::',
 							_0: 'other',
@@ -11869,19 +11864,19 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 						}
 					}
 				},
-				_flarebyte$bubblegum_ui_tag$KeyDescription$descSelectable),
+				_flarebyte$bubblegum_ui_tag$KeyDescription$descSuggesting),
 			_1: {
 				ctor: '::',
 				_0: A4(
 					_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_suggesting,
+					_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search,
 					_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 					{
 						ctor: '::',
-						_0: 'true',
+						_0: 'ipsum',
 						_1: {
 							ctor: '::',
-							_0: 'false',
+							_0: 'dolor',
 							_1: {
 								ctor: '::',
 								_0: 'other',
@@ -11889,45 +11884,24 @@ var _flarebyte$bubblegum_ui_tag$WidgetDocData$tagWidgetDoc = {
 							}
 						}
 					},
-					_flarebyte$bubblegum_ui_tag$KeyDescription$descSuggesting),
+					_flarebyte$bubblegum_ui_tag$KeyDescription$descSearch),
 				_1: {
 					ctor: '::',
 					_0: A4(
 						_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_search,
+						_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp,
 						_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
 						{
 							ctor: '::',
-							_0: 'ipsum',
+							_0: 'do not do this',
 							_1: {
 								ctor: '::',
-								_0: 'dolor',
-								_1: {
-									ctor: '::',
-									_0: 'other',
-									_1: {ctor: '[]'}
-								}
+								_0: 'other',
+								_1: {ctor: '[]'}
 							}
 						},
-						_flarebyte$bubblegum_ui_tag$KeyDescription$descSearch),
-					_1: {
-						ctor: '::',
-						_0: A4(
-							_flarebyte$bubblegum_ui_tag$AttributeDoc$createKey,
-							_flarebyte$bubblegum_ui_tag$Bubblegum_Tag_Vocabulary$ui_dangerHelp,
-							_flarebyte$bubblegum_ui_tag$AttributeDoc$ZeroOrOne,
-							{
-								ctor: '::',
-								_0: 'do not do this',
-								_1: {
-									ctor: '::',
-									_0: 'other',
-									_1: {ctor: '[]'}
-								}
-							},
-							_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerHelp),
-						_1: {ctor: '[]'}
-					}
+						_flarebyte$bubblegum_ui_tag$KeyDescription$descDangerHelp),
+					_1: {ctor: '[]'}
 				}
 			}
 		}

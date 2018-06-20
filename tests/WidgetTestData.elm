@@ -70,7 +70,6 @@ defaultState =
     { attributes =
         [ attr ui_suggesting "true"
         , attrs ui_selected [ "id:suggestion:1", "id:suggestion:3" ]
-        , attrs ui_selectable [ "id:suggestion:2", "id:suggestion:4", "id:suggestion:5", "id:suggestion:6", "id:suggestion:7" ]
         ]
     }
 
@@ -333,41 +332,6 @@ selectorsSelected =
 selectorsNotSelected : List Selector
 selectorsNotSelected =
     [ Selector.class "tag", Selector.class "is-dark", Selector.text "1" ]
-
-
-
--- The selectable tags for the field
-
-
-withStateSelectable : Int -> StateEntity.Model
-withStateSelectable value =
-    { attributes =
-        [ attr ui_selectable ("id:suggestion:7" ++ toString value)
-        ]
-    }
-
-
-fuzzySelectable : Fuzzer Int
-fuzzySelectable =
-    constant 7
-
-
-fuzzyNotSelectable : Fuzzer Int
-fuzzyNotSelectable =
-    intRange 100 400
-
-
-selectorsSelectable : List Selector
-selectorsSelectable =
-    [ Selector.class "is-size-6", Selector.text "label7" ]
-
-
-selectorsNotSelectable : List Selector
-selectorsNotSelectable =
-    [ Selector.class "bubblegum-tag__input"
-    , Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:")
-    ]
-
 
 
 -- Suggesting is currently happening

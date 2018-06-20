@@ -1,6 +1,5 @@
 content-right-to-left,Whether the content requires right to left,Bool,user attribute,
 selected,The selected tags for the field,List String,state compactUris,id:suggestion:1 
-selectable,The selectable tags for the field,List String,state compactUris,id:suggestion:1;id:suggestion:2
 suggesting,Suggesting is currently happening,Bool,state, 
 suggestion,The list of suggested tags for the field,List String,compactUris,id:suggestion:1;id:suggestion:2;id:suggestion:3 
 search,Search term for filtering the available options,String,state,ipsum;dolor

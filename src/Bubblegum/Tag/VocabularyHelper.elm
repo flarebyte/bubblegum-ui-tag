@@ -29,13 +29,6 @@ getSelected settings =
     findListCompactUri ui_selected settings.attributes
 
 
-{-| The selectable tags for the field
--}
-getSelectable : StateEntity.Model -> Outcome (List String)
-getSelectable settings =
-    findListCompactUri ui_selectable settings.attributes
-
-
 {-| Suggesting is currently happening
 -}
 isSuggesting : StateEntity.Model -> Outcome Bool

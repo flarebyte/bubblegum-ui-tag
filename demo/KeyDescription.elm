@@ -17,11 +17,6 @@ descSelected =
     "The selected tags for the field"
 
 
-descSelectable : String
-descSelectable =
-    "The selectable tags for the field"
-
-
 descSuggesting : String
 descSuggesting =
     "Suggesting is currently happening"
