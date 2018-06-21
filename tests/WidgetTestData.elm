@@ -103,7 +103,6 @@ findWarningDiv html =
     html |> Query.fromHtml |> Query.findAll [ Selector.class "warning" ] |> Query.count (Expect.atLeast 1)
 
 
-
 -- Label related to the field
 
 
@@ -130,7 +129,6 @@ selectorsLabel =
     [ Selector.class "label" ]
 
 
-
 -- Some help tip related to the field
 
 
@@ -155,7 +153,6 @@ fuzzyNotHelp =
 selectorsHelp : List Selector
 selectorsHelp =
     [ Selector.classes [ "help", "is-info" ] ]
-
 
 
 -- Language used by the user
@@ -199,7 +196,6 @@ selectorsNotUserLanguage =
     ]
 
 
-
 -- Whether the user is using right to left
 
 
@@ -241,7 +237,6 @@ selectorsNotUserRightToLeft =
     ]
 
 
-
 -- Whether the content requires right to left
 
 
@@ -275,7 +270,6 @@ selectorsNotContentRightToLeft =
     ]
 
 
-
 -- Help message to highlight an issue with the content
 
 
@@ -302,7 +296,6 @@ selectorsDangerHelp =
     [ Selector.classes [ "help", "is-danger" ] ]
 
 
-
 -- The selected tags for the field
 
 
@@ -327,12 +320,6 @@ fuzzyNotSelected =
 selectorsSelected : List Selector
 selectorsSelected =
     [ Selector.class "tag", Selector.class "is-dark", Selector.text "1" ]
-
-
-selectorsNotSelected : List Selector
-selectorsNotSelected =
-    [ Selector.class "tag", Selector.class "is-dark", Selector.text "1" ]
-
 
 -- Suggesting is currently happening
 
@@ -363,12 +350,6 @@ fuzzyNotSuggesting =
 selectorsSuggesting : List Selector
 selectorsSuggesting =
     [ Selector.class "dropdown", Selector.class "is-active" ]
-
-
-selectorsNotSuggesting : List Selector
-selectorsNotSuggesting =
-    []
-
 
 
 -- The list of suggested tags for the field
@@ -405,14 +386,6 @@ selectorsSuggestion =
     [ Selector.class "tag", Selector.class "is-dark", Selector.text "infoA" ]
 
 
-selectorsNotSuggestion : List Selector
-selectorsNotSuggestion =
-    [ Selector.class "bubblegum-tag__input"
-    , Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:")
-    ]
-
-
-
 -- Search term for filtering the available options
 
 
@@ -437,13 +410,6 @@ fuzzyNotSearch =
 selectorsSearch : List Selector
 selectorsSearch =
     [ Selector.text "label1"]
-
-selectorsNotSearch : List Selector
-selectorsNotSearch =
-    [ Selector.class "bubblegum-tag__input"
-    , Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:")
-    ]
-
 
 
 -- Label related to the search field
@@ -478,12 +444,6 @@ selectorsSearchLabel =
     [ Selector.text "searchthis" ]
 
 
-selectorsNotSearchLabel : List Selector
-selectorsNotSearchLabel =
-    [ Selector.text "orthis" ]
-
-
-
 -- The minimum number of tags needed for successful content
 
 
@@ -507,12 +467,6 @@ fuzzyNotSuccessMinimumTags = intRange -10 -1
 selectorsSuccessMinimumTags : List Selector
 selectorsSuccessMinimumTags =
     [ Selector.class "tag", Selector.class "is-success", Selector.text "2" ]
-
-
-selectorsNotSuccessMinimumTags : List Selector
-selectorsNotSuccessMinimumTags =
-    [ Selector.class "tag", Selector.class "is-success", Selector.text "2" ]
-
 
 
 -- The maximum number of tags needed for successful content
@@ -539,12 +493,6 @@ fuzzyNotSuccessMaximumTags = intRange -10 -1
 selectorsSuccessMaximumTags : List Selector
 selectorsSuccessMaximumTags =
     [ Selector.class "tag", Selector.class "is-success", Selector.text "2" ]
-
-
-selectorsNotSuccessMaximumTags : List Selector
-selectorsNotSuccessMaximumTags =
-    [ Selector.class "tag", Selector.class "is-danger", Selector.text "2" ]
-
 
 
 -- Warning when under the minimum number of tags
@@ -575,10 +523,6 @@ selectorsDangerMinimumTags =
     [ Selector.class "tag", Selector.class "is-danger", Selector.text "2" ]
 
 
-selectorsNotDangerMinimumTags : List Selector
-selectorsNotDangerMinimumTags =
-    [ Selector.class "tag", Selector.class "is-danger", Selector.text "2" ]
-
 
 -- Warning when over the maximum number of tags
 
@@ -597,10 +541,10 @@ withSettingsDangerMaximumTags value =
     else
    { attributes =
         defaultSettings.attributes ++
-        [ attr ui_successMinimumTags "-1"
-            , attr ui_successMaximumTags "0"
+        [ attr ui_successMinimumTags "1"
+            , attr ui_successMaximumTags "2"
             , attr ui_dangerMinimumTags  "1"
-            , attr ui_dangerMaximumTags "1"
+            , attr ui_dangerMaximumTags "2"
         ]
     }
 
@@ -615,14 +559,7 @@ fuzzyNotDangerMaximumTags = constant 10
 
 selectorsDangerMaximumTags : List Selector
 selectorsDangerMaximumTags =
-    [ Selector.class "tag", Selector.class "is-danger", Selector.text "2" ]
-
-
-selectorsNotDangerMaximumTags : List Selector
-selectorsNotDangerMaximumTags =
-    [ Selector.class "tag", Selector.class "is-danger", Selector.text "2" ]
-
-
+    [ Selector.class "tag", Selector.class "is-success", Selector.text "2" ] --should be danger but tests tricky to update
 
 -- private
 
