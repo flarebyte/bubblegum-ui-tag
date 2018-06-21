@@ -37,6 +37,7 @@ import Bubblegum.Tag.Helper
 import Bubblegum.Tag.Internationalization exposing (translateDangerTag, translateInfoTag, translateWarningTag)
 import Bubblegum.Tag.IsoLanguage exposing (IsoLanguage(..))
 import Bubblegum.Tag.VocabularyHelper exposing (..)
+import Debug
 import Html exposing (..)
 import Html.Attributes as Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
@@ -136,7 +137,9 @@ tagsGroup userSettings settings state list =
 
         addNumberTag : Outcome StyledText
         addNumberTag =
-            themeBasedOnRange |> Outcome.map tagStyle |> Outcome.map (coloredText userIsoLanguage (toString numberOfTags))
+            themeBasedOnRange
+                |> Outcome.map tagStyle
+                |> Outcome.map (coloredText userIsoLanguage (toString numberOfTags))
 
         addDotStyle : Outcome String
         addDotStyle =

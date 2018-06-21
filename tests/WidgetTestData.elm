@@ -523,7 +523,7 @@ withSettingsSuccessMaximumTags value =
      { attributes =
         defaultSettings.attributes ++
         [ attr ui_successMinimumTags "1"
-            , attr ui_successMaximumTags (value + 7 |> toString)
+            , attr ui_successMaximumTags (value |> toString)
         ]
     }
 
@@ -543,7 +543,7 @@ selectorsSuccessMaximumTags =
 
 selectorsNotSuccessMaximumTags : List Selector
 selectorsNotSuccessMaximumTags =
-    [ Selector.class "tag", Selector.class "is-success", Selector.text "2" ]
+    [ Selector.class "tag", Selector.class "is-danger", Selector.text "2" ]
 
 
 
@@ -585,12 +585,22 @@ selectorsNotDangerMinimumTags =
 
 withSettingsDangerMaximumTags : Int -> SettingsEntity.Model
 withSettingsDangerMaximumTags value =
-    { attributes =
+     if value == 10 then
+     { attributes =
         defaultSettings.attributes ++
-        [ attr ui_successMinimumTags "1"
-            , attr ui_successMaximumTags "2"
-            , attr ui_dangerMinimumTags "1"
-            , attr ui_dangerMaximumTags (value |> toString)
+        [ attr ui_successMinimumTags "0"
+            , attr ui_successMaximumTags "1"
+            , attr ui_dangerMinimumTags (value |> toString)
+            , attr ui_dangerMaximumTags (value  - 2 |> toString)
+        ]
+    }
+    else
+   { attributes =
+        defaultSettings.attributes ++
+        [ attr ui_successMinimumTags "-1"
+            , attr ui_successMaximumTags "0"
+            , attr ui_dangerMinimumTags  "1"
+            , attr ui_dangerMaximumTags "1"
         ]
     }
 
@@ -600,7 +610,7 @@ fuzzyDangerMaximumTags = constant 1
 
 
 fuzzyNotDangerMaximumTags : Fuzzer Int
-fuzzyNotDangerMaximumTags = intRange -10 -3
+fuzzyNotDangerMaximumTags = constant 10
 
 
 selectorsDangerMaximumTags : List Selector
