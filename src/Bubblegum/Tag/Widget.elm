@@ -1,11 +1,10 @@
 module Bubblegum.Tag.Widget exposing (view)
 
-{-| A flexible tag widget with the following features:
+{-| A flexible listbox widget to select multiple tags with the following features:
 
   - Supports multiple languages as well as right to left writing.
-  - The widget and the content do not have to use the same language.
-  - You can define targets in term of number of characters or words, and display the progress against them.
-  - You can add various tags to describe the content or the status of the content (ex: warning tag)
+  - You can define targets in term of number of tags and display the progress against them.
+  - You can add various tags to each choice (ex: warning tag)
 
 Please have a look at the main [documentation](https://github.com/flarebyte/bubblegum-ui-tag) for more details about the possible settings.
 
@@ -38,10 +37,16 @@ import Html exposing (..)
 
     attr key value = { id = Nothing , key = key, facets = [], values = [value]}
 
-    adapter = { onInput = OnInputContent }
+    adapter =  =
+        { onSearchInput = OnSearchInput
+        , onToggleDropbox = OnToggleDropbox
+        , onAddTag = OnAddTag
+        , onDeleteTag = OnDeleteTag
+        }
+
     userSettings = { attributes = [attr ui_userLanguage "en-US"] }
-    settings = { attributes = [attr ui_label "My Story"] }
-    state = { attributes = [attr ui_content "Once upon a time ..."] }
+    settings = { attributes = [attr ui_label "My Story"] ++ getExampleAttributes }
+    state = { attributes = [ attr ui_suggesting "true" , attrs ui_selected [ "id:suggestion:1", "id:suggestion:3" ]] }
 
     view adapter userSettings settings state
 
