@@ -1,10 +1,18 @@
-module Bubblegum.Tag.EntityHelper exposing (..)
+module Bubblegum.Tag.EntityHelper
+    exposing
+        ( findBool
+        , findIntRange
+        , findListCompactUri
+        , findListStringForId
+        , findString
+        , findStringForId
+        )
 
 {-| Basic functions for the VocabularyHelper to facilitate the retrieval of data from the configuration
 -}
 
 import Bubblegum.Entity.Attribute as Attribute
-import Bubblegum.Entity.Outcome as Outcome exposing (..)
+import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
 import Bubblegum.Entity.Validation as Validation
 import Bubblegum.Tag.HelperLimits exposing (compactUriLimitList, limitList, limitMediumRangeNotEmpty, limitSmallRangeNotEmpty)
 import Regex
@@ -45,7 +53,7 @@ findListString key attributes =
 
 findListStringForId : String -> List Attribute.Model -> String -> Outcome (List String)
 findListStringForId key attributes id =
-    findOutcomeByKeyAndId key attributes id |> Validation.listLessThan limitList |> Validation.withinListStringCharsRange limitSmallRangeNotEmpty
+    findOutcomeByKeyAndId key attributes id |> Validation.listLessThan compactUriLimitList |> Validation.withinListStringCharsRange limitSmallRangeNotEmpty
 
 
 findListCompactUri : String -> List Attribute.Model -> Outcome (List String)
@@ -89,6 +97,11 @@ listMatchCompactUri outcome =
     Outcome.check (\list -> List.all helperCompactUri list) "unsatisfied-constraint:list-compact-uri" outcome
 
 
+compactUriRegex : Regex.Regex
+compactUriRegex =
+    Regex.regex "^[a-z][a-z0-9_.-]{1,15}:\\w[^\\s]*$"
+
+
 helperCompactUri : String -> Bool
 helperCompactUri value =
-    Regex.contains (Regex.regex "^[a-z][a-z0-9_.-]{1,15}:\\w[^\\s]*$") value
+    Regex.contains compactUriRegex value

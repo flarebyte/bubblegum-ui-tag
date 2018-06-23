@@ -3,7 +3,7 @@
 import sys
 import csv
 from string import Template
-from generator_helper import camelCase, camelCaseUpper, quoteArray, readCsv
+from generator_helper import camelCase, camelCaseUpper, quoteArray, readCsv, readFileAsString
 from vocabulary_template import * 
 
 ui_keys_csv = "ui-keys.csv"
@@ -145,6 +145,7 @@ def createWidgetCreateTests():
     content = readCsv(ui_keys_csv)
     rangeContent = readCsv(ui_range_keys_csv)
     file = open("../tests/WidgetCreateTests.elm", "w")
+    existingTestDataContent = readFileAsString("../tests/WidgetTestData.elm")
     file.write(headerWidgetCreateTests)
     withComa = False
     for row in content:
@@ -168,11 +169,14 @@ def createWidgetCreateTests():
             if isState(row):
                 content = prefixWithComa("fuzz ", withComa, formatTemplate(templateWidgetCreateTestsStateCorrect, row))
                 file.write(content)
-                if isAttribute(row):
-                    file.write(formatTemplate(templateWidgetCreateTestsStateWrongAttr, row))
-                else:
-                    file.write(formatTemplate(templateWidgetCreateTestsStateWrong, row))
+                # if isAttribute(row):
+                #     file.write(formatTemplate(templateWidgetCreateTestsStateWrongAttr, row))
+                # else:
+                #     file.write(formatTemplate(templateWidgetCreateTestsStateWrong, row))
                 withComa = True
+            if not formatTemplate(checkTemplateTestData, row) in existingTestDataContent:
+                print formatTemplate(templateTestData, row)
+
     file.write(footerWidgetCreateTests)            
     file.close()    
 
@@ -258,7 +262,7 @@ def generateExamples(suggested, signature):
     if (signature == "Bool"):
         return quoteArray(["true", "false", "other"])
     elif (signature == "Int"):
-        return quoteArray(["0", "20", "40", "80", "160", "320", "-5"])
+        return quoteArray(["0", "2", "4", "8", "16", "32", "-5"])
     elif (suggested is not None):
         suggestions = suggested.strip().split(";")
         suggestions.append("other")

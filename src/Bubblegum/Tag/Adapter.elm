@@ -1,4 +1,4 @@
-module Bubblegum.Tag.Adapter exposing (..)
+module Bubblegum.Tag.Adapter exposing (Model)
 
 {-| Adapter which converts event handlers for the tag widget
 -}
@@ -11,5 +11,8 @@ See <https://www.w3schools.com/jsref/event_oninput.asp>
 
 -}
 type alias Model msg =
-    { onInput : String -> msg
+    { onSearchInput : String -> msg
+    , onToggleDropbox : msg
+    , onAddTag : String -> msg
+    , onDeleteTag : String -> msg
     }

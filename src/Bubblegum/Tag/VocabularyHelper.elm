@@ -15,22 +15,6 @@ import Bubblegum.Tag.HelperLimits exposing (..)
 import Bubblegum.Tag.Vocabulary exposing (..)
 
 
-{-| The unique id of the content
--}
-getContentId : StateEntity.Model -> Outcome String
-getContentId settings =
-    findString ui_contentId settings.attributes
-        |> Validation.matchCompactUri
-
-
-{-| Language of the content
--}
-getContentLanguage : SettingsEntity.Model -> Outcome String
-getContentLanguage settings =
-    findString ui_contentLanguage settings.attributes
-        |> Validation.withinStringCharsRange limitSmallRangeNotEmpty
-
-
 {-| Whether the content requires right to left
 -}
 isContentRightToLeft : SettingsEntity.Model -> Outcome Bool
@@ -42,14 +26,14 @@ isContentRightToLeft settings =
 -}
 getSelected : StateEntity.Model -> Outcome (List String)
 getSelected settings =
-    findListString ui_selected settings.attributes
+    findListCompactUri ui_selected settings.attributes
 
 
-{-| The selectable tags for the field
+{-| Suggesting is currently happening
 -}
-getSelectable : StateEntity.Model -> Outcome (List String)
-getSelectable settings =
-    findListString ui_selectable settings.attributes
+isSuggesting : StateEntity.Model -> Outcome Bool
+isSuggesting settings =
+    findBool ui_suggesting settings.attributes
 
 
 {-| The list of suggested tags for the field
@@ -57,6 +41,13 @@ getSelectable settings =
 getSuggestion : SettingsEntity.Model -> Outcome (List String)
 getSuggestion settings =
     findListCompactUri ui_suggestion settings.attributes
+
+
+{-| Search term for filtering the available options
+-}
+getSearch : StateEntity.Model -> Outcome String
+getSearch settings =
+    findString ui_search settings.attributes
 
 
 {-| Help message to highlight an issue with the content
@@ -81,6 +72,14 @@ getLabel : SettingsEntity.Model -> Outcome String
 getLabel settings =
     findString ui_label settings.attributes
         |> Validation.withinStringCharsRange limitMediumRangeNotEmpty
+
+
+{-| Label related to the search field
+-}
+getSearchLabel : SettingsEntity.Model -> Outcome String
+getSearchLabel settings =
+    findString ui_searchLabel settings.attributes
+        |> Validation.withinStringCharsRange limitSmallRangeNotEmpty
 
 
 {-| Language used by the user

@@ -218,7 +218,31 @@ templateWidgetCreateTestsStateWrongAttr = """
                     |> findComponent selectorsNot$nameCamel
 """
 
-templateTemp = """
+templateTemp = ""
+
+checkTemplateTestData = "fuzzy$nameCamel"
+
+templateTestData = """
+-- $description
+withSettings$nameCamel: Int -> SettingsEntity.Model
+withSettings$nameCamel value = {
+    attributes = [
+        attr ui_$namecamel (createString value)
+    ]
+ }
+
+fuzzy$nameCamel : Fuzzer Int
+fuzzy$nameCamel = intRange 1 1
+
+fuzzyNot$nameCamel : Fuzzer Int
+fuzzyNot$nameCamel = intRange 100 400 
+
+selectors$nameCamel : List Selector
+selectors$nameCamel = [ Selector.class "bubblegum-tag__input", Selector.attribute (Attributes.lang "es") ]
+
+selectorsNot$nameCamel : List Selector
+selectorsNot$nameCamel = [ Selector.class "bubblegum-tag__input", 
+    Selector.attribute (attribute "data-bubblegum-warn" "unsatisfied-constraint:") ]
 
 """
 

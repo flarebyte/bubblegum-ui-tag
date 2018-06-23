@@ -1,12 +1,12 @@
-content-id,The unique id of the content,String,state curie! attribute,id:aa61e603-9947-4fd8-86bb-d63a682259d0 
-content-language,Language of the content,String,small! user attribute,en-GB;ja;ar;zh-CN-SC;ru-RUS;es;it;fr
 content-right-to-left,Whether the content requires right to left,Bool,user attribute,
-selected,The selected tags for the field,List String,state,id:02 
-selectable,The selectable tags for the field,List String,state,id:02 
-suggestion,The list of suggested tags for the field,List String,compactUris,id:01;id:02;id:03;id:04s 
+selected,The selected tags for the field,List String,state compactUris,id:suggestion:1 
+suggesting,Suggesting is currently happening,Bool,state, 
+suggestion,The list of suggested tags for the field,List String,compactUris,id:suggestion:1;id:suggestion:2;id:suggestion:3 
+search,Search term for filtering the available options,String,state,ipsum;dolor
 danger-help,Help message to highlight an issue with the content,String,medium! state,do not do this
 help,Some help tip related to the field,String,medium!,Lorem ipsum dolor sit amet consectetur adipiscing elit.;助けて
 label,Label related to the field,String,medium!,Some label;ラベル;ضع الكلمة المناسبة
+search-label,Label related to the search field,String,small!,Search;搜索;пошук
 user-language,Language used by the user,String,small! attribute,en-GB;ja;ar;zh-CN-SC;ru-RUS;es;it;fr
 user-right-to-left,Whether the user is using right to left,Bool,attribute,
 success-minimum-tags,The minimum number of tags needed for successful content,Int,,

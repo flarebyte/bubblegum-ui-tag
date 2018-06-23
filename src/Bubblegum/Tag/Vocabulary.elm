@@ -7,20 +7,6 @@ module Bubblegum.Tag.Vocabulary exposing (..)
 -}
 
 
-{-| The unique id of the content. (String)
--}
-ui_contentId : String
-ui_contentId =
-    "ui:content-id"
-
-
-{-| Language of the content. (String)
--}
-ui_contentLanguage : String
-ui_contentLanguage =
-    "ui:content-language"
-
-
 {-| Whether the content requires right to left. (Bool)
 -}
 ui_contentRightToLeft : String
@@ -35,11 +21,11 @@ ui_selected =
     "ui:selected"
 
 
-{-| The selectable tags for the field. (List String)
+{-| Suggesting is currently happening. (Bool)
 -}
-ui_selectable : String
-ui_selectable =
-    "ui:selectable"
+ui_suggesting : String
+ui_suggesting =
+    "ui:suggesting"
 
 
 {-| The list of suggested tags for the field. (List String)
@@ -47,6 +33,13 @@ ui_selectable =
 ui_suggestion : String
 ui_suggestion =
     "ui:suggestion"
+
+
+{-| Search term for filtering the available options. (String)
+-}
+ui_search : String
+ui_search =
+    "ui:search"
 
 
 {-| Help message to highlight an issue with the content. (String)
@@ -68,6 +61,13 @@ ui_help =
 ui_label : String
 ui_label =
     "ui:label"
+
+
+{-| Label related to the search field. (String)
+-}
+ui_searchLabel : String
+ui_searchLabel =
+    "ui:search-label"
 
 
 {-| Language used by the user. (String)

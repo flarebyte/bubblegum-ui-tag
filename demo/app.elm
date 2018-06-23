@@ -38,8 +38,8 @@ main =
 update : AppMsg -> AppModel -> AppModel
 update msg model =
     case msg of
-        OnInputContent value ->
-            replaceAttributeByKey "ui_content" [ value ] model.state.attributes
+        OnSearchInputContent value ->
+            replaceAttributeByKey ui_search [ value ] model.state.attributes
                 |> StateEntity.asAttributesIn model.state
                 |> asStateIn model
 
@@ -61,6 +61,21 @@ update msg model =
         OnActivateState key ->
             deleteAttributeByKey key (getStateAttributes model)
                 |> StateEntity.asAttributesIn (getState model)
+                |> asStateIn model
+
+        OnToggleDropbox ->
+            replaceAttributeByKey ui_suggesting [ notSuggesting model.state ] model.state.attributes
+                |> StateEntity.asAttributesIn model.state
+                |> asStateIn model
+
+        OnAddTag tagId ->
+            replaceAttributeByKey ui_selected (addTagIdToSelected tagId model.state) model.state.attributes
+                |> StateEntity.asAttributesIn model.state
+                |> asStateIn model
+
+        OnDeleteTag tagId ->
+            replaceAttributeByKey ui_selected (deleteTagIdToSelected tagId model.state) model.state.attributes
+                |> StateEntity.asAttributesIn model.state
                 |> asStateIn model
 
 

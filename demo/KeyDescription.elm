@@ -7,16 +7,6 @@ module KeyDescription exposing (..)
 -}
 
 
-descContentId : String
-descContentId =
-    "The unique id of the content"
-
-
-descContentLanguage : String
-descContentLanguage =
-    "Language of the content"
-
-
 descContentRightToLeft : String
 descContentRightToLeft =
     "Whether the content requires right to left"
@@ -27,14 +17,19 @@ descSelected =
     "The selected tags for the field"
 
 
-descSelectable : String
-descSelectable =
-    "The selectable tags for the field"
+descSuggesting : String
+descSuggesting =
+    "Suggesting is currently happening"
 
 
 descSuggestion : String
 descSuggestion =
     "The list of suggested tags for the field"
+
+
+descSearch : String
+descSearch =
+    "Search term for filtering the available options"
 
 
 descDangerHelp : String
@@ -50,6 +45,11 @@ descHelp =
 descLabel : String
 descLabel =
     "Label related to the field"
+
+
+descSearchLabel : String
+descSearchLabel =
+    "Label related to the search field"
 
 
 descUserLanguage : String

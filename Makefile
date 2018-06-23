@@ -9,7 +9,7 @@ reset:
 	rm -rf tests/elm-stuff
 	rm -rf docs
 
-build: beautify build-directory js html mint doc
+build: test beautify build-directory js html mint doc
 
 build-ci:
 	sh scripts/build-ci.sh
